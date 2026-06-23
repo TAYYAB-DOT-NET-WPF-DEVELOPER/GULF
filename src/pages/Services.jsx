@@ -10,15 +10,18 @@ export default function Services() {
     useSEO("PAGE", "services");
     const [heroBanner, setHeroBanner] = useState(null);
     const [servicesList, setServicesList] = useState([]);
+    const [bottomBanner, setBottomBanner] = useState(null);
     useEffect(() => {
         async function loadData() {
             try {
-                const [bannerRes, servicesRes] = await Promise.all([
+                const [bannerRes, servicesRes, bottomRes] = await Promise.all([
                     http.get("/api/banners/services").catch(() => ({ data: null })),
-                    http.get("/api/services").catch(() => ({ data: [] }))
+                    http.get("/api/services").catch(() => ({ data: [] })),
+                    http.get("/api/banners/services-bottom").catch(() => ({ data: null }))
                 ]);
                 setHeroBanner(bannerRes.data);
                 setServicesList(Array.isArray(servicesRes.data) ? servicesRes.data : []);
+                setBottomBanner(bottomRes ? bottomRes.data : null);
             } catch (err) { }
         }
         loadData();
@@ -30,10 +33,10 @@ export default function Services() {
       <section className="relative w-full min-h-[650px] md:min-h-screen overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={heroBanner?.imageUrls?.[0] ? getImageUrl(heroBanner.imageUrls[0]) : "/images/group.png"}
+            src={heroBanner?.imageUrls?.[0] ? getImageUrl(heroBanner.imageUrls[0]) : "/images/abouthero.png"}
             alt="Services Hub"
             className="absolute inset-0 w-full h-full object-cover"
-            onError={(e) => { e.target.src = "/images/panel.png" }}
+            onError={(e) => { e.target.src = "/images/abouthero.png" }}
           />
         </div>
         <div className="absolute inset-0 bg-black/50" />
@@ -41,16 +44,16 @@ export default function Services() {
         <div className="relative z-10 flex min-h-[650px] items-center md:min-h-screen pt-24 md:pt-32 pb-20">
           <div className="mx-auto max-w-6xl px-4 w-full">
             <div className="max-w-4xl">
-              <p className="text-xs font-black tracking-[0.3em] text-orange-400 uppercase mb-4">
+              <p className="text-xs font-black tracking-[0.3em] text-[#f26522] uppercase mb-4">
                 {t("services_offerings_label", "Our Offerings")}
               </p>
-              <h1 className="text-4xl font-black text-white md:text-7xl uppercase tracking-tighter leading-[0.9] whitespace-pre-line">
+              <h1 className="text-4xl font-bold text-white md:text-7xl uppercase tracking-tighter leading-[0.9] whitespace-pre-line">
                 {t("services_offerings_title", "A Saudi company. A global standard.")}
               </h1>
               <p className="mt-4 text-[15px] md:text-lg font-bold text-white/90">
-                {t("services_offerings_sub", "Engineering · Fabrication · Electrification · Construction")}
+                {t("services_offerings_sub", "Services · Projects · Portfolio · Capabilities")}
               </p>
-              <p className="mt-8 max-w-2xl text-[14px] md:text-lg text-white/85 font-medium leading-relaxed whitespace-pre-line">
+              <p className="mt-8 max-w-2xl text-[17px] text-white/95 font-light leading-relaxed whitespace-pre-line">
                 {t("services_offerings_desc", "Built on trust, driven by commitment we show up, solve problems, and deliver every project on time, in scope, and in budget.")}
               </p>
             </div>
@@ -58,54 +61,52 @@ export default function Services() {
         </div>
       </section>
 
-      {/* INTRO SECTION */}
-      <section className="bg-white pt-16 md:pt-24">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="max-w-3xl">
-            <h2 className="text-[32px] font-bold text-[#18324e] md:text-[45px] leading-tight">
-              {t("services_hero_title", "Structured for global impact.")}
-            </h2>
-            <p className="mt-6 text-[16px] md:text-[18px] leading-relaxed text-[#555]">
-              {t("services_hero_desc", "Our diversified group structure allows us to lead in multiple sectors while maintaining the agility of a focused engineering firm.")}
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* CORE DIVISIONS */}
-      <section className="bg-white pb-16 md:pb-24 overflow-hidden">
+      <section className="bg-white py-16 md:py-24 overflow-hidden">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-col gap-24 md:gap-32">
             {(servicesList.length > 0 ? servicesList : [
                 {
                   id: "mechanical",
                   title: t("Mechanical Division"),
-                  image: "https://images.unsplash.com/photo-1504328332780-bc4bfcd4409c?auto=format&fit=crop&q=80&w=800",
-                  desc: t("services_mech_desc")
+                  image: "/images/WhatWeDoImages1.jpg",
+                  desc: t("services_mech_desc", "Our Mechanical Division provides general fabrication, mechanical piping, tank fabrication, and general maintenance services...")
                 },
                 {
                   id: "electrical",
                   title: t("Electrical Division"),
-                  image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=800",
-                  desc: t("services_elec_desc")
+                  image: "/images/WhatWeDoImages2.jpg",
+                  desc: t("services_elec_desc", "Our Electrical Division provides electrical installations from low voltage systems to high voltage systems, delivering maximum safety and quality...")
                 },
                 {
                   id: "transmission",
                   title: t("Transmission Lines"),
-                  image: "https://images.unsplash.com/photo-1548676613-97b567793d4b?auto=format&fit=crop&q=80&w=800",
-                  desc: t("services_trans_desc")
+                  image: "/images/WhahweDoimages3.jpg",
+                  desc: t("services_trans_desc", "As an EPC contractor, Gulf Al Olaya delivers complete transmission line projects, from design and engineering to tower erection, testing, and commissioning...")
                 },
                 {
                   id: "piping",
                   title: t("Industrial Piping"),
-                  image: "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&q=80&w=800",
-                  desc: t("services_piping_desc")
+                  image: "/images/WhatweDoimages4.jpg",
+                  desc: t("services_piping_desc", "Our piping division is recognized as the best piping engineering contractor, designing and building complex piping networks for industrial facilities...")
+                },
+                {
+                  id: "transmission-lines-2",
+                  title: t("Transmission Lines"),
+                  image: "",
+                  desc: t("services_trans_desc_2", "As an EPC contractor, Gulf Al Olaya delivers complete transmission line projects, from design and engineering to tower erection, testing, and commissioning...")
+                },
+                {
+                  id: "engineering-construction",
+                  title: t("Engineering Construction"),
+                  image: "",
+                  desc: t("services_eng_desc", "As an EPC contractor, Gulf Al Olaya delivers complete engineering, procurement, and construction services for industrial and civil infrastructures.")
                 }
               ]).map((sector, idx) => {
                 const isEven = idx % 2 === 0;
                 
                 // Get decorations cyclically if there are more items than decorations
-                const decIdx = idx % 5;
+                const decIdx = idx % 6;
 
                 return (
                     <div key={idx} className="relative grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
@@ -132,6 +133,7 @@ export default function Services() {
                             <svg className="absolute left-[30%] bottom-[-15%] pointer-events-none opacity-80" width="130" height="130" viewBox="0 0 100 100" preserveAspectRatio="none">
                                 <polygon points="50,0 100,100 0,100" fill="none" stroke="#18324e" strokeWidth="0.5" />
                             </svg>
+                            <div className="absolute left-[-5%] top-[10%] w-[30px] h-[30px] bg-[#18324e] z-0" style={{ clipPath: "polygon(50% 0, 100% 100%, 0 100%)" }}></div>
                           </>
                         )}
                         {decIdx === 3 && (
@@ -140,9 +142,18 @@ export default function Services() {
                                 <polygon points="50,0 100,100 0,100" fill="none" stroke="#f26522" strokeWidth="0.5" />
                             </svg>
                             <div className="absolute right-[0%] top-[0%] w-[6%] h-[20%] bg-[#f26522] z-0" style={{ clipPath: "polygon(0 50%, 100% 0, 100% 100%)" }}></div>
+                            <div className="absolute right-[-2%] bottom-[10%] w-[40px] h-[40px] bg-[#f26522] z-0" style={{ clipPath: "polygon(100% 0, 0 100%, 100% 100%)" }}></div>
                           </>
                         )}
                         {decIdx === 4 && (
+                          <>
+                            <div className="absolute right-[0%] top-[0%] w-[6%] h-[20%] bg-[#f26522] z-0" style={{ clipPath: "polygon(0 0, 100% 50%, 50% 100%)" }}></div>
+                            <svg className="absolute left-[20%] bottom-[-10%] pointer-events-none opacity-80" width="90" height="90" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <polygon points="50,0 100,100 0,100" fill="none" stroke="#f26522" strokeWidth="0.5" />
+                            </svg>
+                          </>
+                        )}
+                        {decIdx === 5 && (
                           <>
                             <svg className="absolute left-[-2%] bottom-[10%] pointer-events-none opacity-100 z-10" width="55" height="55" viewBox="0 0 100 100" preserveAspectRatio="none">
                                 <polygon points="0,50 100,0 100,100" fill="#18324e" />
@@ -155,7 +166,7 @@ export default function Services() {
 
                         {/* Text Block */}
                         <div className={`relative z-10 flex flex-col justify-center ${isEven ? 'order-1' : 'order-2 md:pl-10'}`}>
-                            <h3 className="text-[28px] font-bold text-[#18324e] md:text-[34px] leading-tight">
+                            <h3 className="text-[28px] font-bold text-[#18324e] md:text-[34px] leading-tight tracking-tight">
                                 {t(sector.name || sector.title)}
                             </h3>
                             <p className="mt-5 text-[15.5px] leading-relaxed text-[#555] max-w-lg">
@@ -164,22 +175,26 @@ export default function Services() {
                             <div className="mt-8">
                                 <Link
                                     to={`/services/${sector.id || idx}`}
-                                    className="inline-flex rounded-sm bg-[#f26522] px-6 py-2.5 text-[14px] font-bold text-white hover:bg-orange-600 transition-all"
+                                    className="inline-flex rounded-sm bg-[#f26522] px-6 py-3 text-[14px] font-bold text-white hover:bg-orange-600 transition-all"
                                 >
                                     {t("Explore More")}
                                 </Link>
                             </div>
                         </div>
 
-                        {/* Image Placeholder */}
+                        {/* Image Block */}
                         <div className={`relative z-10 flex items-center justify-center ${isEven ? 'order-2' : 'order-1'}`}>
-                            <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#e2e2e2] relative">
-                                <img
-                                    src={getImageUrl(sector.imageUrl || sector.image) || "/images/placeholder-blank.png"}
-                                    alt={t(sector.name || sector.title)}
-                                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                                    onError={(e) => { e.target.style.opacity = 0; }} 
-                                />
+                            <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-[#e2e2e2] relative shadow-md">
+                                {sector.image ? (
+                                    <img
+                                        src={getImageUrl(sector.imageUrl || sector.image)}
+                                        alt={t(sector.name || sector.title)}
+                                        className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                                        onError={(e) => { e.target.style.opacity = 0; }} 
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 bg-[#e2e2e2]" />
+                                )}
                             </div>
                         </div>
                     </div>
@@ -205,7 +220,7 @@ export default function Services() {
               {/* Main Polygon Image */}
               <div className="absolute inset-0 z-10 overflow-hidden shadow-2xl" style={{ clipPath: "polygon(0% 25%, 100% 0%, 85% 100%, 15% 75%)" }}>
                 <img
-                  src="/images/vision.png"
+                  src="/images/How can i help.png"
                   alt="Contact"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -214,11 +229,11 @@ export default function Services() {
 
             {/* RIGHT: Text content */}
             <div className="pl-0 md:pl-8">
-              <p className="text-[14px] font-bold tracking-widest text-[#18324e] uppercase">
+              <p className="text-[13px] font-bold tracking-widest text-[#f26522] uppercase">
                 {t("home_contact_label", "CONTACT US")}
               </p>
 
-              <h3 className="mt-4 text-[32px] font-bold text-[#18324e] md:text-[40px]">
+              <h3 className="mt-4 text-[26px] font-bold text-[#18324e] md:text-[34px] md:leading-[1.2] tracking-tight">
                 {t("home_contact_title", "How can we help?")}
               </h3>
 
@@ -243,7 +258,7 @@ export default function Services() {
       <section className="w-full bg-[#f8f9fa] py-20">
         <div className="mx-auto max-w-4xl px-4">
           <h3 className="text-center text-[28px] leading-tight font-bold text-[#18324e] md:text-[34px]">
-            {t("blog_newsletter_title")}
+            {t("Subscribe to our newsletter to receive all the latest news")}
           </h3>
 
           <div className="mx-auto mt-10 flex max-w-2xl flex-col gap-4 md:flex-row md:items-center">
@@ -272,7 +287,7 @@ export default function Services() {
           <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
             {[
               { label: t("Executive Management"), to: "/management" },
-              { label: t("nav_services"), to: "/services" },
+              { label: t("Group Structure"), to: "/group-structure" },
               { label: t("Homepage"), to: "/" },
             ].map((x) => (
               <Link key={x.label} to={x.to} className="group inline-flex items-center gap-3">
@@ -292,26 +307,24 @@ export default function Services() {
       {/* =========================================================
           Bottom Banner (solar / "For the world. With the world.")
          ========================================================= */}
-      <section className="relative w-full overflow-hidden">
+      <section className="relative w-full min-h-[500px] flex items-center justify-center overflow-hidden">
         <img
-          src="/images/panel.png"
+          src={bottomBanner?.imageUrls?.[0] ? getImageUrl(bottomBanner.imageUrls[0]) : "/images/panel.png"}
           alt="For the world"
-          className="h-[360px] w-full object-cover md:h-[440px]"
+          className="absolute inset-0 h-full w-full object-cover"
           onError={(e) => { e.target.src = "/images/hero.png" }}
         />
-        <div className="absolute inset-0 bg-[#0f2d45]/55" />
+        <div className="absolute inset-0 bg-[#0f2d45]/60" />
 
-        <div className="absolute inset-0">
-          <div className="mx-auto flex h-full max-w-6xl items-center px-4">
-             <div className="max-w-3xl">
-              <h3 className="text-3xl font-extrabold text-white md:text-5xl uppercase tracking-tighter leading-tight">
-                {t("home_bottom_title")}
-              </h3>
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-20 text-center">
+          <div className="mx-auto max-w-4xl">
+            <h3 className="text-[34px] font-bold leading-tight text-white md:text-[48px] tracking-wide">
+              "{t(bottomBanner?.headline) || t("home_bottom_title")}"
+            </h3>
 
-              <p className="mt-5 text-sm leading-7 text-white/80 md:text-base font-medium">
-                {t("home_bottom_desc")}
-              </p>
-            </div>
+            <p className="mx-auto mt-6 max-w-3xl text-[18px] leading-[1.8] text-white/90 whitespace-pre-line font-medium">
+              {t(bottomBanner?.subHeadline) || t("home_bottom_desc")}
+            </p>
           </div>
         </div>
       </section>

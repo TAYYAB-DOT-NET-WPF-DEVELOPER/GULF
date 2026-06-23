@@ -69,12 +69,12 @@ export default function BusinessLinesShowcase() {
   const [loading, setLoading] = useState(true);
 
   const fallbackServices = [
-    { id: 's1', name: "Mechanical Division", shortDesc: "serv_mech_desc", icon: "gear" },
-    { id: 's2', name: "Electrical Division", shortDesc: "serv_elec_desc", icon: "bolt" },
-    { id: 's3', name: "Transmission Lines", shortDesc: "serv_trans_desc", icon: "tower" },
-    { id: 's4', name: "serv_otl_title", shortDesc: "serv_otl_desc", icon: "tower" },
-    { id: 's5', name: "serv_piping_title", shortDesc: "serv_piping_desc", icon: "truck" },
-    { id: 's6', name: "Civil Engineering", shortDesc: "serv_civil_desc", icon: "building" },
+    { id: 's1', name: "Mechanical Division", shortDesc: "services_mech_desc", icon: "gear", bannerImageUrl: "/images/MECHANICAL DIVISION.png" },
+    { id: 's2', name: "Transmission Lines", shortDesc: "services_trans_desc", icon: "tower", bannerImageUrl: "/images/Transmission lines.png" },
+    { id: 's3', name: "Electrical Division", shortDesc: "services_elec_desc", icon: "bolt", bannerImageUrl: "/images/Electrical division.png" },
+    { id: 's4', name: "Overhead Transmission Lines", shortDesc: "services_trans_desc", icon: "tower", bannerImageUrl: "/images/Overhead Transmission Line Construction.png" },
+    { id: 's5', name: "Industrial Piping", shortDesc: "services_piping_desc", icon: "gear", bannerImageUrl: "/images/Industrial piping.png" },
+    { id: 's6', name: "Civil Engineering", shortDesc: "proj_1_desc", icon: "gear", bannerImageUrl: "/images/Civil works division.png" },
   ];
 
   async function loadServices() {
@@ -109,7 +109,7 @@ export default function BusinessLinesShowcase() {
 
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto max-w-6xl px-4 pb-0">
+      <div className="mx-auto max-w-6xl px-4 pt-12 pb-16 md:pt-16 md:pb-24">
         <div className="grid gap-10 md:grid-cols-12 md:items-stretch">
           {/* LEFT MENU */}
           <div className="md:col-span-4">

@@ -94,8 +94,8 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
                 <NavLink to="/projects" className={({ isActive }) => `text-[14.5px] font-medium tracking-wide transition ${isActive ? "text-[#f26522]" : (isLight ? "text-slate-600 hover:text-[#f26522]" : "text-white/90 hover:text-white")}`}>
                   {t('nav_project_portfolio', 'Project / Portfolio')}
                 </NavLink>
-                <NavLink to="/blog" className={({ isActive }) => `text-[14.5px] font-medium tracking-wide transition ${isActive ? "text-[#f26522]" : (isLight ? "text-slate-600 hover:text-[#f26522]" : "text-white/90 hover:text-white")}`}>
-                  {t('nav_new_updates', 'New & Updates')}
+                <NavLink to="/news" className={({ isActive }) => `text-[14.5px] font-medium tracking-wide transition ${isActive ? "text-[#f26522]" : (isLight ? "text-slate-600 hover:text-[#f26522]" : "text-white/90 hover:text-white")}`}>
+                  {t('nav_new_updates', 'News & Updates')}
                 </NavLink>
                 <NavLink to="/careers" className={({ isActive }) => `text-[14.5px] font-medium tracking-wide transition ${isActive ? "text-[#f26522]" : (isLight ? "text-slate-600 hover:text-[#f26522]" : "text-white/90 hover:text-white")}`}>
                   {t('nav_careers')}
@@ -183,8 +183,8 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
             <NavLink to="/projects" className={mobileNavClass} onClick={closeMenu}>
               {t('nav_projects')}
             </NavLink>
-            <NavLink to="/blog" className={mobileNavClass} onClick={closeMenu}>
-              {t('nav_blog')}
+            <NavLink to="/news" className={mobileNavClass} onClick={closeMenu}>
+              {t('nav_new_updates', 'News & Updates')}
             </NavLink>
             <NavLink to="/careers" className={mobileNavClass} onClick={closeMenu}>
               {t('nav_careers')}

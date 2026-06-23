@@ -41,13 +41,12 @@ export default function SustainabilityCarousel() {
           if (r.data) {
             return {
               no: `0${i + 1}`,
-              // If headline is a valid key, use it; otherwise use our translated default
-              title: i18n.exists(r.data.headline) ? t(r.data.headline) : slides[i].title,
-              desc: i18n.exists(r.data.subHeadline) ? t(r.data.subHeadline) : slides[i].desc,
+              title: i18n.exists(r.data.headline) ? t(r.data.headline) : (slides[i] ? slides[i].title : ""),
+              desc: i18n.exists(r.data.subHeadline) ? t(r.data.subHeadline) : (slides[i] ? slides[i].desc : ""),
             };
           }
           return slides[i];
-        });
+        }).filter(Boolean);
         setDynamicSlides(mapped);
       } catch (e) {
         setDynamicSlides(slides);

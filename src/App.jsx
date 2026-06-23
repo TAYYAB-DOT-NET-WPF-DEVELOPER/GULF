@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Careers from "./pages/Careers";
 import ServiceDetail from "./pages/ServiceDetail";
+import News from "./pages/News";
 
 function App() {
   const { i18n } = useTranslation();
@@ -35,6 +36,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/news" element={<News />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/services/:id" element={<ServiceDetail />} />
             {/* Redirect /what-we-do to home for now or specific section if needed */}
