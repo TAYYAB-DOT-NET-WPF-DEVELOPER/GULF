@@ -77,8 +77,8 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
                 <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="bg-white rounded shadow-lg overflow-hidden flex flex-col min-w-[120px] border border-slate-100">
                     <button onClick={() => changeLanguage('en')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'en' ? 'font-bold text-black' : 'text-gray-700'}`}>English</button>
-                    <button onClick={() => changeLanguage('ur')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'ur' ? 'font-bold text-black' : 'text-gray-700'}`}>اردو</button>
                     <button onClick={() => changeLanguage('ar')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'ar' ? 'font-bold text-black' : 'text-gray-700'}`}>العربية</button>
+                    <button onClick={() => changeLanguage('fr')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'fr' ? 'font-bold text-black' : 'text-gray-700'}`}>Français</button>
                   </div>
                 </div>
               </div>
@@ -103,11 +103,10 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
 
                 <Link
                   to="/contact"
-                  className={`ml-3 rounded-[3px] border px-6 py-2.5 text-[14px] font-bold tracking-wide transition ${
-                    isLight 
-                      ? 'border-[#f26522] text-[#f26522] hover:bg-[#f26522] hover:text-white' 
+                  className={`ml-3 rounded-[3px] border px-6 py-2.5 text-[14px] font-bold tracking-wide transition ${isLight
+                      ? 'border-[#f26522] text-[#f26522] hover:bg-[#f26522] hover:text-white'
                       : 'border-white/70 text-white hover:bg-white hover:text-black'
-                  }`}
+                    }`}
                 >
                   {t('nav_quote')}
                 </Link>
@@ -119,38 +118,35 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
               <div className={`flex items-center gap-2 text-sm ${isLight || !overlay ? 'text-slate-600' : 'text-white/80'}`}>
                 <button
                   onClick={() => changeLanguage('en')}
-                  className={`hover:text-[#f26522] transition-colors ${
-                    i18n.language === 'en'
+                  className={`hover:text-[#f26522] transition-colors ${i18n.language === 'en'
                       ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
                       : ''
-                  }`}
+                    }`}
                 >
                   EN
                 </button>
                 <span>|</span>
                 <button
-                  onClick={() => changeLanguage('ur')}
-                  className={`hover:text-[#f26522] transition-colors ${
-                    i18n.language === 'ur'
-                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
-                      : ''
-                  }`}
-                >
-                  UR
-                </button>
-                <span>|</span>
-                <button
                   onClick={() => changeLanguage('ar')}
-                  className={`hover:text-[#f26522] transition-colors ${
-                    i18n.language === 'ar'
+                  className={`hover:text-[#f26522] transition-colors ${i18n.language === 'ar'
                       ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
                       : ''
-                  }`}
+                    }`}
                 >
                   AR
                 </button>
+                <span>|</span>
+                <button
+                  onClick={() => changeLanguage('fr')}
+                  className={`hover:text-[#f26522] transition-colors ${i18n.language === 'fr'
+                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
+                      : ''
+                    }`}
+                >
+                  FR
+                </button>
               </div>
-              
+
               <button
                 onClick={toggleMenu}
                 className={`p-2 focus:outline-none transition-colors ${isLight || !overlay ? 'text-[#0f2d45] hover:text-[#f26522]' : 'text-white hover:text-white/80'}`}
@@ -221,9 +217,10 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
             </NavLink>
           </nav>
 
-          <div className="mt-auto pt-10 border-t border-white/10 flex justify-center gap-10">
-            <button onClick={() => { changeLanguage('en'); closeMenu(); }} className={`text-lg hover:text-orange-500 ${i18n.language === 'en' ? 'text-orange-500 font-bold' : 'text-white'}`}>English</button>
-            <button onClick={() => { changeLanguage('ar'); closeMenu(); }} className={`text-lg hover:text-orange-500 ${i18n.language === 'ar' ? 'text-orange-500 font-bold' : 'text-white'}`}>العربية</button>
+          <div className="mt-auto pt-10 border-t border-white/10 flex justify-center flex-wrap gap-6">
+            <button onClick={() => { changeLanguage('en'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'en' ? 'text-orange-500 font-bold' : 'text-white'}`}>English</button>
+            <button onClick={() => { changeLanguage('ar'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'ar' ? 'text-orange-500 font-bold' : 'text-white'}`}>العربية</button>
+            <button onClick={() => { changeLanguage('fr'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'fr' ? 'text-orange-500 font-bold' : 'text-white'}`}>Français</button>
           </div>
         </div>
       </div>
