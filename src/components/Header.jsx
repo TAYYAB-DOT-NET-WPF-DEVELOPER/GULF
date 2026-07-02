@@ -77,6 +77,7 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
                 <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="bg-white rounded shadow-lg overflow-hidden flex flex-col min-w-[120px] border border-slate-100">
                     <button onClick={() => changeLanguage('en')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'en' ? 'font-bold text-black' : 'text-gray-700'}`}>English</button>
+                    <button onClick={() => changeLanguage('ur')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'ur' ? 'font-bold text-black' : 'text-gray-700'}`}>اردو</button>
                     <button onClick={() => changeLanguage('ar')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'ar' ? 'font-bold text-black' : 'text-gray-700'}`}>العربية</button>
                     <button onClick={() => changeLanguage('fr')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'fr' ? 'font-bold text-black' : 'text-gray-700'}`}>Français</button>
                   </div>
@@ -124,6 +125,16 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
                     }`}
                 >
                   EN
+                </button>
+                <span>|</span>
+                <button
+                  onClick={() => changeLanguage('ur')}
+                  className={`hover:text-[#f26522] transition-colors ${i18n.language === 'ur'
+                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
+                      : ''
+                    }`}
+                >
+                  UR
                 </button>
                 <span>|</span>
                 <button
@@ -219,6 +230,7 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
 
           <div className="mt-auto pt-10 border-t border-white/10 flex justify-center flex-wrap gap-6">
             <button onClick={() => { changeLanguage('en'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'en' ? 'text-orange-500 font-bold' : 'text-white'}`}>English</button>
+            <button onClick={() => { changeLanguage('ur'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'ur' ? 'text-orange-500 font-bold' : 'text-white'}`}>اردو</button>
             <button onClick={() => { changeLanguage('ar'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'ar' ? 'text-orange-500 font-bold' : 'text-white'}`}>العربية</button>
             <button onClick={() => { changeLanguage('fr'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'fr' ? 'text-orange-500 font-bold' : 'text-white'}`}>Français</button>
           </div>
