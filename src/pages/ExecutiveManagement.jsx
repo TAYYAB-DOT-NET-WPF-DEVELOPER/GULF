@@ -88,7 +88,7 @@ export default function ExecutiveManagement() {
           <div className="mx-auto max-w-6xl px-4">
             <div className="flex min-h-[650px] items-center md:min-h-screen">
               <div className="max-w-4xl">
-                <h1 className="text-4xl font-extrabold text-white md:text-5xl whitespace-pre-line">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white whitespace-pre-line">
                   {t(heroBanner?.headline) || t("Meet the leaders inspiring our global teams")}
                 </h1>
                 <p className="mt-5 max-w-md text-sm text-white/85 md:text-base whitespace-pre-line">

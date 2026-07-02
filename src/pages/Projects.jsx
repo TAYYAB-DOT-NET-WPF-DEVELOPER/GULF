@@ -181,11 +181,23 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState({
-    business: true,
-    type: true,
-    country: true,
-    status: true,
+    business: false,
+    type: false,
+    country: false,
+    status: false,
   });
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      setOpen({
+        business: true,
+        type: true,
+        country: true,
+        status: true,
+      });
+    }
+  }, []);
   const [page, setPage] = useState(1);
   const [heroBanner, setHeroBanner] = useState(null);
   const [bottomBanner, setBottomBanner] = useState(null);
@@ -319,7 +331,7 @@ export default function Projects() {
                   {t("nav_project_portfolio")}
                 </p>
 
-                <h1 className="text-[42px] md:text-[64px] font-bold text-[#0f2d45] leading-[1.1] tracking-tight mb-8">
+                <h1 className="text-3xl sm:text-5xl md:text-[64px] font-bold text-[#0f2d45] leading-[1.1] tracking-tight mb-8">
                   {t("Our Major Projects Around The World")}
                 </h1>
 
@@ -371,6 +383,14 @@ export default function Projects() {
                 />
               </div>
             </div>
+
+            <button
+              type="button"
+              onClick={() => setShowMobileFilters(!showMobileFilters)}
+              className="md:hidden flex items-center gap-2 justify-center w-full max-w-md h-14 rounded-xl border border-slate-200 bg-white text-sm font-bold text-[#0f2d45] hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
+            >
+              <span>⚙️</span> {showMobileFilters ? t("Hide Filters") : t("Show Filters")}
+            </button>
           </div>
         </div>
       </section>
@@ -382,8 +402,8 @@ export default function Projects() {
         <div className="mx-auto max-w-6xl px-4 pb-14">
           <div className="grid gap-10 md:grid-cols-12">
             {/* LEFT: Filters Sidebar */}
-            <aside className="md:col-span-3">
-              <div className="rounded-md border border-slate-200 bg-slate-50 overflow-hidden text-left">
+            <aside className={`md:col-span-3 ${showMobileFilters ? "block" : "hidden md:block"}`}>
+              <div className="rounded-md border border-slate-200 bg-slate-50 overflow-hidden text-left shadow-sm">
                 {/* Header for Filters */}
                 <div className="p-4 border-b border-slate-200 bg-slate-100 flex items-center justify-between">
                   <span className="text-xs font-bold text-[#0f2d45] uppercase tracking-wider">{t("Filters")}</span>

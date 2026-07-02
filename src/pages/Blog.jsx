@@ -32,6 +32,13 @@ export default function Blog() {
         loadBlogs();
     }, [t, i18n.language]);
 
+    const [page, setPage] = useState(1);
+    const blogsPerPage = 6;
+
+    useEffect(() => {
+        setPage(1);
+    }, [q]);
+
     const filtered = blogs.filter((b) => {
         const matchesQ = b.title.toLowerCase().includes(q.toLowerCase()) ||
             b.content?.toLowerCase().includes(q.toLowerCase());
@@ -40,6 +47,21 @@ export default function Blog() {
 
     const featuredPost = filtered[0];
     const otherPosts = filtered.slice(1);
+
+    const totalPages = Math.ceil(otherPosts.length / blogsPerPage);
+    const activePage = Math.max(1, Math.min(page, totalPages));
+    const paginatedBlogs = React.useMemo(() => {
+        const start = (activePage - 1) * blogsPerPage;
+        return otherPosts.slice(start, start + blogsPerPage);
+    }, [otherPosts, activePage]);
+
+    const pages = React.useMemo(() => {
+        const list = [];
+        for (let i = 1; i <= Math.max(1, totalPages); i++) {
+            list.push(i);
+        }
+        return list;
+    }, [totalPages]);
 
     return (
         <div className="bg-white min-h-screen">
@@ -167,8 +189,8 @@ export default function Blog() {
 
                     {!loading ? (
                         <>
-                            <div className="grid gap-x-8 gap-y-12 md:grid-cols-3">
-                                {filtered.map((b) => (
+                            <div className="grid gap-x-8 gap-y-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                                {paginatedBlogs.map((b) => (
                                     <article key={b.id} className="relative bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group overflow-hidden">
                                         {/* Decorative Wing overlapping image */}
                                         <div className="absolute top-4 left-6 z-10">
@@ -214,14 +236,21 @@ export default function Blog() {
                             </div>
 
                             {/* PAGINATION */}
-                            {filtered.length > 0 && (
+                            {totalPages > 1 && (
                                 <div className="mt-20 flex justify-center items-center gap-3">
-                                    <button className="w-14 h-14 rounded-lg border-2 border-[#f26522] bg-white text-[#f26522] font-bold text-lg hover:bg-[#f26522] hover:text-white transition-all">1</button>
-                                    <button className="w-14 h-14 rounded-lg bg-[#f26522] text-white font-bold text-lg shadow-lg shadow-[#f26522]/30 transition-all">2</button>
-                                    <button className="w-14 h-14 rounded-lg bg-[#f26522] text-white font-bold text-lg shadow-lg shadow-[#f26522]/30 transition-all">3</button>
-                                    <button className="w-14 h-14 rounded-lg bg-[#f26522] text-white font-bold text-lg shadow-lg shadow-[#f26522]/30 transition-all">4</button>
-                                    <span className="text-[#0f2d45] font-bold px-2">...</span>
-                                    <button className="w-14 h-14 rounded-lg bg-[#f26522] text-white font-bold text-lg shadow-lg shadow-[#f26522]/30 transition-all">20</button>
+                                    {pages.map((n) => (
+                                        <button
+                                            key={n}
+                                            onClick={() => setPage(n)}
+                                            className={`w-12 h-12 rounded-lg font-bold text-lg cursor-pointer transition-all ${
+                                                n === activePage
+                                                    ? "bg-[#f26522] text-white shadow-lg shadow-[#f26522]/30"
+                                                    : "border-2 border-[#f26522]/40 bg-white text-[#f26522] hover:bg-orange-50"
+                                            }`}
+                                        >
+                                            {n}
+                                        </button>
+                                    ))}
                                 </div>
                             )}
                         </>

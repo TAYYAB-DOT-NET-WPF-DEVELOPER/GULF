@@ -53,7 +53,7 @@ export default function Careers() {
                         <p className="text-xs font-black tracking-[0.3em] text-orange-400 uppercase">
                             {t(heroBanner?.subHeadline) || t("home_careers_label")}
                         </p>
-                        <h1 className="mt-4 text-4xl font-black text-white md:text-7xl uppercase tracking-tighter leading-[0.9] whitespace-pre-line">
+                        <h1 className="mt-4 text-3xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9] whitespace-pre-line">
                             {t(heroBanner?.headline) || t("home_careers_title")}
                         </h1>
                         <p className="mt-8 max-w-xl text-lg text-white/80 font-medium leading-relaxed whitespace-pre-line">

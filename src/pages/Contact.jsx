@@ -91,7 +91,7 @@ export default function Contact() {
                 {t("Contact Us")}
               </p>
 
-              <h1 className="text-[36px] md:text-[52px] font-extrabold text-[#0f2d45] leading-[1.05] tracking-tight mb-8">
+              <h1 className="text-3xl sm:text-[36px] md:text-[52px] font-extrabold text-[#0f2d45] leading-[1.05] tracking-tight mb-8">
                 {t("Gulf Al Olaya Head")}
                 <br />
                 {t("Office")}
@@ -159,7 +159,7 @@ export default function Contact() {
           </div>
 
           {tab === t("Our Offices") ? (
-            <div className="grid gap-x-10 gap-y-14 md:grid-cols-4">
+            <div className="grid gap-x-10 gap-y-14 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {offices.map((office) => (
                 <div key={office.city} className="flex flex-col">
                   <h3 className="text-[21px] font-extrabold text-[#0f2d45] mb-7">
@@ -213,7 +213,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid gap-x-16 gap-y-8 md:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid gap-x-16 gap-y-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto">
             {socials.map((social) => (
               <a
                 key={social.id}

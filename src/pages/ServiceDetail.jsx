@@ -469,16 +469,16 @@ export default function ServiceDetail() {
             <h3 className="mt-4 text-[32px] font-bold text-[#18324e] md:text-[40px] tracking-tight">{t("service_view_latest_projects")}</h3>
           </div>
           
-          <div className="relative w-full min-h-[500px] flex items-center shadow-2xl rounded-2xl overflow-hidden bg-white">
+          <div className="relative w-full flex flex-col md:flex-row md:items-center shadow-2xl rounded-2xl overflow-hidden bg-[#0f2d45] md:bg-white min-h-[500px]">
             {/* Background project image on left with polygon mask */}
-            <div className="absolute left-0 top-0 bottom-0 w-full md:w-[50%] overflow-hidden z-0 md:z-10">
-              <div className="w-full h-full md:clip-polygon overflow-hidden" style={{ clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 100%)" }}>
+            <div className="relative w-full h-64 md:absolute md:left-0 md:top-0 md:bottom-0 md:w-[50%] overflow-hidden z-10">
+              <div className="w-full h-full clip-polygon-service-project overflow-hidden">
                 <img src={featuredProjects[projectIndex].image} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" alt="Featured Project" />
               </div>
             </div>
             
             {/* Semi-transparent mobile overlay or right-side solid text block */}
-            <div className="absolute inset-0 bg-[#0f2d45]/90 md:bg-transparent z-10 md:z-0" />
+            <div className="hidden md:block absolute inset-0 bg-transparent z-0" />
             
             <div className="relative z-20 w-full flex justify-end">
               <div className="w-full md:w-[55%] text-white md:text-[#18324e] p-8 md:p-16">

@@ -182,7 +182,7 @@ export default function Home() {
                 ═══════════════════════════════════════════════════════ */}
             <section className="w-full bg-white border-b border-slate-100">
                 <div className="mx-auto max-w-6xl px-4">
-                    <div className="flex flex-wrap items-center justify-between gap-6 py-10 md:py-14">
+                    <div className="flex flex-wrap items-center justify-center md:justify-between gap-6 py-10 md:py-14">
                         {logosBanner?.imageUrls?.length > 0 ? (
                             logosBanner.imageUrls.map((src, idx) => (
                                 <img key={idx} src={getImageUrl(src)} alt={`Client Logo ${idx}`}
@@ -276,7 +276,7 @@ export default function Home() {
                 ═══════════════════════════════════════════════════════ */}
             <section className="relative w-full z-10">
                 {/* Dark-navy colour fill that hides the "gap" left by the overlap */}
-                <div className="w-full bg-[#18324e]" style={{ height: 110 }} />
+                <div className="w-full bg-[#18324e] hidden md:block" style={{ height: 110 }} />
 
                 <div className="relative overflow-hidden">
                     <img
@@ -417,27 +417,26 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <div className="relative w-full min-h-[440px] md:min-h-[480px] flex items-center">
+                    <div className="relative w-full flex flex-col md:flex-row md:items-center rounded-2xl overflow-hidden bg-[#12273f] md:bg-transparent min-h-[440px] md:min-h-[480px]">
                         {/* Dark blue backdrop */}
-                        <div className="absolute right-0 top-[8%] bottom-[8%] w-[88%] md:w-[74%] bg-[#12273f] z-0" />
+                        <div className="hidden md:block absolute right-0 top-[8%] bottom-[8%] w-[88%] md:w-[74%] bg-[#12273f] z-0" />
                         {/* Orange shards */}
-                        <div className="absolute left-[12%] top-[-2%] w-[11%] h-[11%] bg-[#f26522] z-0"
+                        <div className="hidden md:block absolute left-[12%] top-[-2%] w-[11%] h-[11%] bg-[#f26522] z-0"
                             style={{ clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)" }} />
-                        <div className="absolute left-[4%] bottom-[-2%] w-[7%] h-[9%] bg-[#f26522] z-0"
+                        <div className="hidden md:block absolute left-[4%] bottom-[-2%] w-[7%] h-[9%] bg-[#f26522] z-0"
                             style={{ clipPath: "polygon(0% 0%, 100% 100%, 15% 100%)" }} />
 
                         {/* Polygon project image */}
                         <div
-                            className="absolute left-0 top-[5%] bottom-[5%] w-[50%] md:w-[44%] bg-cover bg-center z-10 shadow-xl"
+                            className="relative w-full h-64 md:absolute md:left-0 md:top-[5%] md:bottom-[5%] md:w-[44%] bg-cover bg-center z-10 shadow-xl clip-polygon-home-project"
                             style={{
                                 backgroundImage: `url(${getImageUrl(projects[featuredIdx]?.featuredImageUrl) || "/images/hero.png"})`,
-                                clipPath: "polygon(10% 10%, 100% 20%, 75% 100%, 0% 85%)",
                             }}
                         />
 
                         {/* Content panel */}
                         <div className="relative z-20 w-full flex items-center justify-end h-full">
-                            <div className="w-full md:w-[64%] px-5 py-10 flex items-center justify-between">
+                            <div className="w-full md:w-[64%] px-5 py-6 md:py-10 flex items-center justify-between">
 
                                 {/* ← arrow */}
                                 <button

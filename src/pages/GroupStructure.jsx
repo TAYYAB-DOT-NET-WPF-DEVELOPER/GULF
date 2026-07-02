@@ -23,7 +23,7 @@ export default function GroupStructure() {
           <div className="mx-auto max-w-6xl px-4">
             <div className="max-w-xl">
               <p className="text-xs font-black tracking-[0.3em] text-orange-400 uppercase mb-4">Our Ecosystem</p>
-              <h1 className="text-4xl font-black text-white md:text-7xl uppercase tracking-tighter leading-[0.9]">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9]">
                 Structured for <br /> global impact.
               </h1>
               <p className="mt-8 max-w-md text-lg text-white/85 font-medium leading-relaxed">
@@ -121,7 +121,7 @@ export default function GroupStructure() {
           {/* quick links row */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
             {[
-              { label: "Executive Management", to: "/executive-management" },
+              { label: "Executive Management", to: "/management" },
               { label: "Group Structure", to: "/group-structure" },
               { label: "Homepage", to: "/" },
             ].map((x) => (

@@ -1,3 +1,21 @@
 @import "tailwindcss";
 html, body, #root { height: 100%; }
 body { margin: 0; }
+
+.clip-polygon-home-project {
+    clip-path: none;
+}
+@media (min-width: 768px) {
+    .clip-polygon-home-project {
+        clip-path: polygon(10% 10%, 100% 20%, 75% 100%, 0% 85%);
+    }
+}
+
+.clip-polygon-service-project {
+    clip-path: none;
+}
+@media (min-width: 768px) {
+    .clip-polygon-service-project {
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+    }
+}

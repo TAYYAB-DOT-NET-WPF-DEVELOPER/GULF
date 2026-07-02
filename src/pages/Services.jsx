@@ -47,7 +47,7 @@ export default function Services() {
               <p className="text-xs font-black tracking-[0.3em] text-[#f26522] uppercase mb-4">
                 {t("services_offerings_label", "Our Offerings")}
               </p>
-              <h1 className="text-4xl font-bold text-white md:text-7xl uppercase tracking-tighter leading-[0.9] whitespace-pre-line">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter leading-[0.9] whitespace-pre-line">
                 {t("services_offerings_title", "A Saudi company. A global standard.")}
               </h1>
               <p className="mt-4 text-[15px] md:text-lg font-bold text-white/90">
@@ -165,7 +165,7 @@ export default function Services() {
                         )}
 
                         {/* Text Block */}
-                        <div className={`relative z-10 flex flex-col justify-center ${isEven ? 'order-1' : 'order-2 md:pl-10'}`}>
+                        <div className={`relative z-10 flex flex-col justify-center ${isEven ? 'md:order-1' : 'md:order-2 md:pl-10'}`}>
                             <h3 className="text-[28px] font-bold text-[#18324e] md:text-[34px] leading-tight tracking-tight">
                                 {t(sector.name || sector.title)}
                             </h3>
@@ -183,7 +183,7 @@ export default function Services() {
                         </div>
 
                         {/* Image Block */}
-                        <div className={`relative z-10 flex items-center justify-center ${isEven ? 'order-2' : 'order-1'}`}>
+                        <div className={`relative z-10 flex items-center justify-center ${isEven ? 'md:order-2' : 'md:order-1'}`}>
                             <div className="w-full aspect-[4/3] rounded-lg overflow-hidden bg-[#e2e2e2] relative shadow-md">
                                 {sector.image ? (
                                     <img

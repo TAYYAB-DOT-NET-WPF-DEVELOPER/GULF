@@ -113,7 +113,7 @@ export default function News() {
               <p className="text-xs font-black tracking-[0.3em] text-orange-400 uppercase mb-4">
                 Press Room
               </p>
-              <h1 className="text-5xl md:text-7xl font-black text-white uppercase leading-none tracking-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white uppercase leading-none tracking-tight">
                 Find all the latest<br />
                 developments and<br />
                 happenings at Gulf Al Olaya<br />
@@ -329,7 +329,7 @@ export default function News() {
           <div className="flex flex-col sm:flex-row items-center gap-4">
             {[
               { label: "Homepage", href: "/" },
-              { label: "Project Portfolio", href: "/portfolio" },
+              { label: "Project Portfolio", href: "/projects" },
               { label: "About Us Homepage", href: "/about" },
             ].map((link, i) => (
               <React.Fragment key={link.href}>

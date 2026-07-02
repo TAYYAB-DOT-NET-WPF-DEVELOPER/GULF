@@ -116,17 +116,44 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
 
             {/* MOBILE TOGGLE & TOOLS */}
             <div className="md:hidden flex items-center gap-4">
-              <div className="flex items-center gap-2 text-sm text-white/80">
-                <button onClick={() => changeLanguage('en')} className={`hover:text-white ${i18n.language === 'en' ? 'font-bold text-white' : ''}`}>EN</button>
+              <div className={`flex items-center gap-2 text-sm ${isLight || !overlay ? 'text-slate-600' : 'text-white/80'}`}>
+                <button
+                  onClick={() => changeLanguage('en')}
+                  className={`hover:text-[#f26522] transition-colors ${
+                    i18n.language === 'en'
+                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
+                      : ''
+                  }`}
+                >
+                  EN
+                </button>
                 <span>|</span>
-                <button onClick={() => changeLanguage('ur')} className={`hover:text-white ${i18n.language === 'ur' ? 'font-bold text-white' : ''}`}>UR</button>
+                <button
+                  onClick={() => changeLanguage('ur')}
+                  className={`hover:text-[#f26522] transition-colors ${
+                    i18n.language === 'ur'
+                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
+                      : ''
+                  }`}
+                >
+                  UR
+                </button>
                 <span>|</span>
-                <button onClick={() => changeLanguage('ar')} className={`hover:text-white ${i18n.language === 'ar' ? 'font-bold text-white' : ''}`}>AR</button>
+                <button
+                  onClick={() => changeLanguage('ar')}
+                  className={`hover:text-[#f26522] transition-colors ${
+                    i18n.language === 'ar'
+                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
+                      : ''
+                  }`}
+                >
+                  AR
+                </button>
               </div>
               
               <button
                 onClick={toggleMenu}
-                className="text-white p-2 focus:outline-none"
+                className={`p-2 focus:outline-none transition-colors ${isLight || !overlay ? 'text-[#0f2d45] hover:text-[#f26522]' : 'text-white hover:text-white/80'}`}
                 aria-label="Toggle Menu"
               >
                 {isMenuOpen ? (
