@@ -4,164 +4,8 @@ import { useTranslation } from "react-i18next";
 import Header from "../components/Header";
 import { useSEO } from "../hooks/useSEO";
 
-const serviceData = {
-  mechanical: {
-    title: "Mechanical Division",
-    subtitle: "Gulf Al Olaya Mechanical Division",
-    heroDesc: "Our Mechanical Division operates with precision, commitment, and deep technical expertise ensuring every project requirement is met to the highest standards of quality, efficiency, and client satisfaction. From large-scale HVAC installations to complex fire protection systems and precision sheet metal fabrication, our mechanical teams bring decades of hands-on experience to every site.",
-    contentTitle: "Built Around Your Project Requirements",
-    contentDesc1: "We carry out all diversified works including central air conditioning, plumbing, drainage, and fire protection with top quality, efficiency, and productivity and to the complete satisfaction of our clients.",
-    contentDesc2: "Delivering projects on time and within budget is our promise. Our multidisciplinary site teams are trained, certified, and equipped to handle the most demanding mechanical scopes across commercial, industrial, and infrastructure sectors.",
-    gridItems: [
-      { title: "In-House Design & Engineering", icon: "design" },
-      { title: "Integrated Project Management", icon: "pm" },
-      { title: "Total Quality & Safety Management", icon: "qa" },
-      { title: "Certified & Classified Works", icon: "cert" },
-    ],
-    sectorLabel: "MAJOR SECTORS",
-    sectorTitle: "Services we're experts at, and always expanding.",
-    sectorDesc: "Currently, we deliver major mechanical and MEP projects across multiple service lines and we are always keen to further broaden our capabilities to meet client needs.",
-    sectors: [
-      { title: "HVAC", desc: "Complete HVAC design, supply, and installation for all building types, delivering energy-efficient climate control solutions.", image: "/images/Mechnical1.jpg" },
-      { title: "Plumbing & Drainage", desc: "End-to-end plumbing and drainage systems, from water supply to external utility networks across major projects.", image: "/images/Mechnical2.jpg" },
-      { title: "Fire Fighting & Protection", desc: "Full fire protection systems designed, installed, and tested to meet NFPA and Saudi Civil Defence standards.", image: "/images/Mechnical3.jpg" },
-      { title: "Kitchen Hood & Exhaust Systems", desc: "Commercial kitchen ventilation systems ensuring safety, airflow balance, and compliance with health regulations.", image: "/images/Mechnical4.jpg" },
-      { title: "Sheet Metal Fabrication", desc: "In-house fabrication of ductwork and metal components, ensuring quality control and efficient installation.", image: "/images/Mechnical5.jpg" },
-      { title: "Fire Detection & Alarm", desc: "Advanced fire detection and alarm systems integrated with building management for reliable safety coverage.", image: "/images/Mechnical6.jpg" },
-      { title: "FM200 & Deluge Systems", desc: "Clean agent and deluge suppression systems designed for high-risk and sensitive environments.", image: "/images/Mechnical7.jpg" },
-    ],
-    pillars: [
-      { id: "01", title: "STRATEGIC PROJECT MANAGEMENT", desc: "We handle mechanical projects strategically from planning to execution using the best tools and processes to meet project schedules, avoid budget overruns, and successfully maintain industry benchmarks.", image: "/images/WhatWeDoImages1.jpg" },
-      { id: "02", title: "INTEGRATED DESIGN & ENGINEERING", desc: "Our in-house design and engineering capability allows us to optimize mechanical systems for efficiency, safety, and seamless integration with other building services.", image: "/images/WhatWeDoImages2.jpg" },
-      { id: "03", title: "TOTAL QUALITY & SAFETY MANAGEMENT", desc: "We maintain a rigorous QA/QC program and zero-incident target, executing all HVAC, plumbing, and fire protection systems strictly to NFPA and Saudi Civil Defence standards.", image: "/images/WhahweDoimages3.jpg" }
-    ],
-    capLabel: "Mechanical Capabilities & Strengths",
-    capDesc: "Clean agent and deluge suppression systems designed for high-risk and sensitive environments.",
-    capabilities: [
-      { title: "Equipment Assembly & Erection", desc: "Full scope equipment assembly, alignment, and erection services backed by our own fleet of cranes, boom lifts, and specialist rigging equipment.", image: "/images/Mechnical1.jpg" },
-      { title: "Pre-Commissioning", desc: "Startup & commissioning services encompassing switchgears, transformers, generators, UPS systems, and calibration of instruments.", image: "/images/Mechnical3.jpg" },
-      { title: "Testing & Quality Control", desc: "Complete testing, balancing, and commissioning of HVAC ductwork, hydronic systems, and plumbing lines to certify operational design compliance.", image: "/images/Mechnical5.jpg" },
-      { title: "Support & Maintenance", desc: "Long-term operation and maintenance support, emergency repairs, and preventative maintenance for all installed mechanical plant assets.", image: "/images/Mechnical7.jpg" }
-    ]
-  },
-  electrical: {
-    title: "Electrical Division",
-    subtitle: "Gulf Al Olaya Electrical Division",
-    heroDesc: "Our Electrical Division designs, installs, tests, and maintains the full range of electrical systems from building distribution boards and low-voltage cabling through to high-voltage substation electrification and transmission infrastructure. We work across commercial, residential, industrial, and institutional sectors, bringing in-house engineering, skilled technicians, and rigorous QA/QC to every project.",
-    contentTitle: "In-House Design, Installation & Maintenance",
-    contentDesc1: "Gulf Al Olaya's Electrical Division is capable of in-house design, installation, and maintenance across the full spectrum of electrical engineering works. Headed by professionals and supported by skilled technicians, the division has deep expertise in substations, transmission lines, pumping stations, and industrial and commercial electrification.",
-    contentDesc2: "We install and provide services to package substations main, sub-main, and final distribution panel boards, MCC and capacitors, generators and automatic changeover panels, cable, wirings, trunking, conduit, earthing, lightning protection systems, lighting luminaires, fire alarm, MATV, SATV, and intercom systems.",
-    gridItems: [
-      { title: "Substation Expertise", icon: "design" },
-      { title: "Industrial & Commercial", icon: "pm" },
-      { title: "Building Systems", icon: "qa" },
-      { title: "Testing & Commissioning", icon: "cert" },
-    ],
-    sectorLabel: "MAJOR SECTORS",
-    sectorTitle: "Services we're experts at, and always expanding.",
-    sectorDesc: "Currently, we deliver major mechanical and MEP projects across multiple service lines and we are always keen to further broaden our capabilities to meet client needs.",
-    sectors: [
-      { title: "Building Management Systems", desc: "We design, supply, and install complete BMS solutions integrating HVAC, lighting, power, fire, and security into a single intelligent platform. Our BMS teams work across commercial towers, hospitals, hotels, and industrial facilities, delivering energy efficiency and full operational control to building owners and operators.", image: "/images/Eleceterical1.jpg" },
-      { title: "Medium & Low Voltage Switchgear & Cabling", desc: "We install MV and LV switchgear, switchboards, and complete cabling systems including cable pulling (HV, MV & LV), cable terminations, trunking, conduit, earthing, and lightning protection. All works comply with IEC standards and Saudi Electricity Company specifications on every project.", image: "/images/Eleceterical2.jpg" },
-      { title: "Electrical Distribution & Lighting Systems", desc: "We design and install complete electrical distribution systems from main distribution boards through to final circuit wiring, socket outlets, and lighting installations for commercial, residential, and institutional projects across Saudi Arabia.", image: "/images/Eleceterical3.jpg" },
-      { title: "Voice / Data & Structured Cabling", desc: "We install structured cabling infrastructure — Cat6, Cat6A, and fibre optic networks — for voice, data, and communications. Our scope includes rack and patch panel installation, testing and certification to TIA/EIA standards, and full integration with BMS and IT infrastructure systems.", image: "/images/Eleceterical4.jpg" },
-      { title: "Audio, Visual & PA Systems", desc: "We install background music systems, public address and voice evacuation systems, MATV, SATV, and audio-visual distribution networks for mosques, malls, hospitals, hotels, schools, and institutional buildings across the Kingdom.", image: "/images/Eleceterical5.jpg" },
-      { title: "CCTV, Security & Access Control", desc: "We design and install comprehensive CCTV, anti-intrusion, and access control systems integrated with BMS platforms and deployed across commercial, industrial, residential, and government facilities throughout Saudi Arabia.", image: "/images/Eleceterical6.jpg" },
-    ],
-    pillars: [
-      { id: "01", title: "IN-HOUSE DESIGN", desc: "Our engineering team produces complete electrical design drawings single-line diagrams, load schedules, cable schedules, and protection coordination studies entirely in-house.", image: "/images/WhatWeDoImages1.jpg" },
-      { id: "02", title: "TESTING & COMMISSIONING", desc: "We carry out full testing and commissioning from individual circuits through to complete substation energization and formal client handover.", image: "/images/WhatWeDoImages2.jpg" },
-      { id: "03", title: "SAFETY & COMPLIANCE", desc: "All electrical works strictly comply with IEC, BS, and Saudi Electricity Company (SEC) standards, maintaining a zero-incident safety record on every site.", image: "/images/WhahweDoimages3.jpg" }
-    ],
-    capLabel: "Electrical Capabilities & Strengths",
-    capDesc: "Full Electrical Technical Scope complies with IEC, BS, and Saudi Electricity Company standards on all projects.",
-    capabilities: [
-      { title: "HV/MV/LV Transformers", desc: "Installation & pre-commissioning all ratings, excitation, isolation, neutral grounding, generator step-up up to 500MVA.", image: "/images/Eleceterical1.jpg" },
-      { title: "Bus Duct Systems", desc: "Iso Phase Bus Duct (IPB), Non-Segregated Bus Duct (NSB), GIB 132kV to 380kV installed and commissioned.", image: "/images/Eleceterical2.jpg" },
-      { title: "Generator Installation", desc: "Generator installation & pre-commissioning for all ratings diesel, emergency, and standby generator sets.", image: "/images/Eleceterical3.jpg" },
-      { title: "Switchgears & Switchboards", desc: "MV & LV switchgears, switchboards, MCC, capacitors installation, relay setting, and commissioning.", image: "/images/Eleceterical4.jpg" },
-      { title: "Panel Installation", desc: "Electrical, control, and instrumentation panels main distribution, sub-main, and final distribution boards.", image: "/images/Eleceterical5.jpg" },
-      { title: "UPS / DC Battery Systems", desc: "UPS and DC battery system installation, load testing, and commissioning for critical power applications.", image: "/images/Eleceterical6.jpg" }
-    ]
-  },
-  transmission: {
-    title: "Transmission Lines",
-    subtitle: "Gulf Al Olaya Transmission Division",
-    heroDesc: "As a full EPC contractor for overhead transmission lines, Gulf Al Olaya manages every project phase from route survey and engineering design to procurement, civil works, tower erection, conductor stringing, and commissioning. We deliver 132kV to 380kV transmission systems with in-house engineering, QA/QC teams, specialist equipment, and extensive electrical construction experience across the Kingdom of Saudi Arabia, ensuring safe, timely, and SEC compliant project delivery.",
-    contentTitle: "In-House Design, Installation & Maintenance",
-    contentDesc1: "Gulf Al Olaya has the relevant experience in managing all aspects of electrical transmission line works including full EPC delivery in accordance with international quality standards. We combine versatile equipment with skilled human resources to deliver complete turnkey transmission line projects on time and within budget.",
-    contentDesc2: "Our EPC expertise covers 380kV, 230kV, and 132kV overhead transmission line systems from route survey and foundation design through to stringing, commissioning, and formal handover to the client and Saudi Electricity Company.",
-    gridItems: [
-      { title: "380kV / 230kV / 132kV", icon: "cert" },
-      { title: "Versatile Equipment Fleet", icon: "pm" },
-      { title: "Self-Performing Construction", icon: "design" },
-      { title: "Materials Logistics Management", icon: "qa" },
-    ],
-    sectorLabel: "EPC PHASES",
-    sectorTitle: "Transmission Lines EPC Full Project Delivery Scope",
-    sectorDesc: "We manage every phase of overhead transmission line delivery — from survey and engineering through civil works, tower erection, stringing, and formal SEC-compliant commissioning and handover.",
-    sectors: [
-      { title: "Basic & Detail Engineering", desc: "We carry out full basic and detailed engineering including route selection, topographic survey, hydrological study, geotechnical investigation, tower spotting, foundation design, stringing charts, and all construction drawings in compliance with IEC and SEC standards.", image: "/images/Transmission1.jpg" },
-      { title: "Procurement Main Items & Bulk Materials", desc: "We manage full procurement of all main items and bulk materials — lattice steel towers, conductors (ACSR, ACCC), OPGW and OHEW, insulators, hardware fittings, and all civil and mechanical materials. Our procurement team manages international and local supply chains from factory to site.", image: "/images/Transmission2.jpg" },
-      { title: "Civil Works Foundations & Site Preparation", desc: "We carry out all civil works including topographic survey, soil and road preparation, excavation and trenching, reinforced concrete tower foundations, field piles where required, and early pull-off testing across diverse terrain conditions throughout Saudi Arabia.", image: "/images/Transmission3.jpg" },
-      { title: "Tower Erection & Conductor Stringing", desc: "We carry out complete tower erection — sorting, uploading, shifting, unloading, ground assembly, and erection — followed by conductor and OPGW stringing using specialized tension equipment. All stringing is carried out to the approved stringing charts with sag checks before handover.", image: "/images/Transmission4.jpg" },
-      { title: "Testing, Commissioning & Handover", desc: "We carry out all pre-commissioning testing — insulation resistance, continuity testing, phase identification, protection relay verification, and energization coordination with the Saudi Electricity Company — delivering full as-built documentation, O&M manuals, and a complete handover package.", image: "/images/Transmission5.jpg" },
-    ],
-    pillars: [
-      { id: "01", title: "EPC Accountability", desc: "We take single-point EPC responsibility — engineering, procurement, and construction — managed under one contract, with one client interface from survey to energization.", image: "/images/Transmission1.jpg" },
-      { id: "02", title: "International Standards", desc: "All works executed to IEC, SEC, and applicable international quality standards with full documentation and third-party inspection available where required.", image: "/images/Transmission4.jpg" },
-      { id: "03", title: "Kingdom-Wide Delivery", desc: "Experienced across diverse terrain — desert, mountain, coastal — with self-sufficient mobilization and site camp capability for any project location in Saudi Arabia.", image: "/images/Transmission3.jpg" }
-    ],
-    capLabel: "EPC Capabilities & Strengths",
-    capDesc: "Gulf Al Olaya for Transmission EPC — Proven capability across all high-voltage transmission classes to IEC and SEC standards throughout the Kingdom.",
-    capabilities: [
-      { title: "380kV / 230kV / 132kV Lines", desc: "Proven EPC delivery across all high-voltage transmission classes to IEC and SEC standards throughout Saudi Arabia.", image: "/images/Transmission4.jpg" },
-      { title: "Versatile Equipment Fleet", desc: "Cranes, stringing machines, tension pullers, transport vehicles — all owned and deployed by our own site teams.", image: "/images/Transmission3.jpg" },
-      { title: "Self-Performing Construction", desc: "No subcontracted execution risks — our own tower crews, civil teams, and QC inspection on every tower location.", image: "/images/Transmission1.jpg" },
-      { title: "Materials Logistics Management", desc: "End-to-end materials management from factory inspection through to site delivery and full material reconciliation.", image: "/images/Transmission2.jpg" },
-      { title: "Site Accommodation & Camp", desc: "We establish and operate self-sufficient personnel accommodation camps for remote transmission line projects.", image: "/images/Transmission3.jpg" },
-      { title: "Full QA/QC Documentation", desc: "Complete inspection and test records, weld traceability, material certs, and as-built drawings delivered at handover.", image: "/images/Transmission5.jpg" }
-    ]
-  },
-  piping: {
-    title: "Industrial Piping",
-    subtitle: "Gulf Al Olaya Industrial Piping",
-    heroDesc: "Our Industrial Piping Division fabricates and installs all types of industrial pipework ranging from small-bore instrument tubing to large-bore process lines up to 90 inches in diameter. We manufacture piping spools at our Dammam facility and carry out on-site erection for oil, gas, fuel, chemical, water, and industrial utility applications. Our scope covers the full project lifecycle from spool fabrication, welding, and NDT inspection to field installation, pressure testing, and final commissioning.",
-    contentTitle: "Equipped for Every Piping Challenge",
-    contentDesc1: "Gulf Al Olaya is equipped for all types of piping fabrication and installation. We manufacture piping spools and carry out installations on oil, gas, fuel, chemical, and water lines up to 90-inch diameter. Our fabricators and fitters are well trained and fully conversant with international practices.",
-    contentDesc2: "Our welders are fully qualified on a wide range of welding specifications and materials including stainless steel, carbon steel, nickel alloy, and duplex using techniques such as SMAW, TIG, and MIG. We have a well-equipped fabrication facility in Dammam with our own in-house QC inspection team.",
-    gridItems: [
-      { title: "Pipe Racks & Supports", icon: "design" },
-      { title: "Platforms & Walkways", icon: "pm" },
-      { title: "Large Factories & Plants", icon: "qa" },
-      { title: "Communication Towers", icon: "cert" },
-    ],
-    sectorLabel: "PIPING SCOPE",
-    sectorTitle: "Gulf Al Olaya Manufactures Piping Spools & Carries Out Erection for Oil & Gas",
-    sectorDesc: "All Piping Systems We Fabricate & Install — delivering comprehensive industrial piping solutions from spool fabrication to complex field installations across the Kingdom's industrial sectors.",
-    sectors: [
-      { title: "Gas Lines & Fueling Systems", desc: "We carry out full design, installation, and testing of high-pressure gas transmission and distribution lines, fueling station piping systems, and industrial fuel supply networks. Our teams handle all line sizes and materials, with full pressure testing and regulatory compliance on every project.", image: "/images/Piping1.jpg" },
-      { title: "Corrosive Fluids & Chemical Lines", desc: "We fabricate and install pipework for corrosive fluid and chemical process applications — using corrosion-resistant alloys including stainless steel, duplex stainless, and Inconel. Our fabricators are qualified and fully experienced in high-specification chemical and petrochemical pipework.", image: "/images/Piping2.jpg" },
-      { title: "Water & Wastewater Treatment Plants", desc: "We fabricate and install complete piping systems for water and wastewater treatment plants — including feed water, process water, chemical dosing, and sludge handling systems. Scope covers large-bore pipework using carbon steel, stainless steel, HDPE, and GRP materials.", image: "/images/Piping3.jpg" },
-      { title: "Hydraulic, Pneumatic & Coolant Systems", desc: "We fabricate and install high-pressure hydraulic power unit lines, pneumatic instrument piping, and industrial coolant and refrigerant distribution systems for oil and gas, power generation, and manufacturing facilities. Scope includes double-containment piping and industrial process piping for precision environments.", image: "/images/Piping4.jpg" },
-    ],
-    pillars: [
-      { id: "01", title: "STRATEGIC PROJECT MANAGEMENT", desc: "We handle piping projects strategically from planning to execution, using the best tools and processes to meet project schedules, avoid budget overruns, and maintain industry benchmarks.", image: "/images/Piping1.jpg" },
-      { id: "02", title: "PRECISION FABRICATION", desc: "Our Dammam facility uses advanced machinery and techniques to ensure every piping spool meets exact design specifications and international standards with full dimensional traceability.", image: "/images/Piping2.jpg" },
-      { id: "03", title: "CERTIFIED WELDING & QC", desc: "Our welders are qualified across stainless, carbon, and exotic alloys using SMAW, TIG, and MIG techniques. In-house QC teams manage every stage from material receipt to final NDT.", image: "/images/Piping3.jpg" }
-    ],
-    capLabel: "Full Piping Erection List",
-    capDesc: "All Piping Systems We Fabricate & Install — equipped to handle process lines up to 90-inch diameter with in-house fabrication, certified field crews, and full NDT capabilities.",
-    capabilities: [
-      { title: "Gas Lines", desc: "High-pressure gas transmission and distribution lines, all sizes and materials, fully tested and compliant.", image: "/images/Piping1.jpg" },
-      { title: "Fueling Systems", desc: "Complete fueling station pipework, industrial fuel supply lines, and storage tank connections.", image: "/images/Piping4.jpg" },
-      { title: "Chemical & Corrosive Lines", desc: "Corrosion-resistant alloy piping for aggressive chemical and petrochemical process applications.", image: "/images/Piping2.jpg" },
-      { title: "Water & Wastewater", desc: "Large-bore process water, feed water, and wastewater treatment plant piping systems.", image: "/images/Piping3.jpg" },
-      { title: "Hydraulic & Pneumatic", desc: "High-pressure hydraulic and pneumatic instrument tubing for oil, gas, and manufacturing facilities.", image: "/images/Piping4.jpg" },
-      { title: "Testing & Commissioning", desc: "Full NDT, hydrostatic and pneumatic pressure testing, and commissioning services for all pipe systems.", image: "/images/Piping2.jpg" }
-    ]
-  }
-};
+import serviceData from "../content/servicePages.json";
+
 
 const IconMap = ({ name }) => {
   if (name === "design") return <svg className="w-8 h-8 text-[#f26522] mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>;
@@ -170,12 +14,16 @@ const IconMap = ({ name }) => {
   return <svg className="w-8 h-8 text-[#f26522] mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>;
 };
 
+const serviceAliases = { "transmission-lines-2": "ohtl", "engineering-construction": "civil" };
+
 export default function ServiceDetail() {
   const { id } = useParams();
   const { t, i18n } = useTranslation();
   useSEO("PAGE", "service-detail");
 
-  const data = serviceData[id] || serviceData.mechanical;
+  const canonicalId = Object.hasOwn(serviceAliases, id) ? serviceAliases[id] : id;
+  const serviceId = Object.hasOwn(serviceData, canonicalId) ? canonicalId : "mechanical";
+  const data = serviceData[serviceId];
 
   // Active indices for carousels
   const [activePillarIdx, setActivePillarIdx] = useState(0);
@@ -236,13 +84,7 @@ export default function ServiceDetail() {
   };
 
   // Determine page cover image
-  const coverImage = id === "mechanical" 
-    ? "/images/MECHANICAL DIVISION.png" 
-    : (id === "electrical" 
-      ? "/images/Electrical division.png" 
-      : (id === "transmission" 
-        ? "/images/Transmission lines.png" 
-        : "/images/Industrial Piping.jpg"));
+  const coverImage = data.coverImage;
 
   return (
     <div className="bg-white">
@@ -280,8 +122,9 @@ export default function ServiceDetail() {
             <div className={`${isRTL ? "pl-0 md:pl-12" : "pr-0 md:pr-12"}`}>
               <p className="text-[15px] font-bold text-[#f26522] tracking-wider uppercase">{t(data.subtitle)}</p>
               <h2 className="mt-4 text-[32px] font-bold text-[#0f2d45] md:text-[40px] leading-tight tracking-tight">{t(data.contentTitle)}</h2>
-              <p className="mt-6 text-[15.5px] leading-relaxed text-[#555] font-medium">{t(data.contentDesc1)}</p>
-              <p className="mt-6 text-[15.5px] leading-relaxed text-[#555]">{t(data.contentDesc2)}</p>
+              <div className="mt-6 space-y-5 text-[15.5px] leading-relaxed text-[#555]">
+                {data.intro.map((paragraph) => <p key={paragraph}>{t(paragraph)}</p>)}
+              </div>
             </div>
             
             {/* Grid display with border-lines generated by gap-px */}
@@ -302,17 +145,17 @@ export default function ServiceDetail() {
         <div className="absolute left-0 bottom-1/4 w-12 h-24 bg-[#0f2d45]/5 pointer-events-none" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }} />
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-col gap-10 md:gap-14 max-w-2xl">
-            <div className="flex items-center gap-8 md:gap-12">
-              <span className="text-[72px] md:text-[96px] font-bold text-[#f26522] leading-none tracking-tight min-w-[160px] md:min-w-[220px]">365+</span>
-              <span className="text-[18px] md:text-[22px] text-gray-500 font-semibold tracking-wide uppercase">{t("service_skilled_personnel", "Skilled Personnel")}</span>
+            <div className="grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)] items-center gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] md:grid-cols-[13.75rem_minmax(0,1fr)] md:gap-12">
+              <span className="text-5xl font-bold leading-none tracking-tight text-[#f26522] sm:text-[72px] md:text-[96px]">365+</span>
+              <span className="break-words text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-[18px] md:text-[22px]">{t("service_skilled_personnel", "Skilled Personnel")}</span>
             </div>
-            <div className="flex items-center gap-8 md:gap-12">
-              <span className="text-[72px] md:text-[96px] font-bold text-[#f26522] leading-none tracking-tight min-w-[160px] md:min-w-[220px]">36</span>
-              <span className="text-[18px] md:text-[22px] text-gray-500 font-semibold tracking-wide uppercase">{t("service_completed_projects", "Completed Projects")}</span>
+            <div className="grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)] items-center gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] md:grid-cols-[13.75rem_minmax(0,1fr)] md:gap-12">
+              <span className="text-5xl font-bold leading-none tracking-tight text-[#f26522] sm:text-[72px] md:text-[96px]">36</span>
+              <span className="break-words text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-[18px] md:text-[22px]">{t("service_completed_projects", "Completed Projects")}</span>
             </div>
-            <div className="flex items-center gap-8 md:gap-12">
-              <span className="text-[72px] md:text-[96px] font-bold text-[#f26522] leading-none tracking-tight min-w-[160px] md:min-w-[220px]">100%</span>
-              <span className="text-[18px] md:text-[22px] text-gray-500 font-semibold tracking-wide uppercase">{t("service_client_focused", "Client-Focused")}</span>
+            <div className="grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)] items-center gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] md:grid-cols-[13.75rem_minmax(0,1fr)] md:gap-12">
+              <span className="text-5xl font-bold leading-none tracking-tight text-[#f26522] sm:text-[72px] md:text-[96px]">100%</span>
+              <span className="break-words text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-[18px] md:text-[22px]">{t("service_client_focused", "Client-Focused")}</span>
             </div>
           </div>
         </div>
@@ -337,6 +180,7 @@ export default function ServiceDetail() {
                 <div key={idx} className="grid gap-12 md:grid-cols-2 md:items-center">
                   <div className={`order-2 ${isEven ? "md:order-2 md:pl-10" : "md:order-1 md:pr-10"}`}>
                     <h3 className="text-[28px] font-bold text-[#0f2d45] md:text-[34px] leading-snug tracking-tight">{t(sector.title)}</h3>
+                  {sector.subtitle && <p className="mt-2 font-semibold">{t(sector.subtitle)}</p>}
                     <p className="mt-5 text-[15.5px] leading-relaxed text-[#555] font-medium">{t(sector.desc)}</p>
                     <div className="mt-8">
                       <Link to="/contact" className="inline-flex rounded-sm bg-[#f26522] px-7 py-3 text-[14px] font-bold text-white hover:bg-orange-600 transition-all shadow-md shadow-orange-500/20">{t("service_get_quote")}</Link>
@@ -362,8 +206,8 @@ export default function ServiceDetail() {
         <div className="mx-auto max-w-6xl px-4 relative z-10">
           <div className="grid gap-16 md:grid-cols-2 md:items-center">
             <div className="text-white">
-              <p className="text-[13px] font-bold tracking-widest uppercase opacity-90">{t("service_pillars_label")}</p>
-              <h2 className="mt-6 text-[36px] font-bold leading-tight md:text-[46px] tracking-tight">{t("service_pillars_title")}</h2>
+              <p className="text-[13px] font-bold tracking-widest uppercase opacity-90">{t(data.pillarLabel || "service_pillars_label")}</p>
+              <h2 className="mt-6 text-[36px] font-bold leading-tight md:text-[46px] tracking-tight">{t(data.pillarTitle || "service_pillars_title")}</h2>
               
               {/* Dynamic Pillar control arrows */}
               <div className="mt-12 flex flex-col items-start gap-4">
@@ -390,11 +234,11 @@ export default function ServiceDetail() {
               {data.pillars.map((pillar, idx) => (
                 <div 
                   key={idx} 
-                  className={`relative aspect-[4/5] overflow-hidden rounded-lg bg-[#12273f] shadow-2xl transition-all duration-500 ${idx === activePillarIdx ? "opacity-100 scale-100 block" : "opacity-0 scale-95 hidden"}`}
+                  className={`relative flex min-h-[20rem] flex-col justify-end overflow-hidden md:min-h-[26rem] rounded-lg bg-[#12273f] shadow-2xl transition-all duration-500 ${idx === activePillarIdx ? "opacity-100 scale-100" : "opacity-0 scale-95 hidden"}`}
                 >
                   <img src={pillar.image || "/images/vision.png"} className="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-1000 group-hover:scale-105" alt={pillar.title} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#12273f] via-transparent to-transparent z-10" />
-                  <div className="absolute inset-0 p-10 flex flex-col justify-end z-20">
+                  <div className="relative z-20 p-5 sm:p-10">
                     <span className="text-[22px] font-bold text-[#f26522] mb-3 block">{pillar.id}</span>
                     <h3 className="text-[26px] font-bold text-white md:text-[32px] tracking-tight mb-4">{t(pillar.title)}</h3>
                     <p className="text-[16px] text-white/95 leading-relaxed max-w-sm font-medium">{t(pillar.desc)}</p>
@@ -447,9 +291,9 @@ export default function ServiceDetail() {
             <div className="md:w-2/3">
               <div className="grid gap-6 grid-cols-1 sm:grid-cols-2">
                 {data.capabilities.slice(capIndex, capIndex + 2).map((cap, idx) => (
-                  <div key={idx} className="relative aspect-[3/4] overflow-hidden rounded-lg bg-slate-200 group shadow-lg transition-all duration-500 ease-in-out">
-                    <img src={cap.image || "/images/vision.png"} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" alt={cap.title} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f2d45]/95 via-[#0f2d45]/50 to-transparent p-8 flex flex-col justify-end">
+                  <div key={idx} className="group relative isolate flex min-h-[17rem] items-end overflow-hidden rounded-lg bg-slate-200 shadow-lg sm:min-h-[22rem] transition-all duration-500 ease-in-out">
+                    <img src={cap.image || "/images/vision.png"} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" alt={cap.title} />
+                    <div className="relative w-full bg-gradient-to-t from-[#0f2d45]/95 via-[#0f2d45]/80 to-transparent p-5 pt-16 sm:p-8 sm:pt-20">
                       <h4 className="text-white font-bold text-xl mb-3 tracking-tight">{t(cap.title)}</h4>
                       <p className="text-white/80 text-[14px] leading-relaxed">{t(cap.desc)}</p>
                     </div>
@@ -467,6 +311,8 @@ export default function ServiceDetail() {
           <div className="mb-12">
             <p className="text-[14px] font-bold tracking-widest text-[#f26522] uppercase">{t("service_featured_projects")}</p>
             <h3 className="mt-4 text-[32px] font-bold text-[#18324e] md:text-[40px] tracking-tight">{t("service_view_latest_projects")}</h3>
+            <p className="mt-4 max-w-2xl text-slate-600">{t(data.projectsDesc)}</p>
+            <Link to="/projects" className="mt-4 inline-block font-semibold text-[#a54413]">{t("Discover All Projects")}</Link>
           </div>
           
           <div className="relative w-full flex flex-col md:flex-row md:items-center shadow-2xl rounded-2xl overflow-hidden bg-[#0f2d45] md:bg-white min-h-[500px]">

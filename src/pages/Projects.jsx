@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
 import { http, getImageUrl } from "../api/http";
 import { useSEO } from "../hooks/useSEO";
@@ -188,16 +187,6 @@ export default function Projects() {
   });
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.innerWidth >= 768) {
-      setOpen({
-        business: true,
-        type: true,
-        country: true,
-        status: true,
-      });
-    }
-  }, []);
   const [page, setPage] = useState(1);
   const [heroBanner, setHeroBanner] = useState(null);
   const [bottomBanner, setBottomBanner] = useState(null);
@@ -208,7 +197,7 @@ export default function Projects() {
   const [activeCountries, setActiveCountries] = useState([]);
   const [activeStatuses, setActiveStatuses] = useState([]);
 
-  const projectsPerPage = 4;
+  const projectsPerPage = 5;
 
   async function loadProjects() {
     try {
@@ -303,52 +292,27 @@ export default function Projects() {
     return list;
   }, [totalPages]);
 
-  const isRTL = i18n.language === 'ar';
-
   return (
     <div className="bg-white">
       {/* =========================
           HERO (Map + Title + Button)
          ========================= */}
-      <section className="relative w-full min-h-[600px] md:min-h-[85vh] overflow-hidden bg-white">
-        {/* Large background map */}
-        <div className={`absolute ${isRTL ? "left-[-10%]" : "right-[-10%]"} top-[10%] w-[60%] md:w-[70%] opacity-[0.8] pointer-events-none z-0`}>
-          <img
-            src="/images/map.png"
-            alt="World Map"
-            className="w-full h-auto object-contain scale-125"
-            draggable={false}
-          />
-        </div>
-
-        <Header theme="light" />
-
-        <div className="relative z-10 pt-16 md:pt-24">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="flex min-h-[500px] items-center md:min-h-[70vh]">
-              <div className="max-w-2xl text-left">
-                <p className="text-[14px] font-bold tracking-[0.1em] text-[#0f2d45] uppercase mb-4">
-                  {t("nav_project_portfolio")}
-                </p>
-
-                <h1 className="text-3xl sm:text-5xl md:text-[64px] font-bold text-[#0f2d45] leading-[1.1] tracking-tight mb-8">
-                  {t("Our Major Projects Around The World")}
-                </h1>
-
-                <p className="max-w-md text-[15px] md:text-[16px] leading-relaxed text-slate-500 mb-10">
-                  {t(heroBanner?.ctaLink) || t("home_featured_desc")}
-                </p>
-
-                <div className="mt-7">
-                  <Link
-                    to="/projects"
-                    className="inline-flex rounded-[5px] bg-[#f26522] px-10 py-4 text-[14px] font-bold uppercase tracking-wider text-white hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20"
-                  >
-                    {t("Discover All Projects")}
-                  </Link>
-                </div>
-              </div>
-            </div>
+      <section className="relative isolate overflow-hidden bg-white xl:min-h-[746px]">
+        <Header theme="light" home flat />
+        <div className="relative mx-auto max-w-[1440px] px-5 pb-12 pt-12 sm:px-8 xl:static xl:ps-[121px] xl:pt-[64px]">
+          <img src="/images/map.png" alt="World map highlighting the United Kingdom, Saudi Arabia, Pakistan, and South Africa"
+            width="908" height="605" className="pointer-events-none absolute inset-x-0 top-14 -z-10 mx-auto h-auto w-full opacity-25 xl:inset-x-auto xl:end-[max(2.5%,calc((100%-1370px)/2))] xl:top-[170px] xl:w-[min(63vw,908px)] xl:opacity-100" />
+          <div className="max-w-[470px]">
+            <p className="font-bold text-[#16355d]">{t("Projects/Portfolio", "Projects/Portfolio")}</p>
+            <h1 className="mt-6 text-[34px] font-bold leading-[1.18] text-black sm:text-[42px] xl:mt-[48px] xl:text-[50px]">
+              {t("Our Major Projects Around The World")}
+            </h1>
+            <p className="mt-8 max-w-[310px] text-sm leading-5 text-black xl:mt-[104px]">
+              {t(heroBanner?.ctaLink) || t("home_featured_desc")}
+            </p>
+            <a href="#project-results" className="mt-9 inline-flex min-h-[52px] items-center rounded-lg bg-[#f17124] px-4 text-lg font-bold text-white hover:bg-[#d55b15] xl:absolute xl:bottom-[50px] xl:mt-0 xl:text-[20px]">
+              {t("Discover All Projects")}
+            </a>
           </div>
         </div>
       </section>
@@ -356,26 +320,27 @@ export default function Projects() {
       {/* =========================
           Title strip (center) - "For the world. With the world."
          ========================= */}
-      <section className="w-full bg-white pb-16">
-        <div className="mx-auto max-w-6xl px-4 text-center">
-          <h2 className="text-[36px] md:text-[50px] font-bold text-[#0f2d45] tracking-tight">
+      <section className="w-full bg-white pb-10">
+        <div className="mx-auto max-w-[1232px] px-4 text-center">
+          <h2 className="text-[34px] font-bold leading-tight text-black xl:text-[48px]">
             {t(bottomBanner?.headline) || t("For the world. With the world.™")}
           </h2>
 
-          <p className="mx-auto mt-6 max-w-4xl text-[16px] md:text-[18px] leading-relaxed text-slate-500 font-medium">
+          <p className="mx-auto mt-6 max-w-[1200px] text-lg font-light leading-[1.25] text-black xl:text-[28px]">
             {t(bottomBanner?.subHeadline) || t("Our projects around the world are powered by smart and green technologies, and led by teams of extraordinary engineers.")}
           </p>
 
           {/* stats + search row */}
-          <div className="mt-12 flex flex-col items-center justify-center gap-6 md:flex-row">
-            <p className="text-[18px] font-bold text-[#0f2d45]">
-              <span className="text-[32px] font-bold text-[#f26522]">{filtered.length}</span> {t("Results")}
+          <div className="mt-9 flex flex-col items-center gap-5 md:flex-row xl:ms-[22%]">
+            <p className="shrink-0 text-xl text-black xl:text-[28px]">
+              <span className="text-[32px] font-bold text-[#f26522]">{filtered.length}</span> {t("Projects", "Projects")}
             </p>
 
-            <div className="w-full max-w-md">
-              <div className="flex h-14 items-center rounded-xl border border-slate-100 bg-slate-50 px-6 shadow-sm">
+            <div className="w-full flex-1">
+              <div className="flex h-14 items-center rounded-xl bg-[#f5f5f5] px-6 xl:h-[90px]">
                 <span className="mr-3 text-slate-400">🔍</span>
                 <input
+                  aria-label={t("Search By Keywords")}
                   value={q}
                   onChange={(e) => { setQ(e.target.value); setPage(1); }}
                   placeholder={t("Search By Keywords")}
@@ -398,14 +363,14 @@ export default function Projects() {
       {/* =========================
           Filters + Projects list
          ========================= */}
-      <section className="w-full bg-white">
-        <div className="mx-auto max-w-6xl px-4 pb-14">
-          <div className="grid gap-10 md:grid-cols-12">
+      <section id="project-results" className="w-full scroll-mt-5 bg-white">
+        <div className="mx-auto max-w-[1440px] px-4 pb-10 xl:pe-14 xl:ps-0">
+          <div className="grid gap-8 md:grid-cols-[minmax(195px,1fr)_minmax(0,3fr)] xl:grid-cols-[320px_minmax(0,1fr)] xl:gap-[64px]">
             {/* LEFT: Filters Sidebar */}
-            <aside className={`md:col-span-3 ${showMobileFilters ? "block" : "hidden md:block"}`}>
-              <div className="rounded-md border border-slate-200 bg-slate-50 overflow-hidden text-left shadow-sm">
+            <aside className={`min-w-0 ${showMobileFilters ? "block" : "hidden md:block"}`}>
+              <div className="overflow-hidden bg-[#f5f5f5] text-start">
                 {/* Header for Filters */}
-                <div className="p-4 border-b border-slate-200 bg-slate-100 flex items-center justify-between">
+                <div className="flex items-center justify-between border-b border-slate-200 p-4 md:has-[button]:flex md:hidden">
                   <span className="text-xs font-bold text-[#0f2d45] uppercase tracking-wider">{t("Filters")}</span>
                   {(activeBusinessLines.length > 0 || activeProjectTypes.length > 0 || activeCountries.length > 0 || activeStatuses.length > 0) && (
                     <button
@@ -502,8 +467,8 @@ export default function Projects() {
             </aside>
 
             {/* RIGHT: Project cards grid */}
-            <div className="md:col-span-9">
-              <div className="space-y-8">
+            <div className="min-w-0">
+              <div className="space-y-8 xl:space-y-[38px]">
                 {loading ? (
                   <div className="flex justify-center py-20">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
@@ -529,10 +494,10 @@ export default function Projects() {
                         key={n}
                         onClick={() => setPage(n)}
                         className={[
-                          "h-8 w-10 rounded border text-sm font-semibold cursor-pointer transition-colors",
+                          "h-10 w-14 rounded-md border border-[#f17124] font-semibold transition-colors xl:h-[74px] xl:w-[110px]",
                           active
-                            ? "border-orange-500 bg-orange-500 text-white"
-                            : "border-orange-300 bg-white text-[#0f2d45] hover:bg-orange-50",
+                            ? "bg-white text-[#16355d]"
+                            : "bg-[#f17124] text-[#16355d] hover:bg-orange-50",
                         ].join(" ")}
                       >
                         {n}
@@ -569,15 +534,15 @@ export default function Projects() {
         <img
           src={bottomBanner?.imageUrls?.[0] ? getImageUrl(bottomBanner.imageUrls[0]) : "/images/panel.png"}
           alt="For the world"
-          className="h-[360px] w-full object-cover md:h-[440px]"
+          className="h-[480px] w-full object-cover xl:h-[810px]"
         />
         <div className="absolute inset-0 bg-[#0f2d45]/55" />
 
-        <div className="absolute inset-0 text-left">
-          <div className="mx-auto flex h-full max-w-6xl items-center px-4">
-            <div className="max-w-3xl">
-              <h3 className="text-3xl font-extrabold text-white md:text-5xl uppercase tracking-tighter leading-tight">
-                {t("home_bottom_title")}
+        <div className="absolute inset-0 text-center">
+          <div className="mx-auto flex h-full max-w-[1350px] items-center justify-center px-4">
+            <div className="max-w-[1280px]">
+              <h3 className="text-3xl font-bold leading-tight text-white xl:text-[48px]">
+                {t("For the world. With the world.™")}
               </h3>
 
               <p className="mt-5 text-sm leading-7 text-white/80 md:text-base font-medium">
@@ -598,8 +563,9 @@ function FilterRow({ label, open, onToggle, children }) {
         onClick={onToggle}
         className="flex w-full items-center justify-between px-4 py-3 text-left hover:bg-slate-100 transition-colors cursor-pointer"
         type="button"
+        aria-expanded={open}
       >
-        <span className="text-sm font-bold text-[#0f2d45]">{label}</span>
+        <span className="text-sm font-bold text-[#0f2d45] xl:text-[20px]">{label}</span>
         <span className="text-lg font-semibold text-slate-500">{open ? "−" : "+"}</span>
       </button>
       {open && (
@@ -616,8 +582,8 @@ function ProjectCard({ p }) {
   const tags = p.categories && Array.isArray(p.categories) ? p.categories : [];
 
   return (
-    <div className="overflow-hidden bg-slate-100 rounded-xl shadow-md group border border-slate-100 text-left">
-      <div className="relative aspect-[16/8] md:aspect-[16/7] overflow-hidden">
+    <div className="group overflow-hidden bg-slate-100 text-start">
+      <div className="relative aspect-[5/3] overflow-hidden">
         <img
           src={getImageUrl(p.featuredImageUrl) || "/images/project1.png"}
           alt={t(p.title)}
@@ -625,7 +591,7 @@ function ProjectCard({ p }) {
           draggable={false}
         />
         {/* small caption block bottom-left */}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end h-1/2">
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex min-h-[48%] flex-col justify-end p-4 sm:p-6 xl:px-16 xl:py-9">
           <div className="flex flex-wrap gap-2 mb-2">
             {tags.map((tag) => (
               <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-white/70 bg-white/10 px-2 py-0.5 rounded-sm backdrop-blur-sm border border-white/10">
@@ -636,7 +602,7 @@ function ProjectCard({ p }) {
               {t(p.status) || t("COMPLETED")}
             </span>
           </div>
-          <h4 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">
+          <h4 className="text-base font-bold leading-snug text-white xl:text-xl">
             {t(p.title)}
           </h4>
           {p.client && (

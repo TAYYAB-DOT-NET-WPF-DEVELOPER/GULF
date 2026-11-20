@@ -71,7 +71,7 @@ export default function SustainabilityCarousel() {
 
   return (
     <section className="w-full bg-white">
-      <div className="w-full bg-[#f26522] text-white">
+      <div className="w-full bg-[#f57e32] text-white xl:min-h-[743px]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
           {/* TOP SECTION */}
           <div className="max-w-4xl">
@@ -80,7 +80,7 @@ export default function SustainabilityCarousel() {
             </p>
 
             <h3 className="mt-4 text-[28px] font-bold leading-snug md:text-[34px] text-white">
-              {t("SUSTAINABILITY POLICY", "Building responsibly for today and tomorrow")}
+              {t("sust_title", "Building responsibly for today and tomorrow")}
             </h3>
             
             <p className="mt-5 text-[15.5px] leading-[1.8] text-white/95 md:max-w-3xl">

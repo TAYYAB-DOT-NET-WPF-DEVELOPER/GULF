@@ -1,3 +1,4 @@
+import serviceData from "../content/servicePages.json";
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
@@ -65,44 +66,12 @@ export default function Services() {
       <section className="bg-white py-16 md:py-24 overflow-hidden">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-col gap-24 md:gap-32">
-            {(servicesList.length > 0 ? servicesList : [
-                {
-                  id: "mechanical",
-                  title: t("Mechanical Division"),
-                  image: "/images/WhatWeDoImages1.jpg",
-                  desc: t("services_mech_desc", "Our Mechanical Division provides general fabrication, mechanical piping, tank fabrication, and general maintenance services...")
-                },
-                {
-                  id: "electrical",
-                  title: t("Electrical Division"),
-                  image: "/images/WhatWeDoImages2.jpg",
-                  desc: t("services_elec_desc", "Our Electrical Division provides electrical installations from low voltage systems to high voltage systems, delivering maximum safety and quality...")
-                },
-                {
-                  id: "transmission",
-                  title: t("Transmission Lines"),
-                  image: "/images/WhahweDoimages3.jpg",
-                  desc: t("services_trans_desc", "As an EPC contractor, Gulf Al Olaya delivers complete transmission line projects, from design and engineering to tower erection, testing, and commissioning...")
-                },
-                {
-                  id: "piping",
-                  title: t("Industrial Piping"),
-                  image: "/images/WhatweDoimages4.jpg",
-                  desc: t("services_piping_desc", "Our piping division is recognized as the best piping engineering contractor, designing and building complex piping networks for industrial facilities...")
-                },
-                {
-                  id: "transmission-lines-2",
-                  title: t("Transmission Lines"),
-                  image: "",
-                  desc: t("services_trans_desc_2", "As an EPC contractor, Gulf Al Olaya delivers complete transmission line projects, from design and engineering to tower erection, testing, and commissioning...")
-                },
-                {
-                  id: "engineering-construction",
-                  title: t("Engineering Construction"),
-                  image: "",
-                  desc: t("services_eng_desc", "As an EPC contractor, Gulf Al Olaya delivers complete engineering, procurement, and construction services for industrial and civil infrastructures.")
-                }
-              ]).map((sector, idx) => {
+            {(servicesList.length > 0 ? servicesList : Object.entries(serviceData).map(([id, page]) => ({
+                id,
+                title: t(page.title),
+                image: page.coverImage,
+                desc: t(page.heroDesc),
+              }))).map((sector, idx) => {
                 const isEven = idx % 2 === 0;
                 
                 // Get decorations cyclically if there are more items than decorations

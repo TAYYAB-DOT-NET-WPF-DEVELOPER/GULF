@@ -1,0 +1,40 @@
+{
+  "services": [
+    {
+      "id": "mechanical",
+      "title": "Mechanical division",
+      "headline": "Precision-engineered mechanical solutions for industrial and commercial facilities.",
+      "desc": "Our mechanical division delivers comprehensive HVAC, piping, and equipment installation services built to the highest safety and performance standards. From system design through to commissioning, we ensure every mechanical component works seamlessly within your facility."
+    },
+    {
+      "id": "electrical",
+      "title": "Electrical division",
+      "headline": "Safe, compliant, and reliable electrical installations across all project scales.",
+      "desc": "Gulf Al Olaya electrical division handles low-voltage and medium-voltage systems, panel boards, switchgear, cable laying, and full electrical fit-outs for commercial, industrial, and government facilities. Our certified engineers work to Saudi Electricity Company standards and international codes."
+    },
+    {
+      "id": "transmission",
+      "title": "Transmission lines (EPC / Full Projects)",
+      "headline": "End-to-end high-voltage transmission line solutions for reliable power infrastructure.",
+      "desc": "We design, supply, and construct underground and above-ground electrical transmission line systems with full compliance to SEC and regulatory standards. Our experienced teams manage the complete scope from survey and civil works through to cable installation and testing."
+    },
+    {
+      "id": "ohtl",
+      "title": "Overhead Transmition Line Construction (Installation & Field Execution Services)",
+      "headline": "Specialized installation and field execution of overhead transmission line systems.",
+      "desc": "From tower erection and conductor stringing to insulator fitting and protective earthing, our overhead transmission line teams execute projects with precision and full adherence to safety protocols. We serve industrial, municipal, and utility-scale projects across the Kingdom."
+    },
+    {
+      "id": "piping",
+      "title": "Industrial piping",
+      "headline": "Specialist industrial piping fabrication and installation for demanding environments.",
+      "desc": "Our industrial piping division specializes in the fabrication, supply, and installation of carbon steel, stainless steel, and alloy piping systems for oil, gas, water, and process industries. All works are carried out by qualified pipefitters and welders to ASME and ARAMCO-approved standards."
+    },
+    {
+      "id": "civil",
+      "title": "Civil works division",
+      "headline": "End-to-end civil and structural construction from groundwork to final finish.",
+      "desc": "Gulf Al Olaya civil works division manages the full construction lifecycle site preparation, excavation, reinforced concrete structures, masonry, finishes, and GRC installation. We handle both new-build and renovation projects for government, commercial, and residential clients, delivering on time with zero compromise on quality."
+    }
+  ]
+}

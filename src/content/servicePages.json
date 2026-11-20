@@ -1,0 +1,768 @@
+{
+  "mechanical": {
+    "title": "Mechanical Division",
+    "heroDesc": "Our Mechanical Division operates with precision, commitment, and deep technical expertise ensuring every project requirement is met to the highest standards of quality, efficiency, and client satisfaction. From large-scale HVAC installations to complex fire protection systems and precision sheet metal fabrication, our mechanical teams bring decades of hands-on experience to every site. We take a proactive role across all phases design, procurement, installation, testing, and commissioning ensuring seamless delivery from first pipe to final sign-off.",
+    "subtitle": "Gulf Al Olaya Mechanical Division",
+    "contentTitle": "Built Around Your Project Requirements",
+    "sectorLabel": "Major MEP Services",
+    "sectorTitle": "Services we're experts at, and always expanding.",
+    "sectorDesc": "Currently, we deliver major mechanical and MEP projects across multiple service lines and we are always keen to further broaden our capabilities to meet client needs.",
+    "pillarLabel": "",
+    "pillarTitle": "All our projects are engineered around three solid pillars.",
+    "capLabel": "Mechanical Capabilities & Strengths",
+    "capDesc": "",
+    "intro": [
+      "We carry out all diversified works including central air conditioning, plumbing, drainage, and fire protection with top quality, efficiency, and productivity and to the complete satisfaction of our clients.",
+      "Delivering projects on time and within budget is our promise. Our multidisciplinary site teams are trained, certified, and equipped to handle the most demanding mechanical scopes across commercial, industrial, and infrastructure sectors.",
+      "Although cost management is central to our approach, we never compromise on safety or material quality and Our track record of repeat clients proves it."
+    ],
+    "gridItems": [
+      {
+        "title": "In-House Design & Engineering",
+        "icon": "design"
+      },
+      {
+        "title": "Integrated Project Management",
+        "icon": "pm"
+      },
+      {
+        "title": "Total Quality & Safety Management",
+        "icon": "qa"
+      },
+      {
+        "title": "Certified & Classified Works",
+        "icon": "cert"
+      }
+    ],
+    "sectors": [
+      {
+        "title": "HVAC",
+        "subtitle": "",
+        "desc": "Complete HVAC design, supply, and installation for all building types, delivering energy-efficient climate control solutions.",
+        "image": "/images/Mechnical1.jpg"
+      },
+      {
+        "title": "Plumbing & Drainage",
+        "subtitle": "",
+        "desc": "End-to-end plumbing and drainage systems, from water supply to external utility networks across major projects.",
+        "image": "/images/Mechnical2.jpg"
+      },
+      {
+        "title": "Fire Fighting & Protection",
+        "subtitle": "",
+        "desc": "Full fire protection systems designed, installed, and tested to meet NFPA and Saudi Civil Defence standards.",
+        "image": "/images/Mechnical3.jpg"
+      },
+      {
+        "title": "Kitchen Hood & Exhaust Systems",
+        "subtitle": "",
+        "desc": "Commercial kitchen ventilation systems ensuring safety, airflow balance, and compliance with health regulations.",
+        "image": "/images/Mechnical4.jpg"
+      },
+      {
+        "title": "Sheet Metal Fabrication",
+        "subtitle": "",
+        "desc": "In-house fabrication of ductwork and metal components, ensuring quality control and efficient installation.",
+        "image": "/images/Mechnical5.jpg"
+      },
+      {
+        "title": "Fire Detection & Alarm",
+        "subtitle": "",
+        "desc": "Advanced fire detection and alarm systems integrated with building management for reliable safety coverage.",
+        "image": "/images/Mechnical6.jpg"
+      },
+      {
+        "title": "FM200 & Deluge Systems",
+        "subtitle": "",
+        "desc": "Clean agent and deluge suppression systems designed for high-risk and sensitive environments.",
+        "image": "/images/Mechnical7.jpg"
+      }
+    ],
+    "pillars": [
+      {
+        "id": "01",
+        "title": "Strategic Project Management",
+        "desc": "We handle mechanical projects strategically from planning to execution using the best tools and processes to meet project schedules, avoid budget overruns, and successfully maintain industry benchmarks.",
+        "image": "/images/Mechnical1.jpg"
+      },
+      {
+        "id": "02",
+        "title": "Quality Assurance",
+        "desc": "Our quality management system complies with all contractual obligations, client specifications, statutory regulations, and codes of practice with continual improvement in all methods of working.",
+        "image": "/images/Mechnical2.jpg"
+      },
+      {
+        "id": "03",
+        "title": "Health, Safety & Environment",
+        "desc": "We maintain and adopt practices that promote safety of our customers and staff. A safe, clean workplace is not optional it is an essential part of every Gulf Al Olaya mechanical site.",
+        "image": "/images/Mechnical3.jpg"
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "Piping Works",
+        "desc": "Fabrication & installation of piping systems, pipe supports, and associated structural steelwork to international quality standards.",
+        "image": "/images/Mechnical1.jpg"
+      },
+      {
+        "title": "Steel Fabrication",
+        "desc": "Structural & general steel fabrication and erection. Gulf Al Olaya manufactures PIPING spools and carries out full erection services on site.",
+        "image": "/images/Mechnical2.jpg"
+      },
+      {
+        "title": "Equipment Assembly & Erection",
+        "desc": "Full scope equipment assembly, alignment, and erection services backed by our own fleet of cranes, boom lifts, and specialist rigging equipment.",
+        "image": "/images/Mechnical3.jpg"
+      },
+      {
+        "title": "Pre-Commissioning",
+        "desc": "Startup & commissioning services including MCC, switchgears, transformers, generators, DC battery/UPS systems, and calibration of instruments.",
+        "image": "/images/Mechnical4.jpg"
+      },
+      {
+        "title": "HVAC & Ventilation",
+        "desc": "Complete HVAC design-build solutions central air conditioning systems, smoke exhaust, kitchen hoods, and ventilation networks for all building types.",
+        "image": "/images/Mechnical5.jpg"
+      },
+      {
+        "title": "Fire & Life Safety",
+        "desc": "End-to-end fire protection: sprinkler and deluge systems, FM200 suppression, fire alarm and detection, and full commissioning to authority requirements.",
+        "image": "/images/Mechnical6.jpg"
+      }
+    ],
+    "projectsDesc": "Check out our latest projects for mechanical and MEP construction across all different sectors from HVAC installations and fire protection to piping works and steel fabrication.",
+    "coverImage": "/images/MECHANICAL DIVISION.png"
+  },
+  "electrical": {
+    "title": "ELECTRICAL DIVISION",
+    "heroDesc": "Our Electrical Division designs, installs, tests, and maintains the full range of electrical systems from building distribution boards and low-voltage cabling through to high-voltage substation electrification and transmission infrastructure. We work across commercial, residential, industrial, and institutional sectors, bringing in-house engineering, skilled technicians, and rigorous QA/QC to every project. Whether it is wiring a school or energizing a 380kV substation, our team delivers to the same standard of quality, safety, and client care.",
+    "subtitle": "Gulf Al Olaya Electrical Division",
+    "contentTitle": "In-House Design, Installation & Maintenance",
+    "sectorLabel": "",
+    "sectorTitle": "Design & Build Electrical Services Include",
+    "sectorDesc": "",
+    "pillarLabel": "Pillar of Commitment",
+    "pillarTitle": "",
+    "capLabel": "Electrical Capabilities",
+    "capDesc": "Full Electrical Technical Scope",
+    "intro": [
+      "Gulf Al Olaya's Electrical Division is capable of in-house design, installation, and maintenance across the full spectrum of electrical engineering works. Headed by professionals and supported by skilled technicians, the division has deep expertise in substations, transmission lines, pumping stations, and industrial and commercial electrification.",
+      "We install and provide services to package substations main, sub-main, and final distribution panel boards, MCC and capacitors, generators and automatic changeover panels, cable, wirings, trunking, conduit, earthing, lightning protection systems, lighting luminaires, fire alarm, MATV, SATV, and intercom systems."
+    ],
+    "gridItems": [
+      {
+        "title": "Substation Expertise",
+        "icon": "design"
+      },
+      {
+        "title": "Industrial & Commercial",
+        "icon": "pm"
+      },
+      {
+        "title": "Building Systems",
+        "icon": "qa"
+      },
+      {
+        "title": "Testing & Commissioning",
+        "icon": "cert"
+      }
+    ],
+    "sectors": [
+      {
+        "title": "Building Management Systems",
+        "subtitle": "",
+        "desc": "We design, supply, and install complete BMS solutions integrating HVAC, lighting, power, fire, and security into a single intelligent platform. Our BMS teams work across commercial towers, hospitals, hotels, and industrial facilities, delivering energy efficiency and full operational control to building owners and operators.",
+        "image": "/images/Eleceterical1.jpg"
+      },
+      {
+        "title": "Medium & Low Voltage Switchgear & Cabling",
+        "subtitle": "",
+        "desc": "We install MV and LV switchgear, switchboards, and complete cabling systems including cable pulling (HV, MV & LV), cable terminations, trunking, conduit, earthing, and lightning protection. All works comply with IEC standards and Saudi Electricity Company specifications on every project.",
+        "image": "/images/Eleceterical2.jpg"
+      },
+      {
+        "title": "Electrical Distribution & Lighting Systems",
+        "subtitle": "",
+        "desc": "We design and install complete electrical distribution systems — from main distribution boards through to final circuit wiring, socket outlets, and lighting installations for commercial, residential, and institutional projects across Saudi Arabia.",
+        "image": "/images/Eleceterical3.jpg"
+      },
+      {
+        "title": "Voice / Data & Structured Cabling",
+        "subtitle": "",
+        "desc": "We install structured cabling infrastructure — Cat6, Cat6A, and fibre optic networks — for voice, data, and communications. Our scope includes rack and patch panel installation, testing and certification to TIA/EIA standards, and full integration with BMS and IT infrastructure systems.",
+        "image": "/images/Eleceterical4.jpg"
+      },
+      {
+        "title": "Audio, Visual & PA Systems",
+        "subtitle": "",
+        "desc": "We install background music systems, public address and voice evacuation systems, MATV, SATV, and audio-visual distribution networks for mosques, malls, hospitals, hotels, schools, and institutional buildings across the Kingdom.",
+        "image": "/images/Eleceterical5.jpg"
+      },
+      {
+        "title": "CCTV, Security & Access Control",
+        "subtitle": "",
+        "desc": "We design and install comprehensive CCTV, anti-intrusion, and access control systems integrated with BMS platforms and deployed across commercial, industrial, residential, and government facilities throughout Saudi Arabia.",
+        "image": "/images/Eleceterical6.jpg"
+      }
+    ],
+    "pillars": [
+      {
+        "id": "01",
+        "title": "IN-HOUSE DESIGN",
+        "desc": "Our engineering team produces complete electrical design drawings single-line diagrams, load schedules, cable schedules, and protection coordination studies entirely in-house.",
+        "image": "/images/Eleceterical1.jpg"
+      },
+      {
+        "id": "02",
+        "title": "QUALITY & SAFETY",
+        "desc": "Every installation is tested, inspected, and documented. Our QA/QC system complies with IEC, BS, and Saudi Electricity Company standards on all projects.",
+        "image": "/images/Eleceterical2.jpg"
+      },
+      {
+        "id": "03",
+        "title": "TESTING & COMMISSIONING",
+        "desc": "We carry out full testing and commissioning from individual circuits through to complete substation energization and formal client handover.",
+        "image": "/images/Eleceterical3.jpg"
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "HV/MV/LV Transformers",
+        "desc": "Installation & pre-commissioning all ratings, excitation, isolation, neutral grounding, generator step-up up to 500MVA.",
+        "image": "/images/Eleceterical1.jpg"
+      },
+      {
+        "title": "Bus Duct Systems",
+        "desc": "Iso Phase Bus Duct (IPB), Non-Segregated Bus Duct (NSB), GIB 132kV to 380kV installed and commissioned.",
+        "image": "/images/Eleceterical2.jpg"
+      },
+      {
+        "title": "Generator Installation",
+        "desc": "Generator installation & pre-commissioning for all ratings diesel, emergency, and standby generator sets.",
+        "image": "/images/Eleceterical3.jpg"
+      },
+      {
+        "title": "Switchgears & Switchboards",
+        "desc": "MV & LV switchgears, switchboards, MCC, capacitors installation, relay setting, and commissioning.",
+        "image": "/images/Eleceterical4.jpg"
+      },
+      {
+        "title": "Panel Installation",
+        "desc": "Electrical, control, and instrumentation panels main distribution, sub-main, and final distribution boards.",
+        "image": "/images/Eleceterical5.jpg"
+      },
+      {
+        "title": "UPS / DC Battery Systems",
+        "desc": "UPS and DC battery system installation, load testing, and commissioning for critical power applications.",
+        "image": "/images/Eleceterical6.jpg"
+      }
+    ],
+    "projectsDesc": "Explore recent work delivered with precision, quality, and expertise.",
+    "coverImage": "/images/Electrical division.png"
+  },
+  "transmission": {
+    "title": "Transmission Lines EPC",
+    "heroDesc": "As a full EPC contractor for overhead transmission lines, Gulf Al Olaya takes single-point accountability for the entire project from initial route survey and engineering design through to procurement of all materials, civil works, tower erection, conductor stringing, and final commissioning. We manage engineering offices, supply chains, fabrication yards, site camps, and field crews under one contract, giving our clients a single, reliable point of responsibility across all project phases. Our transmission EPC capability covers 132kV to 380kV systems and is backed by our own specialist equipment fleet, in-house QA/QC teams, and decades of electrical construction experience across the Kingdom of Saudi Arabia ensuring every project is delivered safely, on schedule, and in full compliance with SEC and international standards.",
+    "subtitle": "Transmission Lines EPC",
+    "contentTitle": "Managing Every Aspect of Transmission Line Works",
+    "sectorLabel": "EPC Phases",
+    "sectorTitle": "Transmission Lines EPC Full Project Delivery Scope",
+    "sectorDesc": "",
+    "pillarLabel": "",
+    "pillarTitle": "All our projects are engineered around three solid pillars.",
+    "capLabel": "EPC Capability",
+    "capDesc": "Gulf Al Olaya for Transmission EPC",
+    "intro": [
+      "Gulf Al Olaya has the relevant experience in managing all aspects of electrical transmission line works including full EPC delivery in accordance with international quality standards. We combine versatile equipment with skilled human resources to deliver complete turnkey transmission line projects on time and within budget.",
+      "Our EPC expertise covers 380kV, 230kV, and 132kV overhead transmission line systems from route survey and foundation design through to stringing, commissioning, and formal handover to the client and Saudi Electricity Company."
+    ],
+    "gridItems": [
+      {
+        "title": "380kV / 230kV / 132kV",
+        "icon": "design"
+      },
+      {
+        "title": "Versatile Equipment Fleet",
+        "icon": "pm"
+      },
+      {
+        "title": "Self-Performing Construction",
+        "icon": "qa"
+      },
+      {
+        "title": "Materials Logistics Management",
+        "icon": "cert"
+      }
+    ],
+    "sectors": [
+      {
+        "title": "Basic & Detail Engineering",
+        "subtitle": "",
+        "desc": "We carry out full basic and detailed engineering including route selection, topographic survey, hydrological study, geotechnical investigation, tower spotting, foundation design, stringing charts, and all construction drawings in compliance with IEC and SEC standards.",
+        "image": "/images/Transmission1.jpg"
+      },
+      {
+        "title": "Procurement Main Items & Bulk Materials",
+        "subtitle": "",
+        "desc": "We manage full procurement of all main items and bulk materials, lattice steel towers, conductors (ACSR, ACCC), OPGW and OHEW, insulators, hardware fittings, and all civil and mechanical materials. Our procurement team manages international and local supply chains from factory to site.",
+        "image": "/images/Transmission2.jpg"
+      },
+      {
+        "title": "Civil Works Foundations & Site Preparation",
+        "subtitle": "",
+        "desc": "We carry out all civil works topographic survey, soil and road preparation, excavation and trenching, reinforced concrete tower foundations, field piles where required, and early pull-off testing across diverse terrain conditions throughout Saudi Arabia.",
+        "image": "/images/Transmission3.jpg"
+      },
+      {
+        "title": "Tower Erection & Conductor Stringing",
+        "subtitle": "",
+        "desc": "We carry out complete tower erection sorting, uploading, shifting, unloading, ground assembly, and erection followed by conductor and OPGW stringing using specialized tension equipment. All stringing is carried out to the approved stringing charts with sag checks before handover.",
+        "image": "/images/Transmission4.jpg"
+      },
+      {
+        "title": "Testing, Commissioning & Handover",
+        "subtitle": "",
+        "desc": "We carry out all pre-commissioning testing insulation resistance, continuity testing, phase identification, protection relay verification, and energization coordination with the Saudi Electricity Company delivering full as-built documentation, O&M manuals, and a complete handover package.",
+        "image": "/images/Transmission5.jpg"
+      }
+    ],
+    "pillars": [
+      {
+        "id": "01",
+        "title": "EPC Accountability",
+        "desc": "We take single-point EPC responsibility engineering, procurement, and construction managed under one contract, with one client interface from survey to energization.",
+        "image": "/images/Transmission1.jpg"
+      },
+      {
+        "id": "02",
+        "title": "International Standards",
+        "desc": "All works executed to IEC, SEC, and applicable international quality standards with full documentation and third-party inspection available where required.",
+        "image": "/images/Transmission2.jpg"
+      },
+      {
+        "id": "03",
+        "title": "Kingdom-Wide Delivery",
+        "desc": "Experienced across diverse terrain desert, mountain, coastal with self-sufficient mobilization and site camp capability for any project location in Saudi Arabia.",
+        "image": "/images/Transmission3.jpg"
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "380kV / 230kV / 132kV",
+        "desc": "Proven capability across all high-voltage transmission classes IEC and SEC standards throughout the Kingdom.",
+        "image": "/images/Transmission1.jpg"
+      },
+      {
+        "title": "Versatile Equipment Fleet",
+        "desc": "Cranes, stringing machines, tension pullers, transport vehicles all owned and deployed by our own teams.",
+        "image": "/images/Transmission2.jpg"
+      },
+      {
+        "title": "Self-Performing Construction",
+        "desc": "No subcontracted execution risks our own tower crews, civil teams, and QC inspection on every tower.",
+        "image": "/images/Transmission3.jpg"
+      },
+      {
+        "title": "Materials Logistics Management",
+        "desc": "End-to-end materials management factory inspection through to site delivery and full reconciliation.",
+        "image": "/images/Transmission4.jpg"
+      },
+      {
+        "title": "Site Accommodation",
+        "desc": "We establish and operate self-sufficient personnel accommodation camps for remote transmission projects.",
+        "image": "/images/Transmission5.jpg"
+      },
+      {
+        "title": "Full QA/QC Documentation",
+        "desc": "Complete inspection and test records, weld traceability, material certs, and as-built drawings at handover.",
+        "image": "/images/Transmission1.jpg"
+      }
+    ],
+    "projectsDesc": "Explore recent work delivered with precision, quality, and expertise.",
+    "coverImage": "/images/Transmission lines.png"
+  },
+  "ohtl": {
+    "title": "Overhead Transmission Line (OHTL)",
+    "heroDesc": "Our OHTL division handles the complete field execution of overhead transmission line construction managing every activity from the initial sorting of tower materials at the client's storage yard through to the final erection and stringing of conductors at each tower location. We mobilize our own line crews and specialist equipment to site, carry out ground assembly and erection of lattice steel towers, and string all conductors and earth wires to the approved engineering drawings and sag charts. All works are self-performed by our own teams, under strict safety and SEC quality supervision, ensuring that every tower is delivered correctly and on schedule wherever in the Kingdom the project is located.",
+    "subtitle": "Overhead Transmission Line",
+    "contentTitle": "Expert Field Installation of Overhead Transmission Lines",
+    "sectorLabel": "Field Execution",
+    "sectorTitle": "OHTL Step-by-Step Field Execution Scope",
+    "sectorDesc": "",
+    "pillarLabel": "",
+    "pillarTitle": "All our projects are engineered around three solid pillars.",
+    "capLabel": "OHTL Technical Capabilities",
+    "capDesc": "Additional Field Execution Capabilities",
+    "intro": [
+      "Gulf Al Olaya has the relevant experience in managing all aspects of overhead transmission line works from tower material handling through to conductor stringing and final commissioning. We operate with versatile equipment and skilled human resources to deliver to international quality standards.",
+      "Our OHTL expertise covers 380kV, 230kV, and 132kV overhead transmission line construction. We self-perform all field execution tower erection, conductor stringing, hardware fitment, and site reinstatement with our own equipment fleet and experienced line crews."
+    ],
+    "gridItems": [
+      {
+        "title": "Foundation Works",
+        "icon": "design"
+      },
+      {
+        "title": "Conductor Stringing",
+        "icon": "pm"
+      },
+      {
+        "title": "Hardware & Fittings",
+        "icon": "qa"
+      },
+      {
+        "title": "Earthing & Lightning",
+        "icon": "cert"
+      }
+    ],
+    "sectors": [
+      {
+        "title": "Sorting & Segregation of Tower Materials",
+        "subtitle": "",
+        "desc": "We receive, sort, and segregate all tower structural members at the client's storage yard categorizing components by tower type, leg section, and bolt specification. Full material reconciliation is carried out against the bill of materials before mobilization to site commences.",
+        "image": "/images/Transmission1.jpg"
+      },
+      {
+        "title": "Uploading, Shifting & Unloading to Site",
+        "subtitle": "",
+        "desc": "We manage all logistics uploading, transporting, and unloading tower materials from the storage yard to each tower location. Our transport team uses flatbed trailers and crane trucks suited to carrying heavy steel sections to any location along the transmission route.",
+        "image": "/images/Transmission2.jpg"
+      },
+      {
+        "title": "Ground Assembly of Towers as Per Drawings",
+        "subtitle": "",
+        "desc": "Our site crews carry out full ground assembly of each tower structure bolting all structural members together per the engineering drawings and torque specifications. Ground assembly is inspected by our QC team before erection commences, ensuring all joints are correctly assembled.",
+        "image": "/images/Transmission3.jpg"
+      },
+      {
+        "title": "Erection of Towers",
+        "subtitle": "",
+        "desc": "We erect transmission towers using our own cranes and specialist lifting equipment — safely raising each tower from ground level to its final upright position on the prepared foundation. All erection activities are conducted under strict safety supervision with working-at-height procedures and PTW systems in force.",
+        "image": "/images/Transmission4.jpg"
+      }
+    ],
+    "pillars": [
+      {
+        "id": "01",
+        "title": "Safety Culture",
+        "desc": "Our OHTL crews operate under PTW systems, working-at-height procedures, and daily safety briefings on every site with no exceptions, no shortcuts.",
+        "image": "/images/Transmission1.jpg"
+      },
+      {
+        "id": "02",
+        "title": "Versatile Equipment",
+        "desc": "We own and operate cranes, boom lifts, stringing machines, tension pullers, and transport vehicles enabling rapid mobilization to any location across the Kingdom.",
+        "image": "/images/Transmission2.jpg"
+      },
+      {
+        "id": "03",
+        "title": "SEC Standards",
+        "desc": "All overhead transmission line works are executed in full compliance with Saudi Electricity Company engineering standards, specifications, and quality requirements.",
+        "image": "/images/Transmission3.jpg"
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "Foundation Works",
+        "desc": "Excavation, reinforced concrete foundations, and backfilling for all tower types to SEC civil specification.",
+        "image": "/images/Transmission1.jpg"
+      },
+      {
+        "title": "Conductor Stringing",
+        "desc": "Pilot wire pulling, conductor and OPGW stringing using tension and sagging equipment all voltages.",
+        "image": "/images/Transmission2.jpg"
+      },
+      {
+        "title": "Hardware & Fittings",
+        "desc": "Installation of insulators, clamps, vibration dampers, spacers, and all tower-top hardware to drawing.",
+        "image": "/images/Transmission3.jpg"
+      },
+      {
+        "title": "Earthing & Lightning",
+        "desc": "Tower earthing, earth wire installation, and surge arrester fitment full protection system installation.",
+        "image": "/images/Transmission4.jpg"
+      },
+      {
+        "title": "Route Survey",
+        "desc": "Topographic and route surveys, center-line peg-out, and profile drawing for new transmission corridors.",
+        "image": "/images/Transmission5.jpg"
+      },
+      {
+        "title": "Site Reinstatement",
+        "desc": "Full site reinstatement and wayleave restoration following completion of all erection activities.",
+        "image": "/images/Transmission1.jpg"
+      }
+    ],
+    "projectsDesc": "Explore recent work delivered with precision, quality, and expertise.",
+    "coverImage": "/images/Overhead Transmission Line Construction.png"
+  },
+  "piping": {
+    "title": "Industrial Piping",
+    "heroDesc": "Our Industrial Piping Division fabricates and installs all types of industrial pipework, ranging from small-bore instrument tubing to large-bore process lines up to 90 inches in diameter. We manufacture piping spools at our Dammam facility and carry out on-site erection for oil, gas, fuel, chemical, water, and industrial utility applications. Our scope covers the full project lifecycle from spool fabrication, welding, and NDT inspection to field installation, pressure testing, and final commissioning serving refineries, petrochemical plants, water treatment facilities, and industrial infrastructure projects across the Kingdom.",
+    "subtitle": "Gulf Al Olaya Industrial Piping",
+    "contentTitle": "Equipped for Every Piping Challenge",
+    "sectorLabel": "Piping Scope",
+    "sectorTitle": "Gulf Al Olaya Manufactures Piping Spools & Carries Out Erection for:",
+    "sectorDesc": "",
+    "pillarLabel": "",
+    "pillarTitle": "All our projects are engineered around three solid pillars.",
+    "capLabel": "Full Piping Erection List",
+    "capDesc": "All Piping Systems We Fabricate & Install",
+    "intro": [
+      "Gulf Al Olaya is equipped for all types of piping fabrication and installation. We manufacture piping spools and carry out installations on oil, gas, fuel, chemical, and water lines up to 90-inch diameter. Our fabricators and fitters are well trained and fully conversant with international practices.",
+      "Our welders are fully qualified on a wide range of welding specifications and materials including stainless steel, carbon steel, nickel alloy, and duplex using techniques such as SMAW, TIG, and MIG. We have a well-equipped fabrication facility in Dammam with our own in-house QC inspection team."
+    ],
+    "gridItems": [
+      {
+        "title": "Pipe Racks & Supports",
+        "icon": "design"
+      },
+      {
+        "title": "Platforms & Walkways",
+        "icon": "pm"
+      },
+      {
+        "title": "Large Factories & Plants",
+        "icon": "qa"
+      },
+      {
+        "title": "Communication Towers",
+        "icon": "cert"
+      },
+      {
+        "title": "Warehouses & Showrooms",
+        "icon": "design"
+      },
+      {
+        "title": "Ladders & Access",
+        "icon": "pm"
+      }
+    ],
+    "sectors": [
+      {
+        "title": "Oil & Gas",
+        "subtitle": "Gas Lines & Fueling Systems",
+        "desc": "We fabricate and erect gas distribution lines and fueling system pipework — for refineries, petrochemical plants, industrial facilities, and storage installations. All gas pipework is fabricated and tested to ASME and ARAMCO project specifications, with full weld traceability and NDT inspection records.",
+        "image": "/images/Piping1.jpg"
+      },
+      {
+        "title": "Chemical",
+        "subtitle": "Corrosive Fluids & Chemical Lines",
+        "desc": "We fabricate and install pipework for corrosive fluids and chemical process applications — using corrosion-resistant alloys including stainless steel and duplex materials. Our fabricators are qualified on specialist welding procedures for high-specification chemical and petrochemical environments.",
+        "image": "/images/Piping2.jpg"
+      },
+      {
+        "title": "Water",
+        "subtitle": "Water & Wastewater Treatment Plants",
+        "desc": "We fabricate and install complete piping systems for water and wastewater treatment plants — including raw water intake, process pipework, effluent lines, and sludge handling systems. Scope covers large-bore pipework using carbon steel, stainless steel, and HDPE materials.",
+        "image": "/images/Piping3.jpg"
+      },
+      {
+        "title": "Hydraulic",
+        "subtitle": "Hydraulic, Pneumatic & Coolant Systems",
+        "desc": "We fabricate and erect hydraulic power systems, pneumatic piping, and coolant pipework for industrial and manufacturing facilities. Scope also covers HVAC chilled water and condenser water lines, double containment piping, and industrial waste piping for process environments.",
+        "image": "/images/Piping4.jpg"
+      }
+    ],
+    "pillars": [
+      {
+        "id": "01",
+        "title": "Strategic Project Management",
+        "desc": "We handle mechanical projects strategically from planning to execution using the best tools and processes to meet project schedules, avoid budget overruns, and successfully maintain industry benchmarks.",
+        "image": "/images/Piping1.jpg"
+      },
+      {
+        "id": "02",
+        "title": "Quality Assurance",
+        "desc": "Our quality management system complies with all contractual obligations, client specifications, statutory regulations, and codes of practice with continual improvement in all methods of working.",
+        "image": "/images/Piping2.jpg"
+      },
+      {
+        "id": "03",
+        "title": "Health, Safety & Environment",
+        "desc": "We maintain and adopt practices that promote safety of our customers and staff. A safe, clean workplace is not optional it is an essential part of every Gulf Al Olaya mechanical site.",
+        "image": "/images/Piping3.jpg"
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "Gas Lines",
+        "desc": "",
+        "image": "/images/Piping1.jpg"
+      },
+      {
+        "title": "Fueling Systems",
+        "desc": "",
+        "image": "/images/Piping2.jpg"
+      },
+      {
+        "title": "Corrosive Fluid Lines",
+        "desc": "",
+        "image": "/images/Piping3.jpg"
+      },
+      {
+        "title": "Coolant Systems",
+        "desc": "",
+        "image": "/images/Piping4.jpg"
+      },
+      {
+        "title": "Industrial Waste Piping",
+        "desc": "",
+        "image": "/images/Piping1.jpg"
+      },
+      {
+        "title": "Hydraulic Power Systems",
+        "desc": "",
+        "image": "/images/Piping2.jpg"
+      },
+      {
+        "title": "Pneumatic Piping Systems",
+        "desc": "",
+        "image": "/images/Piping3.jpg"
+      },
+      {
+        "title": "Double Containment Piping",
+        "desc": "",
+        "image": "/images/Piping4.jpg"
+      },
+      {
+        "title": "Water & Wastewater Treatment",
+        "desc": "",
+        "image": "/images/Piping1.jpg"
+      },
+      {
+        "title": "Fluid Distribution & Process Piping",
+        "desc": "",
+        "image": "/images/Piping2.jpg"
+      },
+      {
+        "title": "HVAC Chilled & Condenser Water Lines",
+        "desc": "",
+        "image": "/images/Piping3.jpg"
+      },
+      {
+        "title": "Assembly Line, Conveyor & Automation Piping",
+        "desc": "",
+        "image": "/images/Piping4.jpg"
+      }
+    ],
+    "projectsDesc": "Explore recent work delivered with precision, quality, and expertise.",
+    "coverImage": "/images/Industrial piping.png"
+  },
+  "civil": {
+    "title": "Civil Work Division",
+    "heroDesc": "We deliver end-to-end civil construction solutions across Saudi Arabia, managing every stage in-house from excavation and structural works to finishing and final handover. With over 20 years of experience, our team handles residential, commercial, and infrastructure projects with full control over quality, timelines, and execution. By combining technical expertise, skilled personnel, and a collaborative approach, we provide reliable, sustainable, and high-quality project delivery tailored to client needs.",
+    "subtitle": "Gulf Al Olaya Civil Division",
+    "contentTitle": "A Pioneer in Civil Construction & Project Delivery",
+    "sectorLabel": "Civil Services",
+    "sectorTitle": "Services we deliver across the Kingdom",
+    "sectorDesc": "",
+    "pillarLabel": "Pillars of Commitment",
+    "pillarTitle": "All our civil projects are built around three solid pillars.",
+    "capLabel": "Technical Capabilities",
+    "capDesc": "What Our Civil Teams Are Equipped to Deliver",
+    "intro": [
+      "Gulf Al Olaya is a pioneer of many innovative construction, engineering, and project management techniques. Our expert civil and construction project delivery experience ensures we are the preferred contractor for many clients across a vast array of industry sectors.",
+      "We are a wholly 100% self-performing entity. Whilst leading the way in collaborative alliances, we value working closely with clients, contractors, and the local community to achieve mutual benefit.",
+      "With intimate knowledge and extensive experience in building projects, we enjoy working on environmentally sustainable developments and are committed to maximizing value to our clients from excavation through to final finishing, every step of the way."
+    ],
+    "gridItems": [
+      {
+        "title": "100% Self-Performing",
+        "icon": "design"
+      },
+      {
+        "title": "Multi-Sector Experience",
+        "icon": "pm"
+      },
+      {
+        "title": "Collaborative Alliances",
+        "icon": "qa"
+      },
+      {
+        "title": "Sustainable Development",
+        "icon": "cert"
+      }
+    ],
+    "sectors": [
+      {
+        "title": "Civil & Structural Works",
+        "subtitle": "",
+        "desc": "We construct reinforced concrete structures, block work, foundations, and structural steel frames for residential, commercial, and institutional buildings. Our structural teams have delivered housing complexes, villa projects, university buildings, schools, and large-scale humanitarian facilities across the Kingdom always to specification, always on schedule.",
+        "image": "/images/figma_construction_hero.png"
+      },
+      {
+        "title": "Finishing Works",
+        "subtitle": "",
+        "desc": "We carry out all internal and external finishing works including plastering, tiling, gypsum works, paint, joinery, GRC installation, and interlock. Our finishing teams have delivered high-specification interiors for palaces, mosques, villas, university buildings, schools, and commercial outlets, maintaining the same standard of quality across all project types.",
+        "image": "/images/Civil works division.png"
+      },
+      {
+        "title": "Housing & Residential Projects",
+        "subtitle": "",
+        "desc": "From individual villa fit-outs to large-scale housing complexes, Gulf Al Olaya has the experience and resources to deliver complete residential projects on a turnkey basis. Our scope covers full civil, structural, MEP, and finishing providing clients a single point of accountability from groundbreaking to final handover.",
+        "image": "/images/project4.png"
+      },
+      {
+        "title": "Excavation & Earthworks",
+        "subtitle": "",
+        "desc": "Gulf Al Olaya operates a full fleet of excavators, skid loaders, JCB backhoes, dumper trucks, and compactors enabling us to self-perform all earthworks including bulk excavation, backfilling, selected fill, sweet sand for pipe bedding, and levelling. Our earthworks capability supports substation, drainage, housing, and infrastructure projects of all scales.",
+        "image": "/images/project5.png"
+      }
+    ],
+    "pillars": [
+      {
+        "id": "01",
+        "title": "Self-Performing Delivery",
+        "desc": "We own our equipment, employ our people, and control our quality directly. No subcontracted risk — just accountable, hands-on project delivery from our own teams on every site.",
+        "image": "/images/figma_construction_hero.png"
+      },
+      {
+        "id": "02",
+        "title": "Quality Assurance",
+        "desc": "Our QA/QC system complies with all client specifications, statutory regulations, and codes of practice. We maintain rigorous inspection records and continually improve our methods of working.",
+        "image": "/images/Civil works division.png"
+      },
+      {
+        "id": "03",
+        "title": "Environmental Responsibility",
+        "desc": "Committed to Vision 2030, we actively pursue sustainable construction techniques minimizing waste, protecting site surroundings, and maximizing long-term value to our clients and communities.",
+        "image": "/images/project4.png"
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "Reinforced Concrete",
+        "desc": "Foundations, columns, beams, slabs, retaining walls, and precast elements delivered to engineering drawings with full QA/QC inspection records.",
+        "image": "/images/figma_construction_hero.png"
+      },
+      {
+        "title": "Block Work & Masonry",
+        "desc": "Internal and external block work for residential and commercial buildings using our own block lifters and specialist masonry teams.",
+        "image": "/images/Civil works division.png"
+      },
+      {
+        "title": "Demolition & Site Clearance",
+        "desc": "Safe demolition and debris removal for redevelopment projects including controlled demolition of concrete structures and civil misc. works.",
+        "image": "/images/project4.png"
+      },
+      {
+        "title": "Drainage & Utilities Installation",
+        "desc": "Storm water drainage, sanitary systems, and external utility networks including stone installation and trench reinstatement on major civil schemes.",
+        "image": "/images/project5.png"
+      },
+      {
+        "title": "Asphalt & Road Works",
+        "desc": "Prime coat, binder course, wearing course, aggregate base course supply and application using our dedicated asphalt and roller fleet.",
+        "image": "/images/figma_construction_hero.png"
+      },
+      {
+        "title": "GRC & Specialist Finishing",
+        "desc": "Glass Reinforced Concrete (GRC) installation, decorative facades, and specialist architectural finishing works for premium residential and commercial projects.",
+        "image": "/images/Civil works division.png"
+      }
+    ],
+    "projectsDesc": "Explore recent work delivered with precision, quality, and expertise.",
+    "coverImage": "/images/Civil works division.png"
+  }
+}

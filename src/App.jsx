@@ -40,7 +40,7 @@ function App() {
             <Route path="/careers" element={<Careers />} />
             <Route path="/services/:id" element={<ServiceDetail />} />
             {/* Redirect /what-we-do to home for now or specific section if needed */}
-            <Route path="/what-we-do" element={<Home />} />
+            <Route path="/what-we-do" element={<Services />} />
           </Routes>
         </main>
         <Footer />

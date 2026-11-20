@@ -1,3 +1,5 @@
+import serviceData from "../content/servicePages.json";
+import homePage from "../content/homePage.json";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { http, getImageUrl } from "../api/http";
@@ -68,14 +70,14 @@ export default function BusinessLinesShowcase() {
   const [activeBiz, setActiveBiz] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const fallbackServices = [
-    { id: 's1', name: "Mechanical Division", shortDesc: "services_mech_desc", icon: "gear", bannerImageUrl: "/images/MECHANICAL DIVISION.png" },
-    { id: 's2', name: "Transmission Lines", shortDesc: "services_trans_desc", icon: "tower", bannerImageUrl: "/images/Transmission lines.png" },
-    { id: 's3', name: "Electrical Division", shortDesc: "services_elec_desc", icon: "bolt", bannerImageUrl: "/images/Electrical division.png" },
-    { id: 's4', name: "Overhead Transmission Lines", shortDesc: "services_trans_desc", icon: "tower", bannerImageUrl: "/images/Overhead Transmission Line Construction.png" },
-    { id: 's5', name: "Industrial Piping", shortDesc: "services_piping_desc", icon: "gear", bannerImageUrl: "/images/Industrial piping.png" },
-    { id: 's6', name: "Civil Engineering", shortDesc: "proj_1_desc", icon: "gear", bannerImageUrl: "/images/Civil works division.png" },
-  ];
+  const fallbackServices = homePage.services.map((service, index) => ({
+    id: service.id,
+    name: service.title,
+    headline: service.headline,
+    shortDesc: service.desc,
+    icon: ["gear", "bolt", "tower", "tower", "gear", "gear"][index],
+    bannerImageUrl: serviceData[service.id].coverImage,
+  }));
 
   async function loadServices() {
     try {
@@ -108,7 +110,7 @@ export default function BusinessLinesShowcase() {
   const currentBiz = activeBiz || listToRender[0];
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white xl:min-h-[672px]">
       <div className="mx-auto max-w-6xl px-4 pt-12 pb-16 md:pt-16 md:pb-24">
         <div className="grid gap-10 md:grid-cols-12 md:items-stretch">
           {/* LEFT MENU */}
@@ -146,30 +148,31 @@ export default function BusinessLinesShowcase() {
 
           {/* RIGHT BIG BANNER */}
           <div className="md:col-span-8">
-            <div className="relative overflow-hidden rounded-xl shadow-2xl bg-slate-100">
+            <div className="relative isolate grid min-h-[410px] overflow-hidden rounded-xl bg-slate-900">
               <img
                 src={getImageUrl(currentBiz.bannerImageUrl || currentBiz.imageUrl) || "/images/bagr10.png"}
                 alt={t(currentBiz.name)}
-                className="h-[360px] w-full object-cover md:h-[420px] transition-transform duration-700 hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0f2d45]/90 via-[#0f2d45]/40 to-transparent" />
 
-              <div className="absolute inset-0 flex items-center">
+              <div className="relative flex items-center py-8">
                 <div className="px-8 md:px-12">
                   <h3 className="text-2xl font-black tracking-tight text-white md:text-3xl uppercase">
                     {t(currentBiz.name)}
                   </h3>
 
-                  <p className="mt-7 max-w-lg text-sm leading-7 text-white/90 md:text-base line-clamp-4 font-medium">
+                  {currentBiz.headline && <p className="mt-3 max-w-lg font-semibold text-white">{t(currentBiz.headline)}</p>}
+                  <p className="mt-3 max-w-lg text-sm leading-6 text-white/90 md:text-base">
                     {t(currentBiz.shortDesc) || t("home_hero_desc")}
                   </p>
 
                   <div className="mt-8 flex items-center gap-4">
                     <Link
-                      to="/what-we-do"
+                      to={Object.hasOwn(serviceData, currentBiz.id) ? `/services/${currentBiz.id}` : "/services"}
                       className="inline-flex rounded-md bg-orange-500 px-8 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/30"
                     >
-                      {t("home_about_btn")}
+                      {t("explore_more")}
                     </Link>
                     <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">
                       {t("Division")} 0{services.indexOf(currentBiz) + 1}
