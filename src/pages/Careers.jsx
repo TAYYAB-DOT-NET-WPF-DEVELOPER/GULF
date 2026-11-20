@@ -139,9 +139,9 @@ export default function Careers() {
 
             {/* APPLICATION MODAL */}
             {showApply && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-                    <div className="w-full max-w-2xl rounded-3xl bg-white p-8 md:p-12 shadow-2xl animate-in fade-in zoom-in duration-300">
-                        <div className="flex justify-between items-start mb-10">
+                <div className="fixed inset-0 z-[60] grid place-items-center overflow-y-auto overscroll-contain bg-black/80 p-3 backdrop-blur-sm sm:p-4">
+                    <div className="w-full max-w-2xl rounded-2xl bg-white p-4 shadow-2xl sm:p-8 md:p-12 animate-in fade-in zoom-in duration-300">
+                        <div className="mb-5 flex items-start justify-between gap-3 sm:mb-10">
                             <div>
                                 <h2 className="text-3xl font-black text-[#0f2d45] uppercase tracking-tight">
                                     {selectedJob ? t("apply_for_job", { title: t(selectedJob.title) }) : t("General Application")}
@@ -150,7 +150,8 @@ export default function Careers() {
                             </div>
                             <button
                                 onClick={() => setShowApply(false)}
-                                className="text-slate-400 hover:text-slate-600 transition-colors text-2xl"
+                                className="shrink-0 p-2 text-2xl text-slate-500 hover:text-slate-700"
+                                aria-label="Close application"
                             >
                                 ✕
                             </button>

@@ -1,111 +1,54 @@
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { http } from "../api/http";
+
+const divisions = [
+  ["footer_div_mech", "/services/mechanical"],
+  ["footer_div_trans", "/services/transmission"],
+  ["footer_div_elec", "/services/electrical"],
+  ["footer_div_civil", "/services/civil"],
+  ["Industrial Piping", "/services/piping"],
+];
+
+const companyLinks = [
+  ["footer_comp_story", "/about"],
+  ["footer_comp_leadership", "/management"],
+  ["footer_comp_port", "/projects"],
+  ["footer_comp_press", "/news"],
+  ["nav_careers", "/careers"],
+];
 
 export default function Footer() {
   const { t } = useTranslation();
-  const [services, setServices] = useState([]);
-  const [latestBlog, setLatestBlog] = useState(null);
-
-  useEffect(() => {
-    async function loadFooterData() {
-      try {
-        const [servRes, blogRes] = await Promise.all([
-          http.get("/api/services"),
-          http.get("/api/blog")
-        ]);
-        setServices(Array.isArray(servRes.data) ? servRes.data.slice(0, 4) : []);
-        setLatestBlog(Array.isArray(blogRes.data) && blogRes.data.length > 0 ? blogRes.data[0] : null);
-      } catch (e) {
-        console.error("Footer data load error:", e);
-      }
-    }
-    loadFooterData();
-  }, []);
 
   return (
-    <footer className="w-full bg-[#0f2d45] text-white">
-      <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-10 md:grid-cols-4">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3">
-              <img
-                src="/images/logo.png"
-                alt="Gulf AI Olaya"
-                className="h-10 w-10 object-contain"
-              />
-              <div>
-                <p className="text-sm font-bold">{t('brand_name')}</p>
-                <p className="text-xs text-white/70">
-                  {t('footer_tagline')}
-                </p>
-              </div>
-            </div>
-
-            <p className="mt-4 text-sm text-white/70 leading-6">
-              {t('footer_desc')}
-            </p>
-          </div>
-
-          {/* Ready */}
-          <div>
-            <p className="text-sm font-bold">{t('footer_ready')}</p>
-            <div className="mt-3">
-              <p className="text-[10px] font-black uppercase tracking-widest text-orange-500 mb-1">{t('footer_latest_update')}</p>
-              <p className="text-sm text-white/70 leading-6 line-clamp-2">
-                {latestBlog ? latestBlog.title : t('footer_default_blog')}
-              </p>
-            </div>
-
-            <Link
-              to="/contact"
-              className="mt-6 inline-flex rounded-md bg-orange-500 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-all active:scale-95"
-            >
-              {t('footer_contact_btn')}
-            </Link>
-          </div>
-
-          {/* Product/Services */}
-          <div>
-            <p className="text-sm font-black uppercase tracking-widest text-orange-500">{t('footer_divisions')}</p>
-            <ul className="mt-5 space-y-3 text-sm text-white/60 font-medium font-sans">
-              {services.length > 0 ? services.map(s => (
-                <li key={s.id}><Link to="/" className="hover:text-white transition-colors">{s.name}</Link></li>
-              )) : (
-                <>
-                  <li><Link to="/" className="hover:text-white transition-colors">{t('footer_div_mech')}</Link></li>
-                  <li><Link to="/" className="hover:text-white transition-colors">{t('footer_div_trans')}</Link></li>
-                  <li><Link to="/" className="hover:text-white transition-colors">{t('footer_div_elec')}</Link></li>
-                  <li><Link to="/" className="hover:text-white transition-colors">{t('footer_div_civil')}</Link></li>
-                </>
-              )}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <p className="text-sm font-black uppercase tracking-widest text-orange-500">{t('footer_company')}</p>
-            <ul className="mt-5 space-y-3 text-sm text-white/60 font-medium">
-              <li><Link to="/about" className="hover:text-white transition-colors">{t('footer_comp_story')}</Link></li>
-              <li><Link to="/management" className="hover:text-white transition-colors">{t('footer_comp_leadership')}</Link></li>
-              <li><Link to="/projects" className="hover:text-white transition-colors">{t('footer_comp_port')}</Link></li>
-              <li><Link to="/blog" className="hover:text-white transition-colors">{t('footer_comp_press')}</Link></li>
-            </ul>
+    <footer className="bg-[#16355d] text-white">
+      <div className="mx-auto grid max-w-[1200px] gap-8 px-5 py-8 lg:min-h-[380px] lg:w-[calc(100%-3rem)] lg:grid-cols-2 lg:gap-0 lg:px-0 lg:py-[30px]">
+        <div className="grid min-w-0 items-start gap-5 sm:grid-cols-[145px_minmax(0,1fr)] lg:grid-cols-[174px_minmax(0,1fr)] lg:pt-8">
+          <Link to="/" className="w-fit" aria-label={t("brand_name")}>
+            <img src="/images/logo.png" alt={t("brand_name")} className="h-auto w-[126px]" />
+          </Link>
+          <div className="min-w-0 lg:pr-10">
+            <Link to="/news" className="text-sm font-bold hover:underline">{t("footer_latest_update")}</Link>
+            <Link to="/contact" className="mt-4 block text-[23px] leading-tight hover:underline">{t("footer_ready")}</Link>
+            <p className="mt-3 max-w-[375px] text-sm leading-5 text-white/90">{t("footer_desc")}</p>
           </div>
         </div>
-
-        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-8 text-[11px] font-black uppercase tracking-[0.2em] text-white/40 md:flex-row md:items-center md:justify-between">
-          <p>{t('footer_copyright', { year: new Date().getFullYear() })}</p>
-          <div className="flex gap-4">
-            <Link to="/privacy" className="hover:text-white">
-              {t('footer_privacy')}
-            </Link>
-            <span>—</span>
-            <Link to="/terms" className="hover:text-white">
-              {t('footer_terms')}
-            </Link>
+        <div className="min-w-0 border-t border-white/45 pt-6 lg:flex lg:flex-col lg:border-s lg:border-t-0 lg:ps-[54px] lg:pt-9">
+          <div className="grid grid-cols-2 gap-x-5 lg:grid-cols-[142px_1fr]">
+            {[[ "footer_divisions", divisions ], [ "footer_company", companyLinks ]].map(([heading, links]) => (
+              <div key={heading} className="min-w-0">
+                <p className="text-sm font-bold">{t(heading)}</p>
+                <ul className="mt-5 space-y-2 text-sm leading-5 text-white/90">
+                  {links.map(([label, to]) => (
+                    <li key={to}><Link to={to} className="break-words hover:underline">{t(label)}</Link></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/90 lg:mt-auto lg:pb-6 lg:pt-8">
+            <span>{t("footer_copyright", { year: new Date().getFullYear() })}</span>
+            <span><Link to="/privacy" className="hover:underline">{t("footer_privacy")}</Link> – <Link to="/terms" className="hover:underline">{t("footer_terms")}</Link></span>
           </div>
         </div>
       </div>

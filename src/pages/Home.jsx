@@ -1,3 +1,4 @@
+import CompanyCallsToAction from "../components/CompanyCallsToAction";
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
@@ -57,10 +58,10 @@ export default function Home() {
                 { id: 6, title: "proj_6_title", client: "proj_6_cat", status: "proj_6_desc", featuredImageUrl: "/images/industry-bg.png" },
             ];
             const fallbackBlogs = [
-                { id: 1, title: "Zulfi Mosque & House Project", imageUrl: "/images/project1.png", updatedAt: "2025-12-03T00:00:00Z" },
-                { id: 2, title: "Sultan Bin Abdul Aziz Humanitarian City", imageUrl: "/images/project2.png", updatedAt: "2025-11-18T00:00:00Z" },
-                { id: 3, title: "Al Af-MacDonald's Fast Food Outlet", imageUrl: "/images/project3.png", updatedAt: "2025-11-17T00:00:00Z" },
-                { id: 4, title: "Baha University Staff Housing Project", imageUrl: "/images/project4.png", updatedAt: "2025-11-16T00:00:00Z" },
+                { id: 1, title: "Zulfi Mosque & House Project", imageUrl: "/images/Frame51.png", updatedAt: "2025-12-03T00:00:00Z" },
+                { id: 2, title: "Sultan Bin Abdul Aziz Humanitarian City", imageUrl: "/images/Frame53.png", updatedAt: "2025-11-18T00:00:00Z" },
+                { id: 3, title: "Al Af-MacDonald's Fast Food Outlet", imageUrl: "/images/Frame55.png", updatedAt: "2025-11-17T00:00:00Z" },
+                { id: 4, title: "Baha University Staff Housing Project", imageUrl: "/images/Frame56.png", updatedAt: "2025-11-16T00:00:00Z" },
             ];
 
             setBanner(bannerRes?.data);
@@ -81,7 +82,7 @@ export default function Home() {
     const slides = useMemo(() =>
         banner?.imageUrls?.length > 0
             ? banner.imageUrls
-            : ["/images/Slider_1.jpg", "/images/Slider_2.jpg"],
+            : ["/images/figma-home-tower.jpg", "/images/Slider_1.jpg", "/images/Slider_2.jpg"],
         [banner]
     );
 
@@ -97,29 +98,30 @@ export default function Home() {
             {/* ═══════════════════════════════════════════════════════
                 1. HERO CAROUSEL
                 ═══════════════════════════════════════════════════════ */}
-            <section className="relative w-full min-h-[650px] md:min-h-screen overflow-hidden">
+            <section className="relative w-full min-h-[650px] overflow-hidden bg-[#16355d]">
                 <div className="absolute inset-0">
                     {slides.map((src, idx) => (
                         <img
                             key={`${src}-${idx}`}
                             src={getImageUrl(src)}
                             alt={`Hero ${idx + 1}`}
+                            fetchPriority={idx === 0 ? "high" : "low"}
                             className={[
-                                "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out",
+                                "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out motion-reduce:transition-none",
                                 idx === active ? "opacity-100" : "opacity-0",
                             ].join(" ")}
                             draggable={false}
                         />
                     ))}
                 </div>
-                <div className="absolute inset-0 bg-black/50" />
+                <div className="absolute inset-0 bg-black/50 lg:bg-transparent lg:bg-[linear-gradient(90deg,rgba(0,0,0,.65),transparent)] rtl:lg:bg-[linear-gradient(270deg,rgba(0,0,0,.65),transparent)]" />
 
-                <Header overlay />
+                <Header overlay home />
 
-                <div className="relative z-10 mx-auto max-w-6xl px-4">
-                    <div className="flex min-h-[650px] items-center md:min-h-screen">
-                        <div className="max-w-3xl pt-24 md:pt-32 pb-20">
-                            <h1 className="text-[30px] font-bold leading-[1.2] text-white sm:text-4xl md:text-5xl lg:text-[56px] tracking-tight">
+                <div className="relative z-10 mx-auto max-w-[1232px] px-4">
+                    <div className="flex min-h-[650px] items-center lg:min-h-[min(66.667vw,960px)]">
+                        <div className="max-w-[660px] pt-24 pb-20 lg:pt-16 lg:pb-6">
+                            <h1 className="text-[30px] font-bold leading-[1.2] text-white sm:text-4xl md:text-5xl lg:text-[50px]">
                                 {t(banner?.headline) || t("home_hero_title1")}
                                 {(!banner?.headline && t("home_hero_title2")) && (
                                     <>
@@ -135,7 +137,7 @@ export default function Home() {
                                 )}
                             </h1>
 
-                            <p className="mt-6 max-w-2xl text-[16px] font-light leading-relaxed text-white/90">
+                            <p className="mt-4 max-w-[590px] text-[16px] leading-7 text-white lg:text-[20px]">
                                 {banner?.ctaLink ? (
                                     banner.ctaLink.startsWith("http") ? (
                                         <a href={banner.ctaLink} target="_blank" rel="noopener noreferrer"
@@ -151,13 +153,13 @@ export default function Home() {
                                 ) : t("home_hero_desc")}
                             </p>
 
-                            <div className="mt-8 flex flex-wrap items-center gap-4">
-                                <Link to="/contact"
-                                    className="inline-flex rounded-sm bg-[#f26522] px-7 py-3 text-[15px] font-bold text-white hover:bg-orange-600 transition-colors">
-                                    {t("home_hero_btn", "Get A Quote")}
+                            <div className="mt-4 flex flex-wrap items-center gap-4">
+                                <Link to="/services"
+                                    className="inline-flex rounded-lg bg-[#ef7525] px-4 py-3 text-[16px] font-bold text-white hover:bg-orange-600 transition-colors lg:text-[20px]">
+                                    {t("home_hero_btn", "Explore our services")}
                                 </Link>
                                 <Link to="/about"
-                                    className="inline-flex rounded-sm border border-white px-7 py-3 text-[15px] font-bold text-white hover:bg-white/10 transition-colors">
+                                    className="inline-flex rounded-lg border border-white px-4 py-3 text-[16px] font-bold text-white hover:bg-white/10 transition-colors lg:text-[20px]">
                                     {t("explore_more", "Explore More")}
                                 </Link>
                             </div>
@@ -180,9 +182,9 @@ export default function Home() {
             {/* ═══════════════════════════════════════════════════════
                 2. CLIENT LOGOS
                 ═══════════════════════════════════════════════════════ */}
-            <section className="w-full bg-white border-b border-slate-100">
-                <div className="mx-auto max-w-6xl px-4">
-                    <div className="flex flex-wrap items-center justify-center md:justify-between gap-6 py-10 md:py-14">
+            <section className="w-full bg-white">
+                <div className="mx-auto max-w-[1232px] px-4">
+                    <div className="flex flex-wrap items-center justify-center gap-6 py-10 lg:min-h-[233px] lg:justify-between lg:py-0">
                         {logosBanner?.imageUrls?.length > 0 ? (
                             logosBanner.imageUrls.map((src, idx) => (
                                 <img key={idx} src={getImageUrl(src)} alt={`Client Logo ${idx}`}
@@ -206,111 +208,32 @@ export default function Home() {
                 – overflow-visible so the left image bleeds into §4
                 – z-20 sits above the experience banner (z-10)
                 ═══════════════════════════════════════════════════════ */}
-            <section className="relative w-full bg-[#18324e] z-20 overflow-visible">
-
-                {/* Faint diamond watermark – bottom-right, bleeds into §4 */}
-                <div className="absolute right-0 bottom-[-160px] pointer-events-none opacity-[0.08] z-[22] select-none">
-                    <svg width="700" height="700" viewBox="0 0 100 100" fill="currentColor" className="text-white">
-                        <path d="M50 0 L100 50 L50 100 L0 50 Z" />
-                    </svg>
-                </div>
-
-                <div className="mx-auto max-w-6xl px-4 pt-16 pb-0 md:pt-24 md:pb-0">
-                    <div className="grid gap-10 md:grid-cols-12 md:items-center">
-
-                        {/* LEFT – polygon "About Us" image.
-                            translate-y-[110px] on md+ pushes the image 110px into §4,
-                            creating the Figma overlap. On mobile it shows normally. */}
-                        <div className="md:col-span-5 flex justify-center items-center">
-                            <img
-                                src={getImageUrl(aboutBanner?.imageUrls?.[0] || "/images/About_Us_Image.svg")}
-                                alt="About Us"
-                                className="w-full h-auto max-h-[480px] object-contain
-                                           relative z-30
-                                           md:translate-y-[110px]"
-                            />
-                        </div>
-
-                        {/* RIGHT – text content.
-                            pb-16 md:pb-28 gives the row enough height so the
-                            right column isn't cramped when pb-0 is on the wrapper. */}
-                        <div className="md:col-span-7 md:pl-10 relative z-10 pb-10 md:pb-28">
-                            <p className="text-[13px] font-bold tracking-widest text-[#f26522] uppercase">
-                                {t("nav_about_us", "About Us")}
-                            </p>
-
-                            <h2 className="mt-4 text-[24px] font-bold leading-[1.25] text-white md:text-[32px] tracking-tight">
-                                {t("home_about_label",
-                                    "A trusted contracting partner rooted in\nRiyadh, built on reliability.")}
-                            </h2>
-
-                            {/* ── Figma uses ONE paragraph, not bullets ── */}
-                            <p className="mt-5 max-w-lg text-[15px] leading-[1.8] text-slate-300">
-                                {t("home_about_desc",
-                                    "Gulf Al Olaya is a progressive electro-mechanical contracting and general contracting company based in Riyadh, Saudi Arabia. We deliver end-to-end mechanical, electrical, civil, and industrial solutions with a personal commitment to quality that large firms simply cannot match.")}
-                            </p>
-
-                            <Link
-                                to={aboutBanner?.ctaLink || "/about"}
-                                className="mt-8 inline-flex items-center gap-3 text-[14px] font-semibold text-[#f26522] hover:text-orange-400 transition-colors"
-                            >
-                                {t("explore_more", "Explore more")}
-                                <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#f26522]">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                    </svg>
-                                </span>
-                            </Link>
-                        </div>
-
+            <section className="relative bg-[#16355d] text-white">
+                <div className="relative mx-auto grid max-w-[1220px] items-center gap-7 px-5 py-12 lg:min-h-[362px] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-8 lg:px-0 lg:py-[14px]">
+                    <img src={getImageUrl(aboutBanner?.imageUrls?.[0] || "/images/About_Us_Image.svg")} alt="Gulf Al Olaya construction team"
+                        className="relative z-10 mx-auto h-auto w-full max-w-[480px] lg:absolute lg:left-0 lg:top-0" />
+                    <div className="relative z-20 min-w-0 lg:col-start-2">
+                        <p className="text-lg font-medium text-[#f17124]">{t("nav_about_us", "About Us")}</p>
+                        <h2 className="mt-5 max-w-[580px] text-[28px] font-bold leading-tight lg:mt-7 lg:text-[32px]">
+                            {t("home_about_title")}
+                        </h2>
+                        <p className="mt-4 max-w-[654px] text-base leading-[1.3] lg:text-[20px]">{t("home_about_desc")}</p>
+                        <Link to={aboutBanner?.ctaLink || "/about"} className="mt-3 inline-flex items-center gap-3 text-lg font-medium text-[#f17124] hover:text-orange-300">
+                            {t("explore_more")} <span aria-hidden="true" className="grid size-10 place-items-center rounded-full border border-current text-2xl">→</span>
+                        </Link>
                     </div>
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════════════════════
-                4. EXPERIENCE BANNER  (industrial image)
-                – bg-[#18324e] spacer at top = exactly the translate
-                  amount (110px) so the dark-navy colour is seamless
-                  underneath the about-section image that overlaps it.
-                – z-10 keeps it below the about image (z-30).
-                ═══════════════════════════════════════════════════════ */}
-            <section className="relative w-full z-10">
-                {/* Dark-navy colour fill that hides the "gap" left by the overlap */}
-                <div className="w-full bg-[#18324e] hidden md:block" style={{ height: 110 }} />
-
-                <div className="relative overflow-hidden">
-                    <img
-                        src={statsExpBanner?.imageUrls?.[0]
-                            ? getImageUrl(statsExpBanner.imageUrls[0])
-                            : "/images/industry-bg.png"}
-                        alt="Industry experience"
-                        className="h-[300px] w-full object-cover md:h-[400px]"
-                    />
-                    <div className="absolute inset-0 bg-black/50" />
-
-                    {/* 19+ text anchored bottom-left */}
-                    <div className="absolute inset-0 flex items-end">
-                        <div className="mx-auto w-full max-w-6xl px-4 pb-10 flex items-end gap-4">
-                            <p className="text-[72px] font-extrabold leading-none text-white md:text-[88px]">
-                                {t(statsExpBanner?.headline) || t("home_stats_exp_worldwide_val", "19+")}
-                            </p>
-                            <div className="pb-2">
-                                <p className="text-[13px] font-semibold uppercase tracking-wide text-white/90">
-                                    {t("home_stats_exp_worldwide", "Years")}
-                                </p>
-                                <p className="text-[13px] font-semibold uppercase tracking-wide text-white/90">
-                                    {t("home_stats_exp_experience", "Experience")}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <section className="relative">
+                <img src={statsExpBanner?.imageUrls?.[0] ? getImageUrl(statsExpBanner.imageUrls[0]) : "/images/industry-bg.png"}
+                    alt="Gulf Al Olaya industrial work" className="h-[240px] w-full object-cover lg:h-[409px]" />
             </section>
 
             {/* ═══════════════════════════════════════════════════════
                 5. CREDIBILITY + STATS  (white section)
                 ═══════════════════════════════════════════════════════ */}
-            <section className="relative w-full bg-white overflow-hidden">
+            <section className="relative w-full overflow-hidden bg-white xl:min-h-[1087px]">
 
                 {/* Subtle geometric lines — same as Figma */}
                 <svg className="absolute left-0 top-0 pointer-events-none opacity-[0.04]" width="500" height="500" viewBox="0 0 400 400" fill="none">
@@ -330,10 +253,10 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="md:col-span-9">
-                            <h2 className="text-[30px] font-semibold leading-[1.15] text-[#f26522] md:text-[42px]">
+                            <h2 className="text-[30px] font-semibold leading-[1.15] text-[#f17124] lg:max-w-[800px] lg:text-[54px]">
                                 {t("home_cred_title", "Trusted by clients. Proven on every project.")}
                             </h2>
-                            <p className="mt-5 max-w-3xl text-[15px] leading-[1.85] text-[#555]">
+                            <p className="mt-5 max-w-[820px] text-base leading-snug text-[#3f3f3f] lg:text-[20px]">
                                 {t("home_cred_desc",
                                     "Built on decades of hands-on experience across Saudi Arabia, Gulf Al Olaya has grown from a dedicated contracting company into a multi-discipline construction and electro-mechanical powerhouse. Our commitment to quality, safety, and client satisfaction has driven us to deliver some of the most demanding projects in the Kingdom — on time, within budget, and to the highest standards.")}
                             </p>
@@ -342,7 +265,7 @@ export default function Home() {
 
                     {/* Stats row — 50+ / 6+ / 100% */}
                     <div className="mt-16 md:mt-20">
-                        <div className="grid gap-10 sm:grid-cols-3 md:gap-0 md:pl-[25%]">
+                        <div className="grid gap-10 sm:grid-cols-3 md:gap-0">
                             {(() => {
                                 const defaultStats = [
                                     { value: "50+", label: "home_stats_projects", fallback: "Projects successfully delivered" },
@@ -358,7 +281,7 @@ export default function Home() {
                                 }
                                 return statsToUse.map((stat, i) => (
                                     <div key={i} className="text-left md:pr-14">
-                                        <p className="text-[64px] font-medium tracking-tight text-[#18324e] md:text-[80px] leading-none">
+                                        <p className="text-[64px] font-medium tracking-tight text-[#18324e] lg:text-[112px] leading-none">
                                             {stat.value}
                                         </p>
                                         <div className="mt-4 h-px w-full bg-slate-200" />
@@ -395,99 +318,64 @@ export default function Home() {
             {/* ═══════════════════════════════════════════════════════
                 7. SUSTAINABILITY CAROUSEL  (component)
                 ═══════════════════════════════════════════════════════ */}
-            <section className="w-full bg-white">
-                <SustainabilityCarousel />
-            </section>
+            <SustainabilityCarousel />
 
             {/* ═══════════════════════════════════════════════════════
                 8. FEATURED PROJECTS
                 ═══════════════════════════════════════════════════════ */}
-            <section className="w-full bg-white">
-                <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-
-                    <div className="mb-10">
-                        <p className="text-[12px] font-bold tracking-[0.2em] text-[#f26522] uppercase">
+            <section aria-labelledby="home-featured-projects" className="bg-white px-4 py-12 sm:px-8 xl:min-h-[886px] xl:px-0 xl:pb-20 xl:pt-20">
+                <div className="mx-auto max-w-[1440px]">
+                    <div className="xl:ms-[30.2%] xl:me-8">
+                        <p className="text-sm font-bold uppercase text-[#f17124] xl:text-[20px] xl:leading-6">
                             {t("home_featured_label", "FEATURED PROJECTS")}
                         </p>
-                        <h3 className="mt-3 text-[24px] font-bold text-[#18324e] md:text-[30px]">
+                        <h2 id="home-featured-projects" className="mt-4 text-[28px] font-bold leading-tight text-[#16355d] xl:mt-[35px] xl:text-[40px] xl:leading-[48px]">
                             {t("home_featured_title", "View Our Latest Projects")}
-                        </h3>
-                        <p className="mt-3 max-w-xl text-[14.5px] leading-relaxed text-[#777]">
-                            {t("home_featured_desc", "We are proud of our strong portfolio of 60+ projects across 3 continents and 8 countries.")}
+                        </h2>
+                        <p className="mt-4 text-base leading-7 text-[#707070] xl:mt-[27px] xl:text-[20px]">
+                            {t("home_featured_desc")}
                         </p>
                     </div>
 
-                    <div className="relative w-full flex flex-col md:flex-row md:items-center rounded-2xl overflow-hidden bg-[#12273f] md:bg-transparent min-h-[440px] md:min-h-[480px]">
-                        {/* Dark blue backdrop */}
-                        <div className="hidden md:block absolute right-0 top-[8%] bottom-[8%] w-[88%] md:w-[74%] bg-[#12273f] z-0" />
-                        {/* Orange shards */}
-                        <div className="hidden md:block absolute left-[12%] top-[-2%] w-[11%] h-[11%] bg-[#f26522] z-0"
-                            style={{ clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)" }} />
-                        <div className="hidden md:block absolute left-[4%] bottom-[-2%] w-[7%] h-[9%] bg-[#f26522] z-0"
-                            style={{ clipPath: "polygon(0% 0%, 100% 100%, 15% 100%)" }} />
+                    <div className="relative mt-8 xl:mt-[72px]">
+                        <div aria-hidden="true" className="absolute start-[10%] top-0 hidden h-[86px] w-[148px] bg-[#f17124] xl:block"
+                            style={{ clipPath: "polygon(0 100%, 62% 0, 100% 68%, 68% 74%, 32% 86%)" }} />
+                        <div aria-hidden="true" className="absolute -bottom-1.5 start-[5.7%] hidden h-[73px] w-[58px] bg-[#f17124] xl:block"
+                            style={{ clipPath: "polygon(0 0, 38% 42%, 100% 92%, 19% 100%)" }} />
 
-                        {/* Polygon project image */}
-                        <div
-                            className="relative w-full h-64 md:absolute md:left-0 md:top-[5%] md:bottom-[5%] md:w-[44%] bg-cover bg-center z-10 shadow-xl clip-polygon-home-project"
-                            style={{
-                                backgroundImage: `url(${getImageUrl(projects[featuredIdx]?.featuredImageUrl) || "/images/hero.png"})`,
-                            }}
-                        />
+                        <div className="bg-[#0e2d56] px-4 py-8 text-white sm:px-8 xl:ms-[27.3%] xl:min-h-[465px] xl:pb-12 xl:pe-[30px] xl:ps-[112px] xl:pt-[114px]">
+                            <div aria-hidden="true" className="flex gap-1">
+                                {[0, 1, 2].map((index) => (
+                                    <span key={index} className={`h-0.5 flex-1 ${index === Math.min(2, Math.floor(featuredIdx * 3 / Math.max(1, projects.length))) ? "bg-white" : "bg-white/35"}`} />
+                                ))}
+                            </div>
 
-                        {/* Content panel */}
-                        <div className="relative z-20 w-full flex items-center justify-end h-full">
-                            <div className="w-full md:w-[64%] px-5 py-6 md:py-10 flex items-center justify-between">
-
-                                {/* ← arrow */}
-                                <button
-                                    onClick={() => setFeaturedIdx(p => (p - 1 + (projects.length || 1)) % (projects.length || 1))}
-                                    className="hidden md:inline-flex flex-none h-12 w-12 items-center justify-center rounded-full border border-white/50 hover:bg-white/10 transition-colors"
+                            <div className="mt-7 grid grid-cols-[auto_auto_1fr] items-center gap-3 xl:grid-cols-[82px_minmax(0,1fr)_82px] xl:gap-[95px] xl:px-[14px]">
+                                <button type="button" onClick={() => setFeaturedIdx(p => (p - 1 + (projects.length || 1)) % (projects.length || 1))}
+                                    className="grid size-11 shrink-0 place-items-center rounded-full border-2 border-white hover:bg-white/10 xl:size-[82px] xl:translate-y-3"
                                     aria-label="Previous project">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" strokeWidth="1.3" stroke="white" fill="none">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                                    <svg aria-hidden="true" className="size-6 xl:size-12 rtl:rotate-180" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4c-3 4-6 7-10 8 4 1 7 4 10 8M2 12h20" />
                                     </svg>
                                 </button>
 
-                                <div className="flex-1 px-4 md:px-10 text-left">
-                                    {/* Progress bars */}
-                                    <div className="flex gap-1.5 mb-7 w-full max-w-md">
-                                        {projects.slice(0, 5).map((_, i) => (
-                                            <div key={i} className={`h-[2px] flex-1 transition-colors duration-500 ${i === featuredIdx % 5 ? "bg-white" : "bg-white/20"}`} />
-                                        ))}
-                                    </div>
-
-                                    <p className="text-[13px] font-bold text-[#f26522]">
+                                <div aria-live="polite" className="order-first col-span-3 min-w-0 pb-4 xl:order-none xl:col-span-1 xl:pb-0">
+                                    <p className="text-base leading-7 text-[#f17124] xl:text-[20px]">
                                         {t(projects[featuredIdx]?.client) || t("Civil & Structural Works")}
                                     </p>
-                                    <h4 className="mt-2 text-[22px] font-bold text-white md:text-[26px]">
+                                    <h3 className="mt-2.5 text-xl font-bold leading-tight xl:text-[23px]">
                                         {t(projects[featuredIdx]?.title) || t("Zulfi Mosque & House Project")}
-                                    </h4>
-                                    <p className="mt-3 text-[14.5px] leading-relaxed text-white/75 line-clamp-4">
-                                        {projects[featuredIdx]?.status
-                                            ? t(projects[featuredIdx].status)
-                                            : t("zulfi_mosque_fallback_desc")}
+                                    </h3>
+                                    <p className="mt-3 text-base leading-relaxed xl:text-[20px] xl:leading-[30px]">
+                                        {projects[featuredIdx]?.status ? t(projects[featuredIdx].status) : t("zulfi_mosque_fallback_desc")}
                                     </p>
-
-                                    {/* Mobile controls */}
-                                    <div className="mt-7 flex gap-3 md:hidden">
-                                        <button onClick={() => setFeaturedIdx(p => (p - 1 + (projects.length || 1)) % (projects.length || 1))}
-                                            className="h-10 w-10 flex items-center justify-center rounded-full border border-white/50">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" strokeWidth="1.3" stroke="white" fill="none"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" /></svg>
-                                        </button>
-                                        <button onClick={() => setFeaturedIdx(p => (p + 1) % (projects.length || 1))}
-                                            className="h-10 w-10 flex items-center justify-center rounded-full border border-white/50">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" strokeWidth="1.3" stroke="white" fill="none"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" /></svg>
-                                        </button>
-                                    </div>
                                 </div>
 
-                                {/* → arrow */}
-                                <button
-                                    onClick={() => setFeaturedIdx(p => (p + 1) % (projects.length || 1))}
-                                    className="hidden md:inline-flex flex-none h-12 w-12 items-center justify-center rounded-full border border-white/50 hover:bg-white/10 transition-colors"
+                                <button type="button" onClick={() => setFeaturedIdx(p => (p + 1) % (projects.length || 1))}
+                                    className="grid size-11 shrink-0 place-items-center rounded-full border-2 border-white hover:bg-white/10 xl:size-[82px]"
                                     aria-label="Next project">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" strokeWidth="1.3" stroke="white" fill="none">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                    <svg aria-hidden="true" className="size-6 xl:size-12 rtl:rotate-180" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4c3 4 6 7 10 8-4 1-7 4-10 8M22 12H2" />
                                     </svg>
                                 </button>
                             </div>
@@ -499,97 +387,55 @@ export default function Home() {
             {/* ═══════════════════════════════════════════════════════
                 9. NEWS ROOM
                 ═══════════════════════════════════════════════════════ */}
-            <section className="relative w-full bg-white overflow-hidden py-14 md:py-20">
-                {/* Subtle bg pattern */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.025]" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="tri-pat" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
-                            <path d="M10 40 L30 10 L50 40 Z" fill="none" stroke="#18324e" strokeWidth="1.5" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#tri-pat)" />
-                </svg>
-
-                {/* Origami birds */}
-                <svg className="absolute right-[44%] top-[4%] pointer-events-none opacity-[0.07] text-[#18324e]" width="70" height="70" viewBox="0 0 100 100">
-                    <path d="M10 40 L40 30 L60 50 L30 60 Z M40 30 L60 50 L90 10 Z" fill="currentColor" />
-                </svg>
-                <svg className="absolute right-[2%] top-[30%] pointer-events-none opacity-[0.07] text-[#18324e]" width="54" height="54" viewBox="0 0 100 100" style={{ transform: "rotate(-20deg)" }}>
-                    <path d="M10 40 L40 30 L60 50 L30 60 Z M40 30 L60 50 L90 10 Z" fill="currentColor" />
-                </svg>
-
-                <div className="relative z-10 mx-auto max-w-6xl px-4">
-
-                    {/* Top row: left column heading, right column featured image */}
-                    <div className="grid gap-10 md:grid-cols-12 md:gap-14">
-                        <div className="md:col-span-4">
-                            <p className="text-[12px] font-bold tracking-[0.2em] text-[#f26522] uppercase">
-                                {t("home_news_label", "NEWS ROOM")}
+            <section aria-labelledby="home-news-heading" className="relative isolate overflow-hidden bg-white px-4 py-12 sm:px-8 xl:min-h-[1055px] xl:px-0 xl:pb-10 xl:pt-7">
+                <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[160px] -z-10 h-[696px] bg-[url('/images/blog_pattern.png')] bg-top" />
+                <div className="mx-auto max-w-[1440px]">
+                    <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] xl:ms-[8.4%] xl:me-[1%] xl:grid-cols-[minmax(0,1fr)_minmax(0,727px)] xl:gap-16">
+                        <div className="min-w-0">
+                            <p className="text-sm font-bold uppercase leading-6 text-[#f17124] xl:text-[20px]">{t("home_news_label")}</p>
+                            <h2 id="home-news-heading" className="mt-4 text-[28px] font-bold leading-tight text-[#16355d] xl:mt-[46px] xl:text-[40px] xl:leading-[48px]">
+                                {t("home_news_title")}
+                            </h2>
+                            <p className="mt-5 max-w-[460px] text-base leading-6 text-[#3f3f3f] xl:mt-[44px] xl:text-[20px]">
+                                {t("home_news_desc")}
                             </p>
-                            <h3 className="mt-4 text-[24px] font-bold leading-tight text-[#18324e] md:text-[30px]">
-                                {t("home_news_title", "View Our Latest News")}
-                            </h3>
-                            <p className="mt-4 max-w-xs text-[14.5px] leading-relaxed text-[#777]">
-                                {t("home_news_desc", "Check out our latest news, press releases, events, and conferences.")}
-                            </p>
-                            <div className="mt-7">
-                                <Link to="/blog"
-                                    className="inline-flex rounded-sm bg-[#f26522] px-6 py-2.5 text-[13px] font-bold text-white hover:bg-orange-600 transition-all">
-                                    {t("home_news_all_btn", "Read All News")}
-                                </Link>
-                            </div>
+                            <Link to="/news" className="mt-7 inline-flex min-h-12 items-center rounded-lg bg-[#f17124] px-4 text-base font-bold text-white hover:bg-[#d55b15] xl:mt-10 xl:min-h-[52px] xl:text-[20px]">
+                                {t("home_news_all_btn")}
+                            </Link>
                         </div>
 
-                        <div className="md:col-span-8">
-                            <div className="overflow-hidden bg-slate-100 aspect-[16/9] shadow-md">
-                                <img
-                                    src={getImageUrl(blogs[0]?.imageUrl) || "/images/Frame51.png"}
-                                    alt="Featured news"
-                                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                                />
+                        <article className="min-w-0">
+                            <img src={getImageUrl(blogs[0]?.imageUrl) || "/images/Frame51.png"} alt="" width="727" height="403" className="h-auto w-full" />
+                            <div className="ms-[10.9%] me-4 mt-5 text-[#3f3f3f] xl:mt-9">
+                                <p className="text-base xl:text-[20px]">
+                                    {blogs[0]?.updatedAt ? new Date(blogs[0].updatedAt).toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" }) : "Dec 03, 2025"}
+                                    <span className="font-bold"> · {t("event", "Event")}</span>
+                                </p>
+                                <h3 className="mt-3 text-xl font-bold leading-tight xl:mt-5 xl:text-[24px]">
+                                    {blogs[0]?.title || t("Zulfi Mosque & House Project")}
+                                </h3>
                             </div>
-                            <p className="mt-4 text-[12px] font-semibold text-[#777]">
-                                {blogs[0]?.updatedAt
-                                    ? new Date(blogs[0].updatedAt).toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" })
-                                    : "Dec 03, 2025"}
-                                <span className="mx-2">•</span>
-                                <span className="font-bold text-[#18324e]">{t("event", "Event")}</span>
-                            </p>
-                            <p className="mt-1.5 text-[18px] font-bold text-[#18324e]">
-                                {blogs[0]?.title || t("Zulfi Mosque & House Project")}
-                            </p>
-                        </div>
+                        </article>
                     </div>
 
-                    {/* Bottom 3 news cards */}
-                    <div className="mt-12 grid gap-7 md:grid-cols-3">
-                        {[...blogs.slice(1, 4), ...Array(Math.max(0, 3 - (blogs.length - 1))).fill(null)].map((n, idx) => {
-                            const fallbackTitles = [
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.",
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.",
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.",
-                            ];
-                            const fallbackDates = ["Nov 18, 2025", "Nov 17, 2025", "Nov 16, 2025"];
+                    <div className="mt-12 grid gap-10 sm:grid-cols-3 xl:mx-[8.4%] xl:mt-[128px] xl:gap-[50px]">
+                        {blogs.slice(1, 4).map((news, index) => {
+                            const imageClass = [
+                                "w-full -top-[15.1%]",
+                                "w-[107.9%] top-0",
+                                "w-[111.5%] -start-[11.2%] -top-[13.1%]",
+                            ][index];
                             return (
-                                <div key={idx} className="group cursor-pointer">
-                                    <div className="overflow-hidden bg-slate-100 aspect-[16/10] shadow-sm">
-                                        <img
-                                            src={getImageUrl(n?.imageUrl) || "/images/Frame51.png"}
-                                            alt="News"
-                                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
+                                <article key={news.id} className="min-w-0 text-[#3f3f3f]">
+                                    <div className="relative aspect-[366/245]">
+                                        <img src={getImageUrl(news.imageUrl)} alt="" className={`absolute h-auto max-w-none ${imageClass}`} />
                                     </div>
-                                    <p className="mt-3 text-[11.5px] font-semibold text-[#777]">
-                                        {n?.updatedAt
-                                            ? new Date(n.updatedAt).toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" })
-                                            : fallbackDates[idx]}
-                                        <span className="mx-2">•</span>
-                                        <span className="font-bold text-[#18324e]">{t("event", "Event")}</span>
+                                    <p className="relative mt-4 text-sm">
+                                        {new Date(news.updatedAt).toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" })}
+                                        <span className="font-bold"> · {t("event", "Event")}</span>
                                     </p>
-                                    <p className="mt-1.5 text-[13.5px] leading-relaxed text-[#555] group-hover:text-[#f26522] transition-colors line-clamp-3">
-                                        {n?.title || fallbackTitles[idx]}
-                                    </p>
-                                </div>
+                                    <h3 className="relative mt-2 text-base font-medium">{news.title}</h3>
+                                </article>
                             );
                         })}
                     </div>
@@ -599,96 +445,24 @@ export default function Home() {
             {/* ═══════════════════════════════════════════════════════
                 10. CAREERS
                 ═══════════════════════════════════════════════════════ */}
-            <section className="relative w-full bg-[#142940] overflow-hidden">
-                {/* Orange triangle decorations */}
-                <div className="absolute right-[20%] top-[10%] w-[90px] h-[90px] bg-[#f26522] opacity-90"
-                    style={{ clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", transform: "rotate(45deg)" }} />
-                <div className="absolute left-[4%] bottom-[0%] w-[110px] h-[90px] bg-[#f26522] opacity-90"
-                    style={{ clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)", transform: "rotate(-30deg) translate(-20px, 40px)" }} />
-                <div className="absolute right-[14%] bottom-[4%] w-[70px] h-[70px] bg-[#f26522] opacity-90"
-                    style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)", transform: "rotate(-20deg)" }} />
-
-                <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center text-white relative z-10">
-                    <p className="text-[12px] font-bold tracking-[0.2em] text-[#f26522] uppercase">
-                        {t("home_careers_label", "CAREERS")}
-                    </p>
-                    <h3 className="mt-4 text-[26px] font-bold md:text-[34px]">
-                        {t("home_careers_title", "Join Our Team")}
-                    </h3>
-                    <p className="mx-auto mt-5 max-w-2xl text-[17px] font-medium leading-[1.65]">
-                        {t("home_careers_title2",
-                            "We are always looking for talented, driven people who take pride in building something that lasts.")}
-                    </p>
-                    <p className="mx-auto mt-5 max-w-4xl text-[15px] leading-[1.85] text-white/80">
-                        {t("home_careers_desc",
-                            "At Gulf Al Olaya, our people are our greatest strength. Whether you are an experienced engineer, a skilled technician, or a construction professional looking for your next challenge — we offer a workplace where your work matters, your growth is supported, and your contribution is valued.")}
-                    </p>
-                    <Link to="/careers"
-                        className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#f26522] px-8 py-3 text-[14px] font-bold text-white hover:bg-orange-600 transition-all">
-                        {t("home_careers_btn", "Submit Your CV")}
-                    </Link>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════════════════════
-                11. CONTACT US
-                ═══════════════════════════════════════════════════════ */}
-            <section className="w-full bg-white">
-                <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-                    <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
-
-                        {/* Left — polygon-clipped image with orange shards */}
-                        <div className="relative w-full aspect-[4/3]">
-                            <div className="absolute left-[-5%] top-[35%] w-[40%] h-[30%] bg-[#f26522] z-0"
-                                style={{ clipPath: "polygon(0 50%, 100% 0, 100% 100%)" }} />
-                            <div className="absolute right-[-5%] top-[15%] w-[60%] h-[70%] bg-[#f26522] z-0"
-                                style={{ clipPath: "polygon(0 0, 100% 30%, 50% 100%, 20% 80%)" }} />
-                            <div className="absolute left-[20%] bottom-[0%] w-[30%] h-[30%] bg-[#f26522] z-0"
-                                style={{ clipPath: "polygon(50% 0, 100% 100%, 0 100%)" }} />
-                            <div className="absolute inset-0 z-10 overflow-hidden shadow-2xl"
-                                style={{ clipPath: "polygon(0% 25%, 100% 0%, 85% 100%, 15% 75%)" }}>
-                                <img src="/images/How can i help.png" alt="Contact"
-                                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
-                            </div>
-                        </div>
-
-                        {/* Right — text */}
-                        <div className="md:pl-8">
-                            <p className="text-[12px] font-bold tracking-[0.2em] text-[#18324e] uppercase">
-                                {t("home_contact_label", "CONTACT US")}
-                            </p>
-                            <h3 className="mt-4 text-[30px] font-bold text-[#18324e] md:text-[38px]">
-                                {t("home_contact_title", "How can we help?")}
-                            </h3>
-                            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[#555]">
-                                {t("home_contact_desc",
-                                    "Every great project starts with a conversation. Whether you have a fully scoped tender or just an early-stage idea, our team is ready to listen, advise, and find the right solution for you.")}
-                            </p>
-                            <Link to="/contact"
-                                className="mt-8 inline-flex rounded-sm bg-[#f26522] px-7 py-3 text-[14px] font-bold text-white hover:bg-orange-600 transition-all">
-                                {t("home_contact_btn", "Send Message")}
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <CompanyCallsToAction id="home" />
 
             {/* ═══════════════════════════════════════════════════════
                 12. BOTTOM BANNER  (full-width photo + quote)
                 ═══════════════════════════════════════════════════════ */}
-            <section className="relative w-full min-h-[480px] flex items-center justify-center overflow-hidden">
+            <section className="relative w-full min-h-[480px] flex items-center justify-center overflow-hidden lg:min-h-[869px]">
                 <img
-                    src={bottomBanner?.imageUrls?.[0] ? getImageUrl(bottomBanner.imageUrls[0]) : "/images/panel.png"}
+                    src={bottomBanner?.imageUrls?.[0] ? getImageUrl(bottomBanner.imageUrls[0]) : "/images/footer image.png"}
                     alt="Closing banner"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-[#0f2d45]/65" />
 
-                <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-20 text-center">
+
+                <div className="relative z-10 mx-auto w-full max-w-[1320px] px-4 py-20 text-center">
                     <h3 className="text-[32px] font-bold leading-tight text-white md:text-[46px] tracking-wide">
                         "{t(bottomBanner?.headline) || t("home_bottom_title", "The center of strength & excellence.")}"
                     </h3>
-                    <p className="mx-auto mt-6 max-w-3xl text-[16px] leading-[1.85] text-white/85 font-medium whitespace-pre-line">
+                    <p className="mx-auto mt-8 max-w-[1280px] text-[16px] leading-tight text-white lg:mt-24 lg:text-[30px]">
                         {t(bottomBanner?.subHeadline) || t("home_bottom_desc",
                             "From industrial piping to transmission lines, from civil works to MEP systems — Gulf Al Olaya brings strength, skill, and commitment to every project we build.")}
                     </p>

@@ -10,7 +10,7 @@ const mobileNavClass = ({ isActive }) =>
   `text-lg font-normal tracking-wide py-4 border-b border-white/10 transition ${isActive ? "text-orange-500" : "text-white"
   }`;
 
-export default function Header({ overlay = false, theme = 'dark', logoType }) {
+export default function Header({ overlay = false, theme = 'dark', logoType, home = false, flat = false }) {
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isLight = theme === 'light';
@@ -25,46 +25,55 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
     i18n.changeLanguage(lng);
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    if (!isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  };
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const onResize = (event) => {
+      if (event.matches) setIsMenuOpen(false);
+    };
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    document.body.style.overflow = 'unset';
-  };
+    document.body.style.overflow = "hidden";
+    desktop.addEventListener("change", onResize);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      desktop.removeEventListener("change", onResize);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isMenuOpen]);
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header
       className={[
         "w-full z-50",
-        overlay ? "absolute top-0 left-0 right-0" : "relative bg-white border-b border-slate-100",
+        overlay ? "absolute top-0 left-0 right-0" : flat ? "relative" : "relative bg-white border-b border-slate-100",
       ].join(" ")}
     >
       {/* Top thin line shown in Figma */}
-      {isLight && <div className="h-2 w-full bg-[#18324e]"></div>}
+      {isLight && !flat && <div className="h-2 w-full bg-[#18324e]"></div>}
       {/* PDF style subtle dark overlay for readability */}
-      <div className={overlay ? "bg-black/20" : ""}>
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="flex py-5 md:py-7 items-center justify-between">
+      <div className={overlay && !home ? "bg-black/20" : ""}>
+        <div className={home ? "mx-auto max-w-[1228px] px-4" : "mx-auto max-w-6xl px-4"}>
+          <div className={home ? "flex items-center justify-between py-5 xl:items-end xl:pe-[26px] xl:pt-[26px]" : "flex items-center justify-between py-5 md:py-7"}>
             {/* LOGO */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex min-w-0 items-center gap-3">
               <img
                 src={showColorLogo ? "/images/colorlogo.png" : "/images/logo.png"}
                 alt="Gulf Al Olaya"
-                className="h-10 md:h-12 w-auto object-contain"
+                className={home ? "h-auto w-[132px] max-w-full object-contain min-[375px]:w-[150px] xl:relative xl:-top-[5px] xl:w-[188px]" : "h-9 w-auto max-w-full object-contain xl:h-12"}
               />
             </Link>
 
             {/* NAV - Desktop */}
-            <div className="hidden md:flex flex-col items-end gap-4">
+            <div className="hidden xl:flex flex-col items-end gap-4">
               {/* Top Row: Region / Language */}
-              <div className={`flex items-center gap-1.5 text-[12px] group cursor-pointer relative ${isLight ? 'text-slate-500 hover:text-slate-800' : 'text-white/90'}`}>
+              <div className={`flex items-center gap-1.5 text-[12px] group cursor-pointer relative ${home ? "xl:me-[168px]" : ""} ${isLight ? "text-slate-500 hover:text-slate-800" : "text-white/90"}`}>
                 <span>{t('nav_global_status')}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 ml-1">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
@@ -85,7 +94,7 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
               </div>
 
               {/* Bottom Row: Navigation Links */}
-              <nav className="flex items-center gap-7">
+              <nav className={home ? "flex items-center gap-6 lg:[&>a]:text-[18px] lg:[&>a]:font-normal lg:[&>a]:tracking-normal lg:[&>a:last-child]:px-4 lg:[&>a:last-child]:py-1.5" : "flex items-center gap-7"}>
                 <NavLink to="/about" className={({ isActive }) => `text-[14.5px] font-medium tracking-wide transition ${isActive ? "text-[#f26522]" : (isLight ? "text-slate-600 hover:text-[#f26522]" : "text-white/90 hover:text-white")}`}>
                   {t('nav_about_us', 'About Us')}
                 </NavLink>
@@ -115,8 +124,8 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
             </div>
 
             {/* MOBILE TOGGLE & TOOLS */}
-            <div className="md:hidden flex items-center gap-4">
-              <div className={`flex items-center gap-2 text-sm ${isLight || !overlay ? 'text-slate-600' : 'text-white/80'}`}>
+            <div className="flex shrink-0 items-center gap-2 xl:hidden">
+              <div className={`hidden items-center gap-1.5 text-sm min-[375px]:flex ${isLight || !overlay ? 'text-slate-600' : 'text-white/80'}`}>
                 <button
                   onClick={() => changeLanguage('en')}
                   className={`hover:text-[#f26522] transition-colors ${i18n.language === 'en'
@@ -159,9 +168,11 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
               </div>
 
               <button
-                onClick={toggleMenu}
+                onClick={() => setIsMenuOpen((open) => !open)}
                 className={`p-2 focus:outline-none transition-colors ${isLight || !overlay ? 'text-[#0f2d45] hover:text-[#f26522]' : 'text-white hover:text-white/80'}`}
                 aria-label="Toggle Menu"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-navigation"
               >
                 {isMenuOpen ? (
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,23 +191,25 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
 
       {/* MOBILE MENU OVERLAY */}
       <div
+        id="mobile-navigation"
         className={[
-          "fixed inset-0 z-50 bg-[#0f2d45] transition-transform duration-300 ease-in-out md:hidden",
-          isMenuOpen ? "translate-x-0" : "translate-x-full",
+          "fixed inset-0 z-50 bg-[#0f2d45] xl:hidden",
+          isMenuOpen ? "block" : "hidden",
         ].join(" ")}
       >
-        <div className="flex flex-col h-full p-6">
-          <div className="flex items-center justify-between mb-10">
+        <div className="flex h-full min-h-0 flex-col p-4 sm:p-6">
+          <div className="mb-4 flex shrink-0 items-center justify-between gap-3 sm:mb-8">
             <Link to="/" onClick={closeMenu}>
               <img
                 src="/images/logo.png"
                 alt="Gulf Al Olaya"
-                className="h-10 w-auto object-contain"
+                className="h-9 w-auto max-w-full object-contain"
               />
             </Link>
             <button
               onClick={closeMenu}
               className="text-white p-2"
+              aria-label="Close menu"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -204,7 +217,7 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
             </button>
           </div>
 
-          <nav className="flex flex-col flex-1 overflow-y-auto">
+          <nav className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain">
             <NavLink to="/about" className={mobileNavClass} onClick={closeMenu}>
               {t('nav_about_us')}
             </NavLink>
@@ -228,7 +241,7 @@ export default function Header({ overlay = false, theme = 'dark', logoType }) {
             </NavLink>
           </nav>
 
-          <div className="mt-auto pt-10 border-t border-white/10 flex justify-center flex-wrap gap-6">
+          <div className="mt-auto flex shrink-0 flex-wrap justify-center gap-x-5 gap-y-2 border-t border-white/10 pt-4">
             <button onClick={() => { changeLanguage('en'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'en' ? 'text-orange-500 font-bold' : 'text-white'}`}>English</button>
             <button onClick={() => { changeLanguage('ur'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'ur' ? 'text-orange-500 font-bold' : 'text-white'}`}>اردو</button>
             <button onClick={() => { changeLanguage('ar'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'ar' ? 'text-orange-500 font-bold' : 'text-white'}`}>العربية</button>

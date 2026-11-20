@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Header from "../components/Header";
 import { useSEO } from "../hooks/useSEO";
 import { Link } from "react-router-dom";
@@ -9,8 +9,8 @@ const ARTICLES = [
     id: 1,
     image: "/images/NewsUpdates1.png",
     category: "Event",
-    date: "Nov 15, 2025",
-    readTime: "3 min read",
+    date: "Jan 14, 2026",
+    readTime: "2 mins read",
     title: "Gulf Al Olaya Engineering Services Receives Appreciation Award from SATORP",
     excerpt:
       "Gulf Al Olaya Engineering Services was honored with an appreciation award from SATORP in recognition of outstanding performance, safety compliance, and timely delivery of mechanical and piping works at the Total refinery complex in Jubail Industrial City.",
@@ -71,284 +71,142 @@ const ARTICLES = [
 
 const CATEGORIES = ["All", "Event", "New Projects", "Announcement", "Press Release"];
 
+function ArticleMeta({ article }) {
+  return (
+    <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[#3f3f3f] lg:text-base">
+      <span>{article.date}</span>
+      <span className="font-bold text-[#16355d]">· {article.category}</span>
+    </p>
+  );
+}
+
+function ArticleDisclosure({ article }) {
+  return (
+    <details className="mt-5 lg:mt-9">
+      <summary className="flex cursor-pointer list-none flex-wrap items-center gap-5 [&::-webkit-details-marker]:hidden">
+        <span className="rounded border border-[#16355d] px-4 py-2 font-medium uppercase text-[#e65e14] hover:bg-white">Read More</span>
+        <span className="text-base text-[#777]">{article.readTime}</span>
+      </summary>
+      <p className="mt-4 leading-7 text-[#3f3f3f]">{article.excerpt}</p>
+    </details>
+  );
+}
+
 export default function News() {
   useSEO("PAGE", "news");
   const [q, setQ] = useState("");
   const [category, setCategory] = useState("All");
-
-  const featured = ARTICLES.filter((a) => a.featured);
-  const grid = ARTICLES.filter((a) => !a.featured);
-
-  const filtered = ARTICLES.filter((a) => {
-    const matchQ =
-      a.title.toLowerCase().includes(q.toLowerCase()) ||
-      a.excerpt.toLowerCase().includes(q.toLowerCase());
-    const matchCat = category === "All" || a.category === category;
-    return matchQ && matchCat;
-  });
-
-  const filteredFeatured = filtered.filter((a) => a.featured);
-  const filteredGrid = filtered.filter((a) => !a.featured);
+  const query = q.trim().toLowerCase();
+  const filtered = ARTICLES.filter((article) =>
+    (category === "All" || article.category === category) &&
+    `${article.title} ${article.excerpt}`.toLowerCase().includes(query)
+  );
+  const lead = ARTICLES[0];
 
   return (
-    <div className="bg-white min-h-screen">
-      {/* ─── HERO ─── */}
-      <section className="relative w-full overflow-hidden" style={{ minHeight: 420 }}>
-        <div className="absolute inset-0 bg-[#0c1f35]" />
-        {/* subtle grid overlay */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <Header overlay />
+    <div className="min-h-screen bg-white">
+      <div className="overflow-hidden bg-[#f6f6f6]">
+        <Header theme="light" home flat />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-44">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
-            {/* Left — text */}
-            <div className="max-w-2xl">
-              <p className="text-xs font-black tracking-[0.3em] text-orange-400 uppercase mb-4">
-                Press Room
-              </p>
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white uppercase leading-none tracking-tight">
-                Find all the latest<br />
-                developments and<br />
-                happenings at Gulf Al Olaya<br />
-                right here.
-              </h1>
-            </div>
-
-            {/* Right — brand block */}
-            <div className="flex-shrink-0 text-right">
-              <p className="text-3xl md:text-4xl font-black text-white tracking-tight leading-none">
-                GULF <span className="text-orange-400">AL</span> OLAYA
-              </p>
-              <p className="mt-1 text-sm font-semibold tracking-[0.25em] text-white/60 uppercase">
-                General Contracting
-              </p>
-            </div>
+        <section className="mx-auto grid max-w-[1440px] gap-8 px-5 pb-12 pt-12 sm:px-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)] lg:items-center xl:gap-12 xl:pb-[109px] xl:pe-[50px] xl:ps-[121px] xl:pt-[74px]">
+          <div className="min-w-0">
+            <p className="text-base font-bold text-[#16355d]">News &amp; Updates</p>
+            <h1 className="mt-6 max-w-[635px] text-[32px] font-bold leading-[1.18] text-black sm:text-[42px] xl:mt-[50px] xl:text-[50px]">
+              Find all the latest<br className="hidden xl:block" />
+              <span> developments and</span><br className="hidden xl:block" />
+              <span> happenings at Gulf Al Olaya</span><br className="hidden xl:block" />
+              <span> right here.</span>
+            </h1>
           </div>
-        </div>
-      </section>
-
-      {/* ─── FEATURED ARTICLES ─── */}
-      {filteredFeatured.length > 0 && (
-        <section className="py-14 bg-white border-b border-slate-100">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="grid gap-8 md:grid-cols-2">
-              {filteredFeatured.map((art) => (
-                <article
-                  key={art.id}
-                  className="group flex flex-col md:flex-row gap-5 items-start"
-                >
-                  <div className="w-full md:w-52 flex-shrink-0 overflow-hidden rounded-xl aspect-video md:aspect-auto md:h-36 bg-slate-100">
-                    <img
-                      src={art.image}
-                      alt={art.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[10px] font-black tracking-[0.25em] text-slate-400 uppercase">
-                        {art.date}
-                      </span>
-                      <span className="h-1 w-1 rounded-full bg-orange-500" />
-                      <span className="text-[10px] font-black tracking-[0.2em] text-orange-500 uppercase border border-orange-500/30 rounded-full px-2 py-0.5">
-                        {art.category}
-                      </span>
-                    </div>
-                    <h2 className="mt-3 text-base font-black text-[#0f2d45] uppercase leading-snug tracking-tight group-hover:text-orange-600 transition-colors line-clamp-3">
-                      {art.title}
-                    </h2>
-                    <p className="mt-2 text-xs text-slate-500 leading-6 line-clamp-2">
-                      {art.excerpt}
-                    </p>
-                    <div className="mt-3 flex items-center gap-4">
-                      <span className="text-[10px] text-slate-400 font-semibold">{art.readTime}</span>
-                      <a
-                        href="#"
-                        className="text-[10px] font-black tracking-widest text-[#0f2d45] uppercase border-b border-orange-500 pb-0.5 hover:text-orange-600 transition-colors"
-                      >
-                        Read More
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
+          <img src="/images/Union.png" alt="Gulf Al Olaya General Contracting" className="h-auto w-full max-w-[600px] lg:justify-self-end xl:mt-[88px]" />
         </section>
-      )}
 
-      {/* ─── FILTER BAR ─── */}
-      <section className="sticky top-0 z-20 bg-white border-b border-slate-100 shadow-sm py-4">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            {/* Search */}
-            <div className="relative flex-1 min-w-[200px]">
-              <input
-                type="text"
-                placeholder="Search articles..."
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                className="w-full h-10 rounded-lg border border-slate-200 bg-slate-50 px-4 pr-10 text-sm text-slate-700 outline-none focus:border-orange-500 transition-colors"
-              />
-              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+        <section aria-label="Featured news" className="mx-auto max-w-[1440px] px-5 pb-20 sm:px-8 xl:pb-[155px] xl:pe-8 xl:ps-[121px]">
+          <article className="grid items-center gap-6 lg:grid-cols-2 xl:grid-cols-[minmax(0,600px)_minmax(0,1fr)] xl:gap-[72px]">
+            <div className="relative aspect-[3/2]">
+              <img src="/images/Frame51.png" alt="" className="absolute top-0 h-auto max-w-none -start-[13.17%] w-[121.17%]" />
             </div>
-
-            {/* Category pills */}
-            <div className="flex items-center gap-2 flex-wrap">
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setCategory(cat)}
-                  className={`text-[10px] font-black tracking-widest uppercase px-4 py-2 rounded-lg transition-all ${
-                    category === cat
-                      ? "bg-orange-500 text-white shadow-md shadow-orange-500/30"
-                      : "bg-slate-100 text-slate-600 hover:bg-orange-50 hover:text-orange-600"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-              {(q || category !== "All") && (
-                <button
-                  onClick={() => { setQ(""); setCategory("All"); }}
-                  className="text-[10px] font-black tracking-widest uppercase px-4 py-2 rounded-lg bg-slate-200 text-slate-500 hover:bg-red-50 hover:text-red-500 transition-all"
-                >
-                  Reset
-                </button>
-              )}
+            <div className="min-w-0">
+              <ArticleMeta article={lead} />
+              <h2 className="mt-5 text-xl font-medium leading-tight text-black xl:mt-8 xl:text-[24px]">{lead.title}</h2>
+              <ArticleDisclosure article={lead} />
             </div>
+          </article>
 
-            {/* Count */}
-            <p className="text-xs font-bold text-slate-400 flex-shrink-0">
-              <span className="text-orange-500 font-black text-base">{filtered.length}</span> Results
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── ARTICLES GRID ─── */}
-      <section className="py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          {filtered.length === 0 ? (
-            <div className="text-center py-24">
-              <p className="text-5xl mb-4">📰</p>
-              <p className="text-xl font-black text-slate-300 uppercase tracking-tight">No articles found</p>
-              <button
-                onClick={() => { setQ(""); setCategory("All"); }}
-                className="mt-6 text-orange-500 font-black text-sm uppercase tracking-widest border-b border-orange-500 pb-0.5 hover:text-orange-600 transition-colors"
-              >
-                Clear filters
-              </button>
-            </div>
-          ) : (
-            <div className="grid gap-x-8 gap-y-14 sm:grid-cols-2 md:grid-cols-3">
-              {filtered.map((art) => (
-                <article key={art.id} className="group flex flex-col">
-                  {/* Image */}
-                  <div className="overflow-hidden rounded-xl bg-slate-100 aspect-[4/3]">
-                    <img
-                      src={art.image}
-                      alt={art.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
-
-                  {/* Meta */}
-                  <div className="mt-5 flex items-center gap-2">
-                    <span className="text-[10px] font-black tracking-[0.2em] text-slate-400 uppercase">
-                      {art.date}
-                    </span>
-                    <span className="h-1 w-1 rounded-full bg-orange-500" />
-                    <span className="text-[10px] font-black tracking-[0.2em] text-orange-500 uppercase">
-                      {art.category}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="mt-3 text-base font-black text-[#0f2d45] uppercase leading-snug tracking-tight group-hover:text-orange-600 transition-colors line-clamp-3 min-h-[4rem]">
-                    {art.title}
-                  </h3>
-
-                  {/* Excerpt */}
-                  <p className="mt-3 text-sm leading-7 text-slate-500 line-clamp-3 flex-1">
-                    {art.excerpt}
-                  </p>
-
-                  {/* Footer */}
-                  <div className="mt-5 flex items-center justify-between">
-                    <a
-                      href="#"
-                      className="text-[10px] font-black tracking-widest text-[#0f2d45] uppercase border-b-2 border-orange-500 pb-0.5 hover:text-orange-600 transition-colors"
-                    >
-                      Read More
-                    </a>
-                    <span className="text-[10px] font-semibold text-slate-400">{art.readTime}</span>
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ─── NEWSLETTER ─── */}
-      <section className="bg-[#0c1f35] py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <p className="text-xs font-black tracking-[0.3em] text-orange-400 uppercase mb-4">
-            Stay Informed
-          </p>
-          <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight leading-tight">
-            Subscribe to our newsletter to receive all the latest news
-          </h2>
-          <div className="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="flex-1 h-14 rounded-lg border border-white/10 bg-white/10 px-5 text-sm text-white outline-none focus:border-orange-500 transition-colors placeholder:text-white/40"
-            />
-            <button className="h-14 rounded-lg bg-orange-500 px-8 text-sm font-black text-white uppercase tracking-widest hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/30 whitespace-nowrap">
-              Subscribe
-            </button>
-          </div>
-          <p className="mt-4 text-xs text-white/30">
-            By subscribing, you agree to receive email updates and privacy policy. Unsubscribe anytime.
-          </p>
-        </div>
-      </section>
-
-      {/* ─── BREADCRUMB / CTA FOOTER ─── */}
-      <section className="bg-white py-12 border-t border-slate-100">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            {[
-              { label: "Homepage", href: "/" },
-              { label: "Project Portfolio", href: "/projects" },
-              { label: "About Us Homepage", href: "/about" },
-            ].map((link, i) => (
-              <React.Fragment key={link.href}>
-                <Link
-                  to={link.href}
-                  className="flex items-center gap-2 text-sm font-black text-[#0f2d45] uppercase tracking-widest hover:text-orange-600 transition-colors"
-                >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-orange-500 text-orange-500 text-xs font-black">
-                    {i + 1}
-                  </span>
-                  {link.label}
-                </Link>
-                {i < 2 && (
-                  <span className="hidden sm:block text-orange-400 font-black text-lg">›</span>
-                )}
-              </React.Fragment>
+          <div className="mt-10 grid gap-8 lg:grid-cols-2 xl:mt-[62px]">
+            {[{ ...ARTICLES[1], image: "/images/Frame53.png" }, { ...ARTICLES[3], image: "/images/Frame56.png" }].map(article => (
+              <article key={article.id} className="grid min-w-0 items-center gap-5 sm:grid-cols-2 xl:gap-9">
+                <img src={article.image} alt="" className="h-auto w-full" />
+                <div>
+                  <ArticleMeta article={article} />
+                  <h2 className="mt-3 text-lg font-bold leading-snug">{article.title}</h2>
+                  <ArticleDisclosure article={article} />
+                </div>
+              </article>
             ))}
           </div>
+        </section>
+      </div>
+
+      <section aria-label="Find news" className="relative mx-4 -mt-10 max-w-[1160px] rounded-lg bg-white px-4 py-5 shadow-md sm:mx-8 lg:p-10 xl:mx-auto">
+        <div className="flex flex-wrap items-center gap-3 lg:gap-6">
+          <input type="search" aria-label="Search news by keywords" placeholder="Search By Keywords" value={q}
+            onChange={e => setQ(e.target.value)}
+            className="min-h-12 w-full rounded-lg bg-[#f5f5f5] px-5 text-sm outline-offset-2 sm:min-w-[190px] sm:flex-1" />
+          <label className="flex items-center gap-2 font-bold text-[#16355d]">
+            Category
+            <select value={category} onChange={e => setCategory(e.target.value)} className="min-h-10 max-w-[145px] rounded border border-slate-200 bg-white px-2 text-sm font-normal">
+              {CATEGORIES.map(value => <option key={value}>{value}</option>)}
+            </select>
+          </label>
+          <button type="button" onClick={() => { setQ(""); setCategory("All"); }} className="min-h-10 px-3 font-bold text-[#16355d] hover:underline">Reset</button>
         </div>
+      </section>
+
+      <section aria-label="News results" className="mx-auto max-w-[1232px] px-5 pb-12 pt-9">
+        <p aria-live="polite" className="text-[30px] text-black"><span className="font-bold text-[#f17124]">{filtered.length}</span> Results</p>
+        {filtered.length ? (
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map(article => (
+              <article key={article.id} className="min-w-0 rounded-2xl border border-black/10 p-3">
+                <img src={article.image} alt="" className="aspect-[3/2] w-full object-cover" />
+                <div className="px-1 pb-4 pt-4">
+                  <ArticleMeta article={article} />
+                  <h3 className="mt-3 text-lg font-medium leading-snug text-black">{article.title}</h3>
+                  <ArticleDisclosure article={article} />
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : <p className="py-16 text-center text-[#3f3f3f]">No articles found.</p>}
+      </section>
+
+      <section className="mx-auto w-[calc(100%-2rem)] max-w-[1340px] bg-[#f6f6f6] px-4 py-10 text-center sm:px-8 xl:w-[calc(100%-100px)] xl:py-14">
+        <h2 className="mx-auto max-w-[730px] text-[28px] font-bold leading-tight text-[#16355d] xl:text-[36px]">
+          Subscribe to our newsletter to receive all the latest news
+        </h2>
+        <div className="mx-auto mt-10 flex max-w-[1000px] flex-col gap-4 sm:flex-row sm:items-center xl:mt-[72px]">
+          <input type="email" aria-label="Your email address" placeholder="example@email.com" className="h-14 min-w-0 flex-1 rounded-xl border border-[#aaa] bg-transparent px-4 xl:h-[82px]" />
+          <button type="button" className="min-h-12 rounded-lg bg-[#f17124] px-6 font-bold uppercase text-white">Subscribe</button>
+        </div>
+        <label className="mx-auto mt-8 flex max-w-[1000px] items-start gap-3 text-start text-sm text-[#16355d] xl:mt-14">
+          <input type="checkbox" className="mt-0.5 size-4 shrink-0" />
+          By subscribing, you agree to our terms &amp; conditions and privacy policy. You may unsubscribe anytime.
+        </label>
+      </section>
+
+      <nav aria-label="Related pages" className="mt-12 flex flex-wrap justify-center gap-x-10 gap-y-4 border-t border-black/10 px-5 py-9">
+        {[["Homepage", "/"], ["Project/Portfolio", "/projects"], ["About Us Mainpage", "/about"]].map(([label, path]) => (
+          <Link key={path} to={path} className="inline-flex items-center gap-3 font-bold text-black hover:underline">
+            <span aria-hidden="true" className="grid size-12 place-items-center rounded-full border border-[#f17124] text-xl text-[#f17124]">↗</span>{label}
+          </Link>
+        ))}
+      </nav>
+
+      <section className="relative isolate grid min-h-[460px] place-items-center overflow-hidden px-6 py-16 text-center text-white xl:min-h-[810px]">
+        <img src="/images/panel.png" alt="" className="absolute inset-0 -z-20 size-full object-cover" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#16355d]/45" />
+        <h2 className="text-[32px] font-bold leading-tight xl:text-[48px]">For the world. With the world.™</h2>
       </section>
     </div>
   );
