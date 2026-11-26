@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Header from "../components/Header";
 import { useSEO } from "../hooks/useSEO";
@@ -7,7 +8,6 @@ import { Link } from "react-router-dom";
 const ARTICLES = [
   {
     id: 1,
-    image: "/images/NewsUpdates1.png",
     category: "Event",
     date: "Jan 14, 2026",
     readTime: "2 mins read",
@@ -18,7 +18,6 @@ const ARTICLES = [
   },
   {
     id: 2,
-    image: "/images/NewsUpdates2.png",
     category: "New Projects",
     date: "Dec 2, 2025",
     readTime: "4 min read",
@@ -29,7 +28,6 @@ const ARTICLES = [
   },
   {
     id: 3,
-    image: "/images/NewsUpdates3.png",
     category: "Event",
     date: "Nov 15, 2025",
     readTime: "3 min read",
@@ -39,7 +37,6 @@ const ARTICLES = [
   },
   {
     id: 4,
-    image: "/images/NewsUpdates4.png",
     category: "Event",
     date: "Nov 15, 2025",
     readTime: "3 min read",
@@ -49,7 +46,6 @@ const ARTICLES = [
   },
   {
     id: 5,
-    image: "/images/NewsUpdates5.png",
     category: "Event",
     date: "Nov 11, 2025",
     readTime: "3 min read",
@@ -59,7 +55,6 @@ const ARTICLES = [
   },
   {
     id: 6,
-    image: "/images/NewsUpdates6.png",
     category: "Event",
     date: "Nov 11, 2025",
     readTime: "3 min read",
@@ -101,6 +96,7 @@ export default function News() {
     (category === "All" || article.category === category) &&
     `${article.title} ${article.excerpt}`.toLowerCase().includes(query)
   );
+  const { t, i18n } = useTranslation();
   const lead = ARTICLES[0];
 
   return (
@@ -110,22 +106,19 @@ export default function News() {
 
         <section className="mx-auto grid max-w-[1440px] gap-8 px-5 pb-12 pt-12 sm:px-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)] lg:items-center xl:gap-12 xl:pb-[109px] xl:pe-[50px] xl:ps-[121px] xl:pt-[74px]">
           <div className="min-w-0">
-            <p className="text-base font-bold text-[#16355d]">News &amp; Updates</p>
+            <p className="text-base font-bold text-[#16355d]">{t("home_news_label")}</p>
             <h1 className="mt-6 max-w-[635px] text-[32px] font-bold leading-[1.18] text-black sm:text-[42px] xl:mt-[50px] xl:text-[50px]">
-              Find all the latest<br className="hidden xl:block" />
+              {i18n.resolvedLanguage === "ar" ? t("home_news_title") : <>Find all the latest<br className="hidden xl:block" />
               <span> developments and</span><br className="hidden xl:block" />
               <span> happenings at Gulf Al Olaya</span><br className="hidden xl:block" />
-              <span> right here.</span>
+              <span> right here.</span></>}
             </h1>
           </div>
           <img src="/images/Union.png" alt="Gulf Al Olaya General Contracting" className="h-auto w-full max-w-[600px] lg:justify-self-end xl:mt-[88px]" />
         </section>
 
         <section aria-label="Featured news" className="mx-auto max-w-[1440px] px-5 pb-20 sm:px-8 xl:pb-[155px] xl:pe-8 xl:ps-[121px]">
-          <article className="grid items-center gap-6 lg:grid-cols-2 xl:grid-cols-[minmax(0,600px)_minmax(0,1fr)] xl:gap-[72px]">
-            <div className="relative aspect-[3/2]">
-              <img src="/images/Frame51.png" alt="" className="absolute top-0 h-auto max-w-none -start-[13.17%] w-[121.17%]" />
-            </div>
+          <article className="border-s-4 border-[#f17124] bg-white p-6 lg:p-10">
             <div className="min-w-0">
               <ArticleMeta article={lead} />
               <h2 className="mt-5 text-xl font-medium leading-tight text-black xl:mt-8 xl:text-[24px]">{lead.title}</h2>
@@ -134,9 +127,8 @@ export default function News() {
           </article>
 
           <div className="mt-10 grid gap-8 lg:grid-cols-2 xl:mt-[62px]">
-            {[{ ...ARTICLES[1], image: "/images/Frame53.png" }, { ...ARTICLES[3], image: "/images/Frame56.png" }].map(article => (
-              <article key={article.id} className="grid min-w-0 items-center gap-5 sm:grid-cols-2 xl:gap-9">
-                <img src={article.image} alt="" className="h-auto w-full" />
+            {[ARTICLES[1], ARTICLES[3]].map(article => (
+              <article key={article.id} className="min-w-0 border-s-4 border-[#f17124] bg-white p-6">
                 <div>
                   <ArticleMeta article={article} />
                   <h2 className="mt-3 text-lg font-bold leading-snug">{article.title}</h2>
@@ -169,7 +161,6 @@ export default function News() {
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map(article => (
               <article key={article.id} className="min-w-0 rounded-2xl border border-black/10 p-3">
-                <img src={article.image} alt="" className="aspect-[3/2] w-full object-cover" />
                 <div className="px-1 pb-4 pt-4">
                   <ArticleMeta article={article} />
                   <h3 className="mt-3 text-lg font-medium leading-snug text-black">{article.title}</h3>

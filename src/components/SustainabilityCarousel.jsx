@@ -1,73 +1,28 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { http } from "../api/http";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+const slideNumbers = [1, 2, 3];
+
 export default function SustainabilityCarousel() {
-  const { t, i18n } = useTranslation();
-  const slides = useMemo(
-    () => [
-      {
-        no: "01",
-        title: t("sust_title_1", "Environmental Stewardship"),
-        desc: t("sust_desc_1"),
-      },
-      {
-        no: "02",
-        title: t("sust_title_2", "Community Empowerment"),
-        desc: t("sust_desc_2"),
-      },
-      {
-        no: "03",
-        title: t("sust_title_3", "Ethical Governance"),
-        desc: t("sust_desc_3"),
-      },
-    ],
-    [t]
-  );
-
-  const [dynamicSlides, setDynamicSlides] = useState([]);
-
-  useEffect(() => {
-    async function loadSlides() {
-      try {
-        const res = await Promise.all([
-          http.get("/api/banners/home-sustainability-1").catch(() => ({ data: null })),
-          http.get("/api/banners/home-sustainability-2").catch(() => ({ data: null })),
-          http.get("/api/banners/home-sustainability-3").catch(() => ({ data: null })),
-          http.get("/api/banners/home-sustainability-4").catch(() => ({ data: null })),
-        ]);
-        
-        const mapped = res.map((r, i) => {
-          if (r.data) {
-            return {
-              no: `0${i + 1}`,
-              title: i18n.exists(r.data.headline) ? t(r.data.headline) : (slides[i] ? slides[i].title : ""),
-              desc: i18n.exists(r.data.subHeadline) ? t(r.data.subHeadline) : (slides[i] ? slides[i].desc : ""),
-            };
-          }
-          return slides[i];
-        }).filter(Boolean);
-        setDynamicSlides(mapped);
-      } catch (e) {
-        setDynamicSlides(slides);
-      }
-    }
-    loadSlides();
-  }, []);
-
-  const currentSlides = dynamicSlides.length > 0 ? dynamicSlides : slides;
+  const { t } = useTranslation();
+  const currentSlides = slideNumbers.map((number) => ({
+    no: String(number).padStart(2, "0"),
+    title: t(`sust_title_${number}`),
+    desc: t(`sust_desc_${number}`),
+  }));
 
   const [active, setActive] = useState(0);
 
   const prev = () => setActive((p) => (p - 1 + currentSlides.length) % currentSlides.length);
   const next = () => setActive((p) => (p + 1) % currentSlides.length);
 
-  // ✅ optional auto slide (same feel as PDF carousel)
+  // âœ… optional auto slide (same feel as PDF carousel)
   useEffect(() => {
-    const t = setInterval(() => next(), 3500);
-    return () => clearInterval(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentSlides.length]);
+    const interval = setInterval(() => {
+      setActive((index) => (index + 1) % slideNumbers.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="w-full bg-white">
@@ -80,7 +35,7 @@ export default function SustainabilityCarousel() {
             </p>
 
             <h3 className="mt-4 text-[28px] font-bold leading-snug md:text-[34px] text-white">
-              {t("sust_title", "Building responsibly for today and tomorrow")}
+              {t("sust_title", { defaultValue: t("SUSTAINABILITY POLICY") })}
             </h3>
             
             <p className="mt-5 text-[15.5px] leading-[1.8] text-white/95 md:max-w-3xl">
@@ -111,9 +66,9 @@ export default function SustainabilityCarousel() {
                 type="button"
                 onClick={prev}
                 className="inline-flex h-[64px] w-[64px] items-center justify-center rounded-full border border-white hover:bg-white/10 transition-colors"
-                aria-label="Previous"
+                aria-label={t("sust_previous", "Previous")}
               >
-                <svg width="28" height="28" viewBox="0 0 24 24" strokeWidth="1.2" stroke="white" fill="none">
+                <svg className="rtl:rotate-180" width="28" height="28" viewBox="0 0 24 24" strokeWidth="1.2" stroke="white" fill="none">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                 </svg>
               </button>
@@ -142,9 +97,9 @@ export default function SustainabilityCarousel() {
                 type="button"
                 onClick={next}
                 className="inline-flex h-[64px] w-[64px] items-center justify-center rounded-full border border-white hover:bg-white/10 transition-colors"
-                aria-label="Next"
+                aria-label={t("sust_next", "Next")}
               >
-                <svg width="28" height="28" viewBox="0 0 24 24" strokeWidth="1.2" stroke="white" fill="none">
+                <svg className="rtl:rotate-180" width="28" height="28" viewBox="0 0 24 24" strokeWidth="1.2" stroke="white" fill="none">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                 </svg>
               </button>
@@ -157,9 +112,9 @@ export default function SustainabilityCarousel() {
               type="button"
               onClick={prev}
               className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white"
-              aria-label="Previous"
+              aria-label={t("sust_previous", "Previous")}
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none">
+              <svg className="rtl:rotate-180" width="22" height="22" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
               </svg>
             </button>
@@ -180,9 +135,9 @@ export default function SustainabilityCarousel() {
               type="button"
               onClick={next}
               className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white"
-              aria-label="Next"
+              aria-label={t("sust_next", "Next")}
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none">
+              <svg className="rtl:rotate-180" width="22" height="22" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
               </svg>
             </button>

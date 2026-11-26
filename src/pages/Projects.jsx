@@ -12,7 +12,6 @@ const fallbackProjects = [
     client: "Al Arab Co.",
     status: "COMPLETED",
     categories: ["proj_1_cat"],
-    featuredImageUrl: "/images/project1.png",
     businessLine: "Civil Engineering",
     projectType: "Civil & Structural Works",
     country: "SAUDI ARABIA"
@@ -23,7 +22,6 @@ const fallbackProjects = [
     client: "Sultan Foundation",
     status: "COMPLETED",
     categories: ["proj_2_cat"],
-    featuredImageUrl: "/images/project2.png",
     businessLine: "Civil Engineering",
     projectType: "External Utility & Infrastructure",
     country: "SAUDI ARABIA"
@@ -34,7 +32,6 @@ const fallbackProjects = [
     client: "MacDonald's KSA",
     status: "COMPLETED",
     categories: ["proj_3_cat"],
-    featuredImageUrl: "/images/project3.png",
     businessLine: "Civil Engineering",
     projectType: "Turnkey Commercial",
     country: "SAUDI ARABIA"
@@ -45,7 +42,6 @@ const fallbackProjects = [
     client: "Al Arab Co.",
     status: "COMPLETED",
     categories: ["proj_4_cat"],
-    featuredImageUrl: "/images/project4.png",
     businessLine: "Mechanical Division",
     projectType: "Electro-Mechanical (MEP)",
     country: "SAUDI ARABIA"
@@ -56,7 +52,6 @@ const fallbackProjects = [
     client: "Ministry of Housing",
     status: "COMPLETED",
     categories: ["proj_5_cat"],
-    featuredImageUrl: "/images/project5.png",
     businessLine: "Civil Engineering",
     projectType: "Facade & GRC Installation",
     country: "SAUDI ARABIA"
@@ -67,7 +62,6 @@ const fallbackProjects = [
     client: "Saudi Electricity Company",
     status: "COMPLETED",
     categories: ["proj_6_cat"],
-    featuredImageUrl: "/images/industry-bg.png",
     businessLine: "Electrical Division",
     projectType: "Substation Civil Works",
     country: "SAUDI ARABIA"
@@ -78,7 +72,6 @@ const fallbackProjects = [
     client: "SEC",
     status: "ONGOING",
     categories: ["proj_7_cat"],
-    featuredImageUrl: "/images/Transmission1.jpg",
     businessLine: "Transmission Lines",
     projectType: "Substation Civil Works",
     country: "SAUDI ARABIA"
@@ -89,7 +82,6 @@ const fallbackProjects = [
     client: "L&T",
     status: "COMPLETED",
     categories: ["proj_8_cat"],
-    featuredImageUrl: "/images/Mechnical1.jpg",
     businessLine: "Mechanical Division",
     projectType: "Electro-Mechanical (MEP)",
     country: "INDIA"
@@ -100,7 +92,6 @@ const fallbackProjects = [
     client: "National Grid",
     status: "COMPLETED",
     categories: ["proj_9_cat"],
-    featuredImageUrl: "/images/Transmission2.jpg",
     businessLine: "Transmission Lines",
     projectType: "Substation Civil Works",
     country: "UNITED KINGDOM"
@@ -111,7 +102,6 @@ const fallbackProjects = [
     client: "Egypt Govt",
     status: "ONGOING",
     categories: ["proj_10_cat"],
-    featuredImageUrl: "/images/Industrial Piping.jpg",
     businessLine: "Industrial Piping",
     projectType: "External Utility & Infrastructure",
     country: "EGYPT"
@@ -122,7 +112,6 @@ const fallbackProjects = [
     client: "Iberdrola",
     status: "COMPLETED",
     categories: ["proj_11_cat"],
-    featuredImageUrl: "/images/panel.png",
     businessLine: "Electrical Division",
     projectType: "Electro-Mechanical (MEP)",
     country: "SPAIN"
@@ -133,7 +122,6 @@ const fallbackProjects = [
     client: "Aramco",
     status: "COMPLETED",
     categories: ["proj_12_cat"],
-    featuredImageUrl: "/images/Piping2.jpg",
     businessLine: "Industrial Piping",
     projectType: "Civil & Structural Works",
     country: "SAUDI ARABIA"
@@ -144,7 +132,6 @@ const fallbackProjects = [
     client: "SEC",
     status: "COMPLETED",
     categories: ["proj_13_cat"],
-    featuredImageUrl: "/images/Transmission3.jpg",
     businessLine: "Transmission Lines",
     projectType: "Substation Civil Works",
     country: "SAUDI ARABIA"
@@ -155,7 +142,6 @@ const fallbackProjects = [
     client: "ADA",
     status: "ONGOING",
     categories: ["proj_14_cat"],
-    featuredImageUrl: "/images/Mechnical2.jpg",
     businessLine: "Mechanical Division",
     projectType: "Electro-Mechanical (MEP)",
     country: "SAUDI ARABIA"
@@ -166,7 +152,6 @@ const fallbackProjects = [
     client: "Sabic",
     status: "COMPLETED",
     categories: ["proj_15_cat"],
-    featuredImageUrl: "/images/Industrial Piping.jpg",
     businessLine: "Industrial Piping",
     projectType: "Facade & GRC Installation",
     country: "SAUDI ARABIA"
@@ -583,15 +568,7 @@ function ProjectCard({ p }) {
 
   return (
     <div className="group overflow-hidden bg-slate-100 text-start">
-      <div className="relative aspect-[5/3] overflow-hidden">
-        <img
-          src={getImageUrl(p.featuredImageUrl) || "/images/project1.png"}
-          alt={t(p.title)}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          draggable={false}
-        />
-        {/* small caption block bottom-left */}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex min-h-[48%] flex-col justify-end p-4 sm:p-6 xl:px-16 xl:py-9">
+      <div className="flex min-h-36 flex-col justify-center border-s-4 border-[#f26522] bg-[#16355d] p-5 sm:p-8">
           <div className="flex flex-wrap gap-2 mb-2">
             {tags.map((tag) => (
               <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-white/70 bg-white/10 px-2 py-0.5 rounded-sm backdrop-blur-sm border border-white/10">
@@ -610,7 +587,6 @@ function ProjectCard({ p }) {
               {t("Partner:")} {t(p.client)}
             </p>
           )}
-        </div>
       </div>
     </div>
   );
