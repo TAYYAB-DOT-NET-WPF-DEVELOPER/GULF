@@ -121,7 +121,7 @@ export default function SustainabilityCarousel() {
 
             {/* CENTER TEXT */}
             <div className="flex-1 flex justify-center">
-              <div className="w-full max-w-2xl text-left px-4 md:px-8 min-h-[160px]">
+              <div className="w-full max-w-2xl text-start px-4 md:px-8 min-h-[160px]">
                 <p className="text-[16px] font-bold text-white opacity-95">
                     {currentSlides[active]?.no}
                 </p>

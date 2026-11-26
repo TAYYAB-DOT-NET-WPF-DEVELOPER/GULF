@@ -211,7 +211,7 @@ export default function Home() {
             <section className="relative bg-[#16355d] text-white">
                 <div className="relative mx-auto grid max-w-[1220px] items-center gap-7 px-5 py-12 lg:min-h-[362px] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-8 lg:px-0 lg:py-[14px]">
                     <img src={getImageUrl(aboutBanner?.imageUrls?.[0] || "/images/About_Us_Image.svg")} alt="Gulf Al Olaya construction team"
-                        className="relative z-10 mx-auto h-auto w-full max-w-[480px] lg:absolute lg:left-0 lg:top-0" />
+                        className="relative z-10 mx-auto h-auto w-full max-w-[480px] lg:absolute lg:start-0 lg:top-0" />
                     <div className="relative z-20 min-w-0 lg:col-start-2">
                         <p className="text-lg font-medium text-[#f17124]">{t("nav_about_us", "About Us")}</p>
                         <h2 className="mt-5 max-w-[580px] text-[28px] font-bold leading-tight lg:mt-7 lg:text-[32px]">
@@ -280,7 +280,7 @@ export default function Home() {
                                     });
                                 }
                                 return statsToUse.map((stat, i) => (
-                                    <div key={i} className="text-left md:pr-14">
+                                    <div key={i} className="text-start md:pe-14">
                                         <p className="text-[64px] font-medium tracking-tight text-[#18324e] lg:text-[112px] leading-none">
                                             {stat.value}
                                         </p>

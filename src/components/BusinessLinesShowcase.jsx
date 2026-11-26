@@ -72,6 +72,7 @@ export default function BusinessLinesShowcase() {
 
   const fallbackServices = homePage.services.map((service, index) => ({
     id: service.id,
+    translationKey: `homeBusinessLines.${service.id}`,
     name: service.title,
     headline: service.headline,
     shortDesc: service.desc,
@@ -108,6 +109,8 @@ export default function BusinessLinesShowcase() {
 
   const listToRender = services.length > 0 ? services : fallbackServices;
   const currentBiz = activeBiz || listToRender[0];
+  const serviceText = (item, field, value) =>
+    item.translationKey ? t(`${item.translationKey}.${field}`, { defaultValue: value }) : t(value);
 
   return (
     <section className="w-full bg-white xl:min-h-[672px]">
@@ -122,11 +125,12 @@ export default function BusinessLinesShowcase() {
                   <button
                     key={item.id}
                     type="button"
+                    aria-pressed={selected}
                     onClick={() => setActiveBiz(item)}
-                    className="flex w-full items-center gap-4 text-left group transition-all"
+                    className="flex w-full items-center gap-4 text-start group transition-all"
                   >
                     <span className={[
-                      "inline-flex h-11 w-11 items-center justify-center rounded-full border transition-colors",
+                      "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-colors",
                       selected ? "border-orange-500 bg-orange-50" : "border-slate-200 group-hover:border-slate-300"
                     ].join(" ")}>
                       <BizIcon name={item.icon || "gear"} />
@@ -138,7 +142,7 @@ export default function BusinessLinesShowcase() {
                         selected ? "text-[#0f2d45]" : "text-slate-500 group-hover:text-slate-700",
                       ].join(" ")}
                     >
-                      {t(item.name)}
+                      {serviceText(item, "title", item.name)}
                     </span>
                   </button>
                 );
@@ -151,23 +155,23 @@ export default function BusinessLinesShowcase() {
             <div className="relative isolate grid min-h-[410px] overflow-hidden rounded-xl bg-slate-900">
               <img
                 src={getImageUrl(currentBiz.bannerImageUrl || currentBiz.imageUrl) || "/images/bagr10.png"}
-                alt={t(currentBiz.name)}
+                alt={serviceText(currentBiz, "title", currentBiz.name)}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0f2d45]/90 via-[#0f2d45]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-[#0f2d45]/90 via-[#0f2d45]/40 to-transparent" />
 
               <div className="relative flex items-center py-8">
-                <div className="px-8 md:px-12">
+                <div className="min-w-0 px-5 text-start sm:px-8 md:px-12">
                   <h3 className="text-2xl font-black tracking-tight text-white md:text-3xl uppercase">
-                    {t(currentBiz.name)}
+                    {serviceText(currentBiz, "title", currentBiz.name)}
                   </h3>
 
-                  {currentBiz.headline && <p className="mt-3 max-w-lg font-semibold text-white">{t(currentBiz.headline)}</p>}
+                  {currentBiz.headline && <p className="mt-3 max-w-lg font-semibold text-white">{serviceText(currentBiz, "headline", currentBiz.headline)}</p>}
                   <p className="mt-3 max-w-lg text-sm leading-6 text-white/90 md:text-base">
-                    {t(currentBiz.shortDesc) || t("home_hero_desc")}
+                    {serviceText(currentBiz, "description", currentBiz.shortDesc) || t("home_hero_desc")}
                   </p>
 
-                  <div className="mt-8 flex items-center gap-4">
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
                     <Link
                       to={Object.hasOwn(serviceData, currentBiz.id) ? `/services/${currentBiz.id}` : "/services"}
                       className="inline-flex rounded-md bg-orange-500 px-8 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-all active:scale-95 shadow-lg shadow-orange-500/30"
