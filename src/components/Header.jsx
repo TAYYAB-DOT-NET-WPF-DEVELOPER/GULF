@@ -32,7 +32,7 @@ export default function Header({ overlay = false, theme = 'dark', logoType, home
   const showColorLogo = logoType === 'color' || isLight;
 
   useEffect(() => {
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = i18n.dir(i18n.resolvedLanguage);
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
 
