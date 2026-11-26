@@ -175,7 +175,7 @@ export default function About() {
             <p className="text-[15.5px] font-semibold text-[#18324e]">
               {t("about_story_subtitle", "We exist to build infrastructure that Saudi Arabia is proud of.")}
             </p>
-            <p className="max-w-[1100px] text-base leading-snug text-[#3f3f3f] lg:text-[20px]">
+            <p className="max-w-[1100px] whitespace-pre-line text-base leading-relaxed rtl:text-start text-[#3f3f3f] lg:text-[20px]">
               {t(purposeBanner?.subHeadline) || t("about_story_desc", "Gulf Al Olaya was built on a simple but powerful idea that quality construction should not be reserved for the largest corporations. From our earliest projects to our most complex multi-discipline deliveries, we have consistently proven that a focused, skilled, and client-first team will outperform size every time.")}
             </p>
           </div>
@@ -197,7 +197,7 @@ export default function About() {
               alt="Industrial site at sunset" className="mx-auto h-auto w-full max-w-[600px] md:col-span-6" />
 
             {/* right content */}
-            <div className="md:col-span-6 min-w-0 lg:pl-8">
+            <div className="md:col-span-6 min-w-0 lg:ps-8">
               <p className="text-lg font-bold text-[#16355d] uppercase">
                 {t("about_vision_subtitle", "VISION & VALUES")}
               </p>

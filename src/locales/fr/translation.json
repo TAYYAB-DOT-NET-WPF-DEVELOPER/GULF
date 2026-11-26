@@ -1,4 +1,81 @@
 {
+  "newsPage": {
+    "label": "Actualités",
+    "heading": "Retrouvez ici les dernières actualités et réalisations de Gulf Al Olaya.",
+    "featured": "À la une",
+    "find": "Rechercher des actualités",
+    "search": "Rechercher par mots-clés",
+    "category": "Catégorie",
+    "reset": "Réinitialiser",
+    "resultsLabel": "Résultats de recherche",
+    "results_one": "{{count}} résultat",
+    "results_other": "{{count}} résultats",
+    "empty": "Aucun article trouvé.",
+    "readMore": "Lire la suite",
+    "readTime": "{{minutes}} min de lecture",
+    "email": "Votre adresse e-mail",
+    "related": "Pages associées",
+    "closing": "Pour le monde. Avec le monde.™",
+    "categories": {
+      "All": "Toutes",
+      "Event": "Événement",
+      "New Projects": "Nouveaux projets",
+      "Announcement": "Annonce",
+      "Press Release": "Communiqué de presse"
+    },
+    "articles": {
+      "1": {
+        "title": "SATORP décerne un prix à Gulf Al Olaya Engineering Services",
+        "excerpt": "SATORP a récompensé Gulf Al Olaya Engineering Services pour la qualité de ses prestations, le respect des règles de sécurité et la livraison dans les délais des travaux de mécanique et de tuyauterie au complexe de la raffinerie Total, dans la ville industrielle de Jubail."
+      },
+      "2": {
+        "title": "Alliance Contracting Solutions choisit Gulf Al Olaya comme partenaire stratégique pour le pétrole et le gaz",
+        "excerpt": "Alliance Contracting Solutions a officiellement choisi Gulf Al Olaya comme partenaire stratégique privilégié pour les projets pétroliers, gaziers et de construction mécanique industrielle dans la Province orientale et dans toute l’Arabie saoudite."
+      },
+      "3": {
+        "title": "Gulf Al Olaya signe un partenariat stratégique pour des travaux techniques du bâtiment en Arabie saoudite",
+        "excerpt": "Gulf Al Olaya a conclu un accord de collaboration stratégique pour réaliser des travaux de mécanique, d’électricité, de plomberie et de génie civil sur plusieurs projets en cours dans le Royaume, confirmant son engagement envers la qualité et le respect des délais."
+      },
+      "4": {
+        "title": "La direction fait le point sur les jalons de 2025 et les projets d’expansion",
+        "excerpt": "La direction de Gulf Al Olaya s’est réunie pour examiner les principales réalisations de 2025 et définir une stratégie d’expansion vers de nouvelles divisions et de nouveaux marchés de projets dans le Royaume."
+      },
+      "5": {
+        "title": "Gulf Al Olaya réunit ses principales parties prenantes pour un bilan trimestriel",
+        "excerpt": "Lors de cette réunion trimestrielle, l’entreprise a présenté l’avancement des projets, les principaux résultats financiers et ses objectifs de croissance pour le prochain exercice."
+      },
+      "6": {
+        "title": "Gulf Al Olaya obtient un contrat majeur pour une installation industrielle",
+        "excerpt": "Gulf Al Olaya a célébré l’attribution officielle d’un contrat majeur de conception et de construction d’une grande installation industrielle dans la Province orientale, enrichissant son portefeuille de projets d’ingénierie et de construction en Arabie saoudite."
+      }
+    }
+  },
+  "serviceDivisions": {
+    "mechanical": {
+      "title": "Division mécanique",
+      "description": "Notre division mécanique réalise des installations de chauffage, ventilation et climatisation, des systèmes de protection incendie et des travaux de tôlerie de précision. Nos équipes expérimentées assurent toutes les étapes, de la conception et de l’approvisionnement à l’installation, aux essais, à la mise en service et à la réception finale."
+    },
+    "electrical": {
+      "title": "Division électrique",
+      "description": "Nous concevons, installons, testons et entretenons les systèmes électriques, des tableaux de distribution et du câblage basse tension aux postes haute tension et réseaux de transport. Nos ingénieurs et techniciens interviennent dans les secteurs résidentiel, commercial, industriel et institutionnel selon des normes rigoureuses de qualité et de sécurité."
+    },
+    "transmission": {
+      "title": "Lignes de transport électrique en EPC",
+      "description": "Nous prenons en charge les lignes aériennes de bout en bout sous un seul contrat : étude du tracé, conception, approvisionnement, génie civil, montage des pylônes, déroulage des conducteurs et mise en service. Nos équipes et équipements spécialisés interviennent sur des réseaux de 132 à 380 kV selon les exigences de Saudi Electricity Company et les normes internationales."
+    },
+    "ohtl": {
+      "title": "Construction de lignes électriques aériennes",
+      "description": "Nous assurons les travaux sur le terrain, du tri des composants dans le dépôt du client à l’assemblage et au montage des pylônes en acier, puis au déroulage des conducteurs et câbles de terre. Nos propres équipes utilisent du matériel spécialisé et suivent les plans approuvés ainsi que les exigences de sécurité et de qualité de Saudi Electricity Company."
+    },
+    "piping": {
+      "title": "Tuyauterie industrielle",
+      "description": "Nous fabriquons et installons des tuyauteries, des petits tubes d’instrumentation aux conduites de procédé de 90 pouces de diamètre. Les tronçons préfabriqués à Dammam sont installés sur des sites pétroliers, gaziers, chimiques, hydrauliques et industriels. Nous assurons le soudage, le contrôle non destructif, les essais de pression et la mise en service."
+    },
+    "civil": {
+      "title": "Division génie civil",
+      "description": "Nous assurons les travaux de génie civil en Arabie saoudite, du terrassement et du gros œuvre aux finitions et à la livraison. Fortes de plus de 20 ans d’expérience, nos équipes gèrent les chantiers résidentiels, commerciaux et d’infrastructure en maîtrisant l’exécution, les délais et la qualité."
+    }
+  },
   "nav_global_status": "Vous êtes dans Gulf Al Olaya Global",
   "brand_name": "Gulf Al Olaya",
   "nav_about_us": "À propos de nous",
@@ -297,6 +374,7 @@
   "Ethical Governance": "Gouvernance Éthique",
   "SUSTAINABILITY SECTION": "POLITIQUE DE DURABILITÉ",
   "SUSTAINABILITY POLICY": "Construire de manière responsable pour aujourd'hui et pour demain",
+  "sust_title": "Construire de manière responsable pour aujourd'hui et pour demain",
   "Building responsibly for today and tomorrow": "Construire de manière responsable pour aujourd'hui et pour demain",
   "Subscribe to our newsletter to receive all the latest news": "Inscrivez-vous à notre newsletter pour recevoir toutes les dernières nouvelles",
   "Subscribe to our newsletter...": "Inscrivez-vous à notre newsletter pour recevoir toutes les dernières nouvelles & mises à jour",

@@ -2,9 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const navClass = ({ isActive }) =>
-  `text-[14px] font-normal tracking-wide transition ${isActive ? "text-white" : "text-white/90 hover:text-white"
-  }`;
+const languages = [
+  { code: "en", name: "English" },
+  { code: "ur", name: "اردو", flag: "pk" },
+  { code: "ar", name: "العربية", flag: "sa" },
+  { code: "fr", name: "Français", flag: "fr" },
+];
+
+function LanguageLabel({ language, compact = false }) {
+  return (
+    <>
+      {language.flag && (
+        <img src={`/images/flags/${language.flag}.svg`} alt="" width="20" height="15"
+          className="h-[15px] w-5 shrink-0 rounded-[2px] object-cover" />
+      )}
+      <span lang={language.code}>{compact ? language.code.toUpperCase() : language.name}</span>
+    </>
+  );
+}
 
 const mobileNavClass = ({ isActive }) =>
   `text-lg font-normal tracking-wide py-4 border-b border-white/10 transition ${isActive ? "text-orange-500" : "text-white"
@@ -17,7 +32,7 @@ export default function Header({ overlay = false, theme = 'dark', logoType, home
   const showColorLogo = logoType === 'color' || isLight;
 
   useEffect(() => {
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = i18n.dir(i18n.resolvedLanguage);
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
 
@@ -73,7 +88,7 @@ export default function Header({ overlay = false, theme = 'dark', logoType, home
             {/* NAV - Desktop */}
             <div className="hidden xl:flex flex-col items-end gap-4">
               {/* Top Row: Region / Language */}
-              <div className={`flex items-center gap-1.5 text-[12px] group cursor-pointer relative ${home ? "xl:me-[168px]" : ""} ${isLight ? "text-slate-500 hover:text-slate-800" : "text-white/90"}`}>
+              <div tabIndex={0} className={`flex items-center gap-1.5 text-[12px] group cursor-pointer relative ${home ? "xl:me-[168px]" : ""} ${isLight ? "text-slate-500 hover:text-slate-800" : "text-white/90"}`}>
                 <span>{t('nav_global_status')}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 ml-1">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
@@ -83,12 +98,15 @@ export default function Header({ overlay = false, theme = 'dark', logoType, home
                 </svg>
 
                 {/* Language Dropdown Menu (on hover) */}
-                <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
                   <div className="bg-white rounded shadow-lg overflow-hidden flex flex-col min-w-[120px] border border-slate-100">
-                    <button onClick={() => changeLanguage('en')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'en' ? 'font-bold text-black' : 'text-gray-700'}`}>English</button>
-                    <button onClick={() => changeLanguage('ur')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'ur' ? 'font-bold text-black' : 'text-gray-700'}`}>اردو</button>
-                    <button onClick={() => changeLanguage('ar')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'ar' ? 'font-bold text-black' : 'text-gray-700'}`}>العربية</button>
-                    <button onClick={() => changeLanguage('fr')} className={`px-4 py-2 text-left text-sm hover:bg-gray-100 ${i18n.language === 'fr' ? 'font-bold text-black' : 'text-gray-700'}`}>Français</button>
+                    {languages.map(language => (
+                      <button key={language.code} type="button" aria-pressed={i18n.language === language.code}
+                        onClick={() => changeLanguage(language.code)}
+                        className={`flex items-center gap-2 px-4 py-2 text-start text-sm hover:bg-gray-100 ${i18n.language === language.code ? "font-bold text-black" : "text-gray-700"}`}>
+                        <LanguageLabel language={language} />
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -125,46 +143,14 @@ export default function Header({ overlay = false, theme = 'dark', logoType, home
 
             {/* MOBILE TOGGLE & TOOLS */}
             <div className="flex shrink-0 items-center gap-2 xl:hidden">
-              <div className={`hidden items-center gap-1.5 text-sm min-[375px]:flex ${isLight || !overlay ? 'text-slate-600' : 'text-white/80'}`}>
-                <button
-                  onClick={() => changeLanguage('en')}
-                  className={`hover:text-[#f26522] transition-colors ${i18n.language === 'en'
-                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
-                      : ''
-                    }`}
-                >
-                  EN
-                </button>
-                <span>|</span>
-                <button
-                  onClick={() => changeLanguage('ur')}
-                  className={`hover:text-[#f26522] transition-colors ${i18n.language === 'ur'
-                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
-                      : ''
-                    }`}
-                >
-                  UR
-                </button>
-                <span>|</span>
-                <button
-                  onClick={() => changeLanguage('ar')}
-                  className={`hover:text-[#f26522] transition-colors ${i18n.language === 'ar'
-                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
-                      : ''
-                    }`}
-                >
-                  AR
-                </button>
-                <span>|</span>
-                <button
-                  onClick={() => changeLanguage('fr')}
-                  className={`hover:text-[#f26522] transition-colors ${i18n.language === 'fr'
-                      ? (isLight || !overlay ? 'font-bold text-[#0f2d45]' : 'font-bold text-white')
-                      : ''
-                    }`}
-                >
-                  FR
-                </button>
+              <div className={`hidden items-center gap-2 text-xs min-[420px]:flex ${isLight || !overlay ? "text-slate-600" : "text-white/90"}`}>
+                {languages.map(language => (
+                  <button key={language.code} type="button" aria-label={language.name}
+                    aria-pressed={i18n.language === language.code} onClick={() => changeLanguage(language.code)}
+                    className="flex items-center gap-1 py-2 aria-pressed:font-bold hover:text-[#f26522]">
+                    <LanguageLabel language={language} compact />
+                  </button>
+                ))}
               </div>
 
               <button
@@ -242,10 +228,13 @@ export default function Header({ overlay = false, theme = 'dark', logoType, home
           </nav>
 
           <div className="mt-auto flex shrink-0 flex-wrap justify-center gap-x-5 gap-y-2 border-t border-white/10 pt-4">
-            <button onClick={() => { changeLanguage('en'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'en' ? 'text-orange-500 font-bold' : 'text-white'}`}>English</button>
-            <button onClick={() => { changeLanguage('ur'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'ur' ? 'text-orange-500 font-bold' : 'text-white'}`}>اردو</button>
-            <button onClick={() => { changeLanguage('ar'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'ar' ? 'text-orange-500 font-bold' : 'text-white'}`}>العربية</button>
-            <button onClick={() => { changeLanguage('fr'); closeMenu(); }} className={`text-[15px] hover:text-orange-500 ${i18n.language === 'fr' ? 'text-orange-500 font-bold' : 'text-white'}`}>Français</button>
+            {languages.map(language => (
+              <button key={language.code} type="button" aria-pressed={i18n.language === language.code}
+                onClick={() => { changeLanguage(language.code); closeMenu(); }}
+                className="inline-flex items-center gap-2 py-2 text-[15px] text-white hover:text-orange-400 aria-pressed:font-bold aria-pressed:text-orange-400">
+                <LanguageLabel language={language} />
+              </button>
+            ))}
           </div>
         </div>
       </div>

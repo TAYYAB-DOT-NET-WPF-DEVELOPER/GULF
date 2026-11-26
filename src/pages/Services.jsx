@@ -35,7 +35,7 @@ export default function Services() {
         <div className="absolute inset-0">
           <img
             src={heroBanner?.imageUrls?.[0] ? getImageUrl(heroBanner.imageUrls[0]) : "/images/abouthero.png"}
-            alt="Services Hub"
+            alt=""
             className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => { e.target.src = "/images/abouthero.png" }}
           />
@@ -48,7 +48,7 @@ export default function Services() {
               <p className="text-xs font-black tracking-[0.3em] text-[#f26522] uppercase mb-4">
                 {t("services_offerings_label", "Our Offerings")}
               </p>
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter leading-[0.9] whitespace-pre-line">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter leading-tight rtl:tracking-normal whitespace-pre-line">
                 {t("services_offerings_title", "A Saudi company. A global standard.")}
               </h1>
               <p className="mt-4 text-[15px] md:text-lg font-bold text-white/90">
@@ -68,9 +68,9 @@ export default function Services() {
           <div className="flex flex-col gap-24 md:gap-32">
             {(servicesList.length > 0 ? servicesList : Object.entries(serviceData).map(([id, page]) => ({
                 id,
-                title: t(page.title),
+                title: t(`serviceDivisions.${id}.title`, { defaultValue: page.title }),
                 image: page.coverImage,
-                desc: t(page.heroDesc),
+                desc: t(`serviceDivisions.${id}.description`, { defaultValue: page.heroDesc }),
               }))).map((sector, idx) => {
                 const isEven = idx % 2 === 0;
                 
@@ -134,12 +134,12 @@ export default function Services() {
                         )}
 
                         {/* Text Block */}
-                        <div className={`relative z-10 flex flex-col justify-center ${isEven ? 'md:order-1' : 'md:order-2 md:pl-10'}`}>
-                            <h3 className="text-[28px] font-bold text-[#18324e] md:text-[34px] leading-tight tracking-tight">
-                                {t(sector.name || sector.title)}
+                        <div className={`relative z-10 flex flex-col justify-center ${isEven ? 'md:order-1' : 'md:order-2 md:ps-10'}`}>
+                            <h3 className="text-[28px] font-bold text-[#18324e] md:text-[34px] leading-tight tracking-tight rtl:tracking-normal">
+                                {sector.name ? t(sector.name) : sector.title}
                             </h3>
                             <p className="mt-5 text-[15.5px] leading-relaxed text-[#555] max-w-lg">
-                                {t(sector.description || sector.desc)}
+                                {sector.description ? t(sector.description) : sector.desc}
                             </p>
                             <div className="mt-8">
                                 <Link
@@ -157,7 +157,7 @@ export default function Services() {
                                 {sector.image ? (
                                     <img
                                         src={getImageUrl(sector.imageUrl || sector.image)}
-                                        alt={t(sector.name || sector.title)}
+                                        alt={sector.name ? t(sector.name) : sector.title}
                                         className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                                         onError={(e) => { e.target.style.opacity = 0; }} 
                                     />
@@ -190,14 +190,14 @@ export default function Services() {
               <div className="absolute inset-0 z-10 overflow-hidden shadow-2xl" style={{ clipPath: "polygon(0% 25%, 100% 0%, 85% 100%, 15% 75%)" }}>
                 <img
                   src="/images/How can i help.png"
-                  alt="Contact"
+                  alt=""
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
             </div>
 
             {/* RIGHT: Text content */}
-            <div className="pl-0 md:pl-8">
+            <div className="md:ps-8">
               <p className="text-[13px] font-bold tracking-widest text-[#f26522] uppercase">
                 {t("home_contact_label", "CONTACT US")}
               </p>
@@ -279,7 +279,7 @@ export default function Services() {
       <section className="relative w-full min-h-[500px] flex items-center justify-center overflow-hidden">
         <img
           src={bottomBanner?.imageUrls?.[0] ? getImageUrl(bottomBanner.imageUrls[0]) : "/images/panel.png"}
-          alt="For the world"
+          alt=""
           className="absolute inset-0 h-full w-full object-cover"
           onError={(e) => { e.target.src = "/images/hero.png" }}
         />

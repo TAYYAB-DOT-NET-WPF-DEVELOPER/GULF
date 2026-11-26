@@ -74,9 +74,9 @@ export default function Contact() {
 
   const heroText =
     heroBanner?.subHeadline ||
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    t("home_contact_desc");
 
-  const heroPhone = heroBanner?.ctaLink || "+123 456 7890";
+  const heroPhone = heroBanner?.ctaLink;
 
   return (
     <div className="bg-white min-h-screen">
@@ -92,32 +92,14 @@ export default function Contact() {
               </p>
 
               <h1 className="text-3xl sm:text-[36px] md:text-[52px] font-extrabold text-[#0f2d45] leading-[1.05] tracking-tight mb-8">
-                {t("Gulf Al Olaya Head")}
-                <br />
-                {t("Office")}
+                {t("contact_head_office", "Gulf Al Olaya Head Office")}
               </h1>
 
               <div className="space-y-4 text-[15px] leading-relaxed text-slate-600 mb-8 max-w-md">
-                <p>{t(heroText)}</p>
-                <p>{t(heroText)}</p>
+                <p>{heroText}</p>
               </div>
 
-              <div className="flex items-center gap-3 text-[17px] font-bold text-[#0f2d45] mb-6">
-                <span className="text-[#0f2d45]">📞</span>
-                <a
-                  href={`tel:${heroPhone.replace(/\s/g, "")}`}
-                  className="hover:text-[#f26522] transition-colors"
-                >
-                  {heroPhone}
-                </a>
-              </div>
-
-              <a
-                href="#"
-                className="inline-flex rounded-[5px] bg-[#f26522] px-7 py-3.5 text-[12px] font-bold uppercase tracking-wider text-white hover:bg-orange-600 transition-all"
-              >
-                {t("VIEW ON GOOGLE MAPS")}
-              </a>
+              {heroPhone && <a href={`tel:${heroPhone.replace(/\s/g, "")}`} dir="ltr">{heroPhone}</a>}
             </div>
 
             <div className="md:col-span-6 flex justify-end">

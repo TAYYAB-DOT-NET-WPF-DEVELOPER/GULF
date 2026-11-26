@@ -58,10 +58,10 @@ export default function Home() {
                 { id: 6, title: "proj_6_title", client: "proj_6_cat", status: "proj_6_desc", featuredImageUrl: "/images/industry-bg.png" },
             ];
             const fallbackBlogs = [
-                { id: 1, title: "Zulfi Mosque & House Project", imageUrl: "/images/Frame51.png", updatedAt: "2025-12-03T00:00:00Z" },
-                { id: 2, title: "Sultan Bin Abdul Aziz Humanitarian City", imageUrl: "/images/Frame53.png", updatedAt: "2025-11-18T00:00:00Z" },
-                { id: 3, title: "Al Af-MacDonald's Fast Food Outlet", imageUrl: "/images/Frame55.png", updatedAt: "2025-11-17T00:00:00Z" },
-                { id: 4, title: "Baha University Staff Housing Project", imageUrl: "/images/Frame56.png", updatedAt: "2025-11-16T00:00:00Z" },
+                { id: 1, title: "proj_1_title", updatedAt: "2025-12-03T00:00:00Z" },
+                { id: 2, title: "proj_2_title", updatedAt: "2025-11-18T00:00:00Z" },
+                { id: 3, title: "proj_3_title", updatedAt: "2025-11-17T00:00:00Z" },
+                { id: 4, title: "proj_4_title", updatedAt: "2025-11-16T00:00:00Z" },
             ];
 
             setBanner(bannerRes?.data);
@@ -188,15 +188,15 @@ export default function Home() {
                         {logosBanner?.imageUrls?.length > 0 ? (
                             logosBanner.imageUrls.map((src, idx) => (
                                 <img key={idx} src={getImageUrl(src)} alt={`Client Logo ${idx}`}
-                                    className="h-8 w-auto object-contain md:h-10 filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
+                                    className="h-8 w-auto object-contain md:h-10" />
                             ))
                         ) : (
                             <>
-                                <img src="/images/Frame_5.svg" alt="Ramada" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
-                                <img src="/images/Frame_6.svg" alt="Tanfeeth" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
-                                <img src="/images/Frame_7.svg" alt="Client" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
-                                <img src="/images/Frame_8.svg" alt="Client" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
-                                <img src="/images/Frame4.png" alt="UAE Academy" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
+                                <img src="/images/Frame_5.svg" alt="Ramada" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
+                                <img src="/images/Frame_6.svg" alt="Tanfeeth" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
+                                <img src="/images/Frame_7.svg" alt="Client" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
+                                <img src="/images/Frame_8.svg" alt="Client" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
+                                <img src="/images/Frame4.png" alt="UAE Academy" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
                             </>
                         )}
                     </div>
@@ -211,13 +211,14 @@ export default function Home() {
             <section className="relative bg-[#16355d] text-white">
                 <div className="relative mx-auto grid max-w-[1220px] items-center gap-7 px-5 py-12 lg:min-h-[362px] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-8 lg:px-0 lg:py-[14px]">
                     <img src={getImageUrl(aboutBanner?.imageUrls?.[0] || "/images/About_Us_Image.svg")} alt="Gulf Al Olaya construction team"
-                        className="relative z-10 mx-auto h-auto w-full max-w-[480px] lg:absolute lg:left-0 lg:top-0" />
+                        className="relative z-10 mx-auto h-auto w-full max-w-[480px] lg:absolute lg:start-0 lg:top-0" />
                     <div className="relative z-20 min-w-0 lg:col-start-2">
                         <p className="text-lg font-medium text-[#f17124]">{t("nav_about_us", "About Us")}</p>
                         <h2 className="mt-5 max-w-[580px] text-[28px] font-bold leading-tight lg:mt-7 lg:text-[32px]">
                             {t("home_about_title")}
                         </h2>
-                        <p className="mt-4 max-w-[654px] text-base leading-[1.3] lg:text-[20px]">{t("home_about_desc")}</p>
+                        <p className="mt-4 max-w-[654px] whitespace-pre-line text-base leading-relaxed lg:text-[20px]">{i18n.resolvedLanguage === "ar" && <strong className="mb-3 block">{t("home_about_label")}</strong>}
+                            {t("home_about_desc")}</p>
                         <Link to={aboutBanner?.ctaLink || "/about"} className="mt-3 inline-flex items-center gap-3 text-lg font-medium text-[#f17124] hover:text-orange-300">
                             {t("explore_more")} <span aria-hidden="true" className="grid size-10 place-items-center rounded-full border border-current text-2xl">→</span>
                         </Link>
@@ -280,7 +281,7 @@ export default function Home() {
                                     });
                                 }
                                 return statsToUse.map((stat, i) => (
-                                    <div key={i} className="text-left md:pr-14">
+                                    <div key={i} className="text-start md:pe-14">
                                         <p className="text-[64px] font-medium tracking-tight text-[#18324e] lg:text-[112px] leading-none">
                                             {stat.value}
                                         </p>
@@ -296,10 +297,10 @@ export default function Home() {
 
                     {/* Business Lines heading */}
                     <div className="mt-24 md:mt-32 text-center">
-                        <p className="text-[12px] font-bold tracking-[0.2em] text-[#f26522] uppercase">
+                        <p className="text-sm font-bold tracking-[0.2em] text-[#f26522] rtl:tracking-normal uppercase">
                             {t("home_biz_label", "BUSINESS LINES")}
                         </p>
-                        <h2 className="mt-4 text-[26px] font-bold tracking-tight text-[#18324e] md:text-[36px]">
+                        <h2 className="mt-4 text-[26px] font-bold tracking-tight text-[#18324e] rtl:tracking-normal rtl:leading-relaxed md:text-[36px]">
                             {t("home_biz_title", "We work across multiple sectors.")}
                         </h2>
                         <p className="mx-auto mt-5 max-w-3xl text-[15px] leading-relaxed text-[#666]">
@@ -404,40 +405,29 @@ export default function Home() {
                             </Link>
                         </div>
 
-                        <article className="min-w-0">
-                            <img src={getImageUrl(blogs[0]?.imageUrl) || "/images/Frame51.png"} alt="" width="727" height="403" className="h-auto w-full" />
-                            <div className="ms-[10.9%] me-4 mt-5 text-[#3f3f3f] xl:mt-9">
+                        <article className="min-w-0 self-start border-s-4 border-[#f17124] bg-white p-6 shadow-sm lg:p-10">
+                            <div className="text-[#3f3f3f]">
                                 <p className="text-base xl:text-[20px]">
-                                    {blogs[0]?.updatedAt ? new Date(blogs[0].updatedAt).toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" }) : "Dec 03, 2025"}
+                                    {blogs[0]?.updatedAt ? new Date(blogs[0].updatedAt).toLocaleDateString(i18n.resolvedLanguage, { month: "short", day: "2-digit", year: "numeric" }) : "Dec 03, 2025"}
                                     <span className="font-bold"> · {t("event", "Event")}</span>
                                 </p>
                                 <h3 className="mt-3 text-xl font-bold leading-tight xl:mt-5 xl:text-[24px]">
-                                    {blogs[0]?.title || t("Zulfi Mosque & House Project")}
+                                    {t(blogs[0]?.title || "proj_1_title")}
                                 </h3>
                             </div>
                         </article>
                     </div>
 
                     <div className="mt-12 grid gap-10 sm:grid-cols-3 xl:mx-[8.4%] xl:mt-[128px] xl:gap-[50px]">
-                        {blogs.slice(1, 4).map((news, index) => {
-                            const imageClass = [
-                                "w-full -top-[15.1%]",
-                                "w-[107.9%] top-0",
-                                "w-[111.5%] -start-[11.2%] -top-[13.1%]",
-                            ][index];
-                            return (
-                                <article key={news.id} className="min-w-0 text-[#3f3f3f]">
-                                    <div className="relative aspect-[366/245]">
-                                        <img src={getImageUrl(news.imageUrl)} alt="" className={`absolute h-auto max-w-none ${imageClass}`} />
-                                    </div>
+                        {blogs.slice(1, 4).map((news) => (
+                                <article key={news.id} className="min-w-0 border-s-4 border-[#f17124] bg-white p-5 text-[#3f3f3f] shadow-sm">
                                     <p className="relative mt-4 text-sm">
-                                        {new Date(news.updatedAt).toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" })}
+                                        {new Date(news.updatedAt).toLocaleDateString(i18n.resolvedLanguage, { month: "short", day: "2-digit", year: "numeric" })}
                                         <span className="font-bold"> · {t("event", "Event")}</span>
                                     </p>
-                                    <h3 className="relative mt-2 text-base font-medium">{news.title}</h3>
+                                    <h3 className="relative mt-2 text-base font-medium">{t(news.title)}</h3>
                                 </article>
-                            );
-                        })}
+                        ))}
                     </div>
                 </div>
             </section>

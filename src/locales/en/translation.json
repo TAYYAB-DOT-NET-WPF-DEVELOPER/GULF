@@ -1,4 +1,29 @@
 {
+  "newsPage": {
+    "label": "News & Updates",
+    "heading": "Find all the latest developments and happenings at Gulf Al Olaya right here.",
+    "featured": "Featured news",
+    "find": "Find news",
+    "search": "Search by keywords",
+    "category": "Category",
+    "reset": "Reset",
+    "resultsLabel": "News results",
+    "results_one": "{{count}} result",
+    "results_other": "{{count}} results",
+    "empty": "No articles found.",
+    "readMore": "Read more",
+    "readTime": "{{minutes}} min read",
+    "email": "Your email address",
+    "related": "Related pages",
+    "closing": "For the world. With the world.™",
+    "categories": {
+      "All": "All",
+      "Event": "Event",
+      "New Projects": "New Projects",
+      "Announcement": "Announcement",
+      "Press Release": "Press Release"
+    }
+  },
   "nav_global_status": "You are in Gulf Al Olaya Global",
   "brand_name": "Gulf Al Olaya",
   "nav_about_us": "About Us",

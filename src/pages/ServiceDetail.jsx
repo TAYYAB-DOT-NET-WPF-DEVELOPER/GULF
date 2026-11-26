@@ -94,7 +94,7 @@ export default function ServiceDetail() {
       <section className="relative w-full bg-[#f8f9fa] py-20 md:py-32 overflow-hidden">
         <div className="absolute right-[-5%] top-0 h-full w-[30%] opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#18324e 2px, transparent 2px)', backgroundSize: '30px 30px' }}></div>
         <div className="mx-auto max-w-6xl px-4 relative z-10">
-          <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+          <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-12">
             <div className="relative w-full aspect-square md:aspect-[4/5] flex justify-center items-center">
               {/* Shard Backdrops */}
               <div className="absolute w-[90%] h-[90%] bg-[#f26522]/10 z-0 ml-[10%] mt-[10%]" style={{ clipPath: "polygon(10% 0, 100% 15%, 85% 100%, 0 85%)" }}></div>
@@ -103,10 +103,10 @@ export default function ServiceDetail() {
                 <img src={coverImage} alt="Service Cover" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
               </div>
             </div>
-            <div className={`${isRTL ? "pr-0 md:pr-8" : "pl-0 md:pl-8"}`}>
+            <div className="min-w-0 text-start md:ps-8">
               <p className="text-[13px] font-bold tracking-widest text-[#f26522] uppercase">{t("service_what_we_do")}</p>
-              <h1 className="mt-4 text-[36px] font-bold text-[#0f2d45] md:text-[48px] leading-tight tracking-tight">{t(data.title)}</h1>
-              <p className="mt-6 text-[15.5px] leading-relaxed text-[#555] font-medium">{t(data.heroDesc)}</p>
+              <h1 className="mt-4 text-[36px] font-bold text-[#0f2d45] md:text-[48px] leading-tight tracking-tight rtl:tracking-normal">{t(`serviceDivisions.${serviceId}.title`, { defaultValue: data.title })}</h1>
+              <p className="mt-6 max-w-prose text-base leading-relaxed text-[#555]">{t(`serviceDivisions.${serviceId}.description`, { defaultValue: data.heroDesc })}</p>
             </div>
           </div>
         </div>
@@ -370,7 +370,7 @@ export default function ServiceDetail() {
                 <img src="/images/How can i help.png" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" alt="Contact Us" />
               </div>
             </div>
-            <div className={`${isRTL ? "pr-0 md:pr-8" : "pl-0 md:pl-8"}`}>
+            <div className="min-w-0 text-start md:ps-8">
               <p className="text-[13px] font-bold tracking-widest text-[#f26522] uppercase">{t("home_contact_label", "CONTACT US")}</p>
               <h3 className="mt-4 text-[26px] font-bold text-[#18324e] md:text-[36px] tracking-tight">{t("home_contact_title", "How can we help?")}</h3>
               <p className="mt-5 text-gray-600 text-[15.5px] leading-relaxed font-medium">{t("home_contact_desc", "Every great project starts with a conversation. Whether you have a fully scoped tender or just an early-stage idea, our team is ready to listen, advise, and find the right solution for you.")}</p>
