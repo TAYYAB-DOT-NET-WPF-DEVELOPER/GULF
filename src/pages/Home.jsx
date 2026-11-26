@@ -188,15 +188,15 @@ export default function Home() {
                         {logosBanner?.imageUrls?.length > 0 ? (
                             logosBanner.imageUrls.map((src, idx) => (
                                 <img key={idx} src={getImageUrl(src)} alt={`Client Logo ${idx}`}
-                                    className="h-8 w-auto object-contain md:h-10 filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
+                                    className="h-8 w-auto object-contain md:h-10" />
                             ))
                         ) : (
                             <>
-                                <img src="/images/Frame_5.svg" alt="Ramada" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
-                                <img src="/images/Frame_6.svg" alt="Tanfeeth" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
-                                <img src="/images/Frame_7.svg" alt="Client" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
-                                <img src="/images/Frame_8.svg" alt="Client" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
-                                <img src="/images/Frame4.png" alt="UAE Academy" className="h-8 w-auto md:h-10 object-contain filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition duration-300" />
+                                <img src="/images/Frame_5.svg" alt="Ramada" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
+                                <img src="/images/Frame_6.svg" alt="Tanfeeth" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
+                                <img src="/images/Frame_7.svg" alt="Client" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
+                                <img src="/images/Frame_8.svg" alt="Client" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
+                                <img src="/images/Frame4.png" alt="UAE Academy" className="h-8 w-auto md:h-10 object-contain client-logo-ink" />
                             </>
                         )}
                     </div>
