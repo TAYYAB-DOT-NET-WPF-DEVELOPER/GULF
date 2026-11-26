@@ -1,4 +1,30 @@
 {
+  "serviceDivisions": {
+    "mechanical": {
+      "title": "Division mécanique",
+      "description": "Notre division mécanique réalise des installations de chauffage, ventilation et climatisation, des systèmes de protection incendie et des travaux de tôlerie de précision. Nos équipes expérimentées assurent toutes les étapes, de la conception et de l’approvisionnement à l’installation, aux essais, à la mise en service et à la réception finale."
+    },
+    "electrical": {
+      "title": "Division électrique",
+      "description": "Nous concevons, installons, testons et entretenons les systèmes électriques, des tableaux de distribution et du câblage basse tension aux postes haute tension et réseaux de transport. Nos ingénieurs et techniciens interviennent dans les secteurs résidentiel, commercial, industriel et institutionnel selon des normes rigoureuses de qualité et de sécurité."
+    },
+    "transmission": {
+      "title": "Lignes de transport électrique en EPC",
+      "description": "Nous prenons en charge les lignes aériennes de bout en bout sous un seul contrat : étude du tracé, conception, approvisionnement, génie civil, montage des pylônes, déroulage des conducteurs et mise en service. Nos équipes et équipements spécialisés interviennent sur des réseaux de 132 à 380 kV selon les exigences de Saudi Electricity Company et les normes internationales."
+    },
+    "ohtl": {
+      "title": "Construction de lignes électriques aériennes",
+      "description": "Nous assurons les travaux sur le terrain, du tri des composants dans le dépôt du client à l’assemblage et au montage des pylônes en acier, puis au déroulage des conducteurs et câbles de terre. Nos propres équipes utilisent du matériel spécialisé et suivent les plans approuvés ainsi que les exigences de sécurité et de qualité de Saudi Electricity Company."
+    },
+    "piping": {
+      "title": "Tuyauterie industrielle",
+      "description": "Nous fabriquons et installons des tuyauteries, des petits tubes d’instrumentation aux conduites de procédé de 90 pouces de diamètre. Les tronçons préfabriqués à Dammam sont installés sur des sites pétroliers, gaziers, chimiques, hydrauliques et industriels. Nous assurons le soudage, le contrôle non destructif, les essais de pression et la mise en service."
+    },
+    "civil": {
+      "title": "Division génie civil",
+      "description": "Nous assurons les travaux de génie civil en Arabie saoudite, du terrassement et du gros œuvre aux finitions et à la livraison. Fortes de plus de 20 ans d’expérience, nos équipes gèrent les chantiers résidentiels, commerciaux et d’infrastructure en maîtrisant l’exécution, les délais et la qualité."
+    }
+  },
   "nav_global_status": "Vous êtes dans Gulf Al Olaya Global",
   "brand_name": "Gulf Al Olaya",
   "nav_about_us": "À propos de nous",

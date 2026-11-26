@@ -105,8 +105,8 @@ export default function ServiceDetail() {
             </div>
             <div className="min-w-0 text-start md:ps-8">
               <p className="text-[13px] font-bold tracking-widest text-[#f26522] uppercase">{t("service_what_we_do")}</p>
-              <h1 className="mt-4 text-[36px] font-bold text-[#0f2d45] md:text-[48px] leading-tight tracking-tight rtl:tracking-normal">{t(data.title)}</h1>
-              <p className="mt-6 max-w-prose text-base leading-relaxed text-[#555]">{t(data.heroDesc)}</p>
+              <h1 className="mt-4 text-[36px] font-bold text-[#0f2d45] md:text-[48px] leading-tight tracking-tight rtl:tracking-normal">{t(`serviceDivisions.${serviceId}.title`, { defaultValue: data.title })}</h1>
+              <p className="mt-6 max-w-prose text-base leading-relaxed text-[#555]">{t(`serviceDivisions.${serviceId}.description`, { defaultValue: data.heroDesc })}</p>
             </div>
           </div>
         </div>
